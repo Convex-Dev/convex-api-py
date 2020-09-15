@@ -1,0 +1,354 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ConvexAPI class &mdash; convex-api-py 0.12.9 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Exceptions Module" href="../modules/exceptions.html" />
+    <link rel="prev" title="Account class" href="account.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> convex-api-py
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.12.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="account.html">Account class</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ConvexAPI class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/exceptions.html">Exceptions Module</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">convex-api-py</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>ConvexAPI class</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/classes/convex_api.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="convexapi-class">
+<h1>ConvexAPI class<a class="headerlink" href="#convexapi-class" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="convex_api.convex_api.ConvexAPI">
+<em class="property">class </em><code class="sig-prename descclassname">convex_api.convex_api.</code><code class="sig-name descname">ConvexAPI</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">url</span></em>, <em class="sig-param"><span class="n">language</span><span class="o">=</span><span class="default_value">'convex-lisp'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.convex_api.ConvexAPI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="py attribute">
+<dt id="convex_api.convex_api.ConvexAPI.LANGUAGE_ALLOWED">
+<code class="sig-name descname">LANGUAGE_ALLOWED</code><em class="property"> = ['convex-lisp', 'convex-scrypt']</em><a class="headerlink" href="#convex_api.convex_api.ConvexAPI.LANGUAGE_ALLOWED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="convex_api.convex_api.ConvexAPI.LANGUAGE_LISP">
+<code class="sig-name descname">LANGUAGE_LISP</code><em class="property"> = 'convex-lisp'</em><a class="headerlink" href="#convex_api.convex_api.ConvexAPI.LANGUAGE_LISP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="convex_api.convex_api.ConvexAPI.LANGUAGE_SCRYPT">
+<code class="sig-name descname">LANGUAGE_SCRYPT</code><em class="property"> = 'convex-scrypt'</em><a class="headerlink" href="#convex_api.convex_api.ConvexAPI.LANGUAGE_SCRYPT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="convex_api.convex_api.ConvexAPI.get_address">
+<code class="sig-name descname">get_address</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">function_name</span></em>, <em class="sig-param"><span class="n">address_account</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.convex_api.ConvexAPI.get_address" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query the network for a contract ( function ) address. The contract must have been deployed
+by the account address provided. If not then no address will be returned</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>function_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – Name of the contract/function</p></li>
+<li><p><strong>str address_account</strong> (<a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><em>Account</em></a><em>,</em>) – Account or str address of an account to use for running this query.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns address of the contract</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="convex_api.convex_api.ConvexAPI.get_balance">
+<code class="sig-name descname">get_balance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">address_account</span></em>, <em class="sig-param"><span class="n">account_from</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.convex_api.ConvexAPI.get_balance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a balance of an account.
+At the moment the account needs to have a balance to get the balance of it’s account or any
+other account. Event though this is using a query request.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>str address_account</strong> (<a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><em>Account</em></a><em>,</em>) – Address or Account to get the funds for.</p></li>
+<li><p><strong>account_from</strong> (<a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><em>Account</em></a>) – Optional account to use to make the request.
+This account should have a balance to make the request.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Return the current balance of the address or account <cite>address_account</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="convex_api.convex_api.ConvexAPI.language">
+<em class="property">property </em><code class="sig-name descname">language</code><a class="headerlink" href="#convex_api.convex_api.ConvexAPI.language" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="convex_api.convex_api.ConvexAPI.query">
+<code class="sig-name descname">query</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">transaction</span></em>, <em class="sig-param"><span class="n">address_account</span></em>, <em class="sig-param"><span class="n">language</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.convex_api.ConvexAPI.query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run a query transaction on the block chain. Since this does not change the network state, and
+so the account does not need to sign the transaction. No funds will be used when executing
+this query.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>transaction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – Transaction to execute. This can only be a read only transaction.</p></li>
+<li><p><strong>str address_account</strong> (<a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><em>Account</em></a><em>,</em>) – Account or str address of an account to use for running this query.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Return the resultant query transaction</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="convex_api.convex_api.ConvexAPI.request_funds">
+<code class="sig-name descname">request_funds</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">amount</span></em>, <em class="sig-param"><span class="n">account</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.convex_api.ConvexAPI.request_funds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request funds for an account from the block chain faucet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>amount</strong> (<em>number</em>) – The amount of funds to request</p></li>
+<li><p><strong>account</strong> (<a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><em>Account</em></a>) – The account to receive funds to</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The amount transfered to the account</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="convex_api.convex_api.ConvexAPI.send">
+<code class="sig-name descname">send</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">transaction</span></em>, <em class="sig-param"><span class="n">account</span></em>, <em class="sig-param"><span class="n">language</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.convex_api.ConvexAPI.send" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send transaction code to the block chain node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>transaction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – The transaction as a string to send</p></li>
+<li><p><strong>account</strong> (<a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><em>Account</em></a>) – The account that needs to sign the message to send</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The dict returned from the result of the sent transaction.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="convex_api.convex_api.ConvexAPI.transfer">
+<code class="sig-name descname">transfer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">to_address_account</span></em>, <em class="sig-param"><span class="n">amount</span></em>, <em class="sig-param"><span class="n">account</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.convex_api.ConvexAPI.transfer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transfer funds from on account to another.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>str to_address_account</strong> (<a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><em>Account</em></a><em>,</em>) – Address or account to send the funds too</p></li>
+<li><p><strong>amonut</strong> (<em>number</em>) – Amount to send</p></li>
+<li><p><strong>account</strong> (<a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><em>Account</em></a>) – Account to send the funds from</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The transfer record sent back after the transfer has been made</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../modules/exceptions.html" class="btn btn-neutral float-right" title="Exceptions Module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="account.html" class="btn btn-neutral float-left" title="Account class" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright convex-api-py contributors
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

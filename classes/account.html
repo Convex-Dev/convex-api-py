@@ -1,0 +1,368 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Account class &mdash; convex-api-py 0.12.9 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ConvexAPI class" href="convex_api.html" />
+    <link rel="prev" title="convex-api-py API Documentation" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> convex-api-py
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.12.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Account class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="convex_api.html">ConvexAPI class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/exceptions.html">Exceptions Module</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">convex-api-py</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Account class</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/classes/account.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="account-class">
+<h1>Account class<a class="headerlink" href="#account-class" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="convex_api.account.Account">
+<em class="property">class </em><code class="sig-prename descclassname">convex_api.account.</code><code class="sig-name descname">Account</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">private_key</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.account.Account" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="py method">
+<dt id="convex_api.account.Account.address">
+<em class="property">property </em><code class="sig-name descname">address</code><a class="headerlink" href="#convex_api.account.Account.address" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the public address of the account in the format ‘0x….’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>str Address with leading ‘0x’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="convex_api.account.Account.address_api">
+<em class="property">property </em><code class="sig-name descname">address_api</code><a class="headerlink" href="#convex_api.account.Account.address_api" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the public address of the account without the leading ‘0x’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>str Address without the leading ‘0x’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="convex_api.account.Account.address_bytes">
+<em class="property">property </em><code class="sig-name descname">address_bytes</code><a class="headerlink" href="#convex_api.account.Account.address_bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the public address of the account in the byte format</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>str Address in bytes</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="convex_api.account.Account.address_checksum">
+<em class="property">property </em><code class="sig-name descname">address_checksum</code><a class="headerlink" href="#convex_api.account.Account.address_checksum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the public address of the account with checksum upper/lower case characters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>str Public address in checksum format</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="convex_api.account.Account.create_from_bytes">
+<em class="property">static </em><code class="sig-name descname">create_from_bytes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.account.Account.create_from_bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create the an account from a private key in bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Account object with the private/public key</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="convex_api.account.Account.create_new">
+<em class="property">static </em><code class="sig-name descname">create_new</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.account.Account.create_new" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new account with a random key and address</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>New Account object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="convex_api.account.Account.export_to_file">
+<code class="sig-name descname">export_to_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">password</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.account.Account.export_to_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export the private key to a file. This uses <cite>export_to_text</cite> to export as a string.
+Then saves this in a file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – Filename to create with the PEM string</p></li>
+<li><p><strong>password</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – Password to use to encypt the private key</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="convex_api.account.Account.export_to_text">
+<code class="sig-name descname">export_to_text</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">password</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.account.Account.export_to_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export the private key to an encrypted PEM string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>password</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – Password to encrypt the private key value</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The private key as a PEM formated encrypted string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="convex_api.account.Account.import_from_file">
+<em class="property">static </em><code class="sig-name descname">import_from_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">password</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.account.Account.import_from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load the encrypted private key from file. The file is saved in PEM format encrypted with a password</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – Filename to read</p></li>
+<li><p><strong>password</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – password to decrypt the private key</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Account with the private/public key</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="convex_api.account.Account.import_from_text">
+<em class="property">static </em><code class="sig-name descname">import_from_text</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span></em>, <em class="sig-param"><span class="n">password</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.account.Account.import_from_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Import an accout from an encrypted PEM string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – PAM text string with the encrypted key text</p></li>
+<li><p><strong>password</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – password to decrypt the private key</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Account object with the public/private key</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="convex_api.account.Account.sign">
+<code class="sig-name descname">sign</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">hash_text</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.account.Account.sign" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sign a hash text using the private key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>hash_text</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – Hex string of the hash to sign</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Hex string of the signed text</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="convex_api.html" class="btn btn-neutral float-right" title="ConvexAPI class" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral float-left" title="convex-api-py API Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright convex-api-py contributors
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
