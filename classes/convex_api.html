@@ -191,21 +191,7 @@ processed on the convex network. New accounts with no transfer or transactions w
 <dd class="field-odd"><p><strong>str address_account</strong> (<a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><em>Account</em></a><em>,</em>) – Account or str address of an account to get current information on.</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><p>dict of information, such as</p>
-<dl class="simple">
-<dt>{</dt><dd><p>“address”: “7E66429CA9c10e68eFae2dCBF1804f0F6B3369c7164a3187D6233683c258710f”,
-“is_library”: false,
-“is_actor”: false,
-“memory_size”: 75,
-“allowance”: 10000000,
-“type”: “user”,
-“balance”: 10000000000,
-“sequence”: 0,
-“environment”: {}</p>
-</dd>
-</dl>
-<p>}</p>
-</p>
+<dd class="field-even"><p>dict of information, such as</p>
 </dd>
 </dl>
 </dd></dl>
@@ -291,13 +277,17 @@ this query.</p>
 
 <dl class="py method">
 <dt id="convex_api.convex_api.ConvexAPI.send">
-<code class="sig-name descname">send</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">transaction</span></em>, <em class="sig-param"><span class="n">account</span></em>, <em class="sig-param"><span class="n">language</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.convex_api.ConvexAPI.send" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">send</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">transaction</span></em>, <em class="sig-param"><span class="n">account</span></em>, <em class="sig-param"><span class="n">language</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">sequence_retry_count</span><span class="o">=</span><span class="default_value">20</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.convex_api.ConvexAPI.send" title="Permalink to this definition">¶</a></dt>
 <dd><p>Send transaction code to the block chain node.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>transaction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – The transaction as a string to send</p></li>
 <li><p><strong>account</strong> (<a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><em>Account</em></a>) – The account that needs to sign the message to send</p></li>
+<li><p><strong>language</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – Language to use for this transaction. Defaults to LANGUAGE_LISP.</p></li>
+<li><p><strong>sequence_retry_count</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – Number of retries to do if a SEQUENCE error occurs.
+When sending multiple send requsts on the same account, you can get SEQUENCE errors,
+This send method will automatically retry again</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
