@@ -180,7 +180,35 @@
 <dl class="py method">
 <dt id="convex_api.convex_api.ConvexAPI.get_account_info">
 <code class="sig-name descname">get_account_info</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">address_account</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.convex_api.ConvexAPI.get_account_info" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Get account information. This will only work with an account that has a balance or has had some transactions
+processed on the convex network. New accounts with no transfer or transactions will raise:</p>
+<blockquote>
+<div><p>ConvexRequestError(404, ‘The Account for this Address does not exist.’) error</p>
+</div></blockquote>
+<p>The returned information is dictionary of account information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>str address_account</strong> (<a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><em>Account</em></a><em>,</em>) – Account or str address of an account to get current information on.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>dict of information, such as</p>
+<dl class="simple">
+<dt>{</dt><dd><p>“address”: “7E66429CA9c10e68eFae2dCBF1804f0F6B3369c7164a3187D6233683c258710f”,
+“is_library”: false,
+“is_actor”: false,
+“memory_size”: 75,
+“allowance”: 10000000,
+“type”: “user”,
+“balance”: 10000000000,
+“sequence”: 0,
+“environment”: {}</p>
+</dd>
+</dl>
+<p>}</p>
+</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="convex_api.convex_api.ConvexAPI.get_address">
