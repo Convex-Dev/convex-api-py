@@ -161,7 +161,7 @@
 <dl class="py class">
 <dt id="convex_api.convex_api.ConvexAPI">
 <em class="property">class </em><code class="sig-prename descclassname">convex_api.convex_api.</code><code class="sig-name descname">ConvexAPI</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">url</span></em>, <em class="sig-param"><span class="n">language</span><span class="o">=</span><span class="default_value">'convex-lisp'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.convex_api.ConvexAPI" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="py attribute">
 <dt id="convex_api.convex_api.ConvexAPI.LANGUAGE_ALLOWED">
 <code class="sig-name descname">LANGUAGE_ALLOWED</code><em class="property"> = ['convex-lisp', 'convex-scrypt']</em><a class="headerlink" href="#convex_api.convex_api.ConvexAPI.LANGUAGE_ALLOWED" title="Permalink to this definition">¶</a></dt>
@@ -204,7 +204,7 @@ by the account address provided. If not then no address will be returned</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>function_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – Name of the contract/function</p></li>
+<li><p><strong>function_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Name of the contract/function</p></li>
 <li><p><strong>str address_account</strong> (<a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><em>Account</em></a><em>,</em>) – Account or str address of an account to use for running this query.</p></li>
 </ul>
 </dd>
@@ -248,7 +248,7 @@ this query.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>transaction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – Transaction to execute. This can only be a read only transaction.</p></li>
+<li><p><strong>transaction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Transaction to execute. This can only be a read only transaction.</p></li>
 <li><p><strong>str address_account</strong> (<a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><em>Account</em></a><em>,</em>) – Account or str address of an account to use for running this query.</p></li>
 </ul>
 </dd>
@@ -282,10 +282,10 @@ this query.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>transaction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – The transaction as a string to send</p></li>
+<li><p><strong>transaction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – The transaction as a string to send</p></li>
 <li><p><strong>account</strong> (<a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><em>Account</em></a>) – The account that needs to sign the message to send</p></li>
-<li><p><strong>language</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – Language to use for this transaction. Defaults to LANGUAGE_LISP.</p></li>
-<li><p><strong>sequence_retry_count</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – Number of retries to do if a SEQUENCE error occurs.
+<li><p><strong>language</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Language to use for this transaction. Defaults to LANGUAGE_LISP.</p></li>
+<li><p><strong>sequence_retry_count</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – Number of retries to do if a SEQUENCE error occurs.
 When sending multiple send requsts on the same account, you can get SEQUENCE errors,
 This send method will automatically retry again</p></li>
 </ul>
