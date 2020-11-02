@@ -1,7 +1,7 @@
-.. image:: _static/collab-dex-logo.svg
+.. image:: _static/convex_world_logo.png
     :align: right
-    :alt: Dex.sg
-    :target: https://dex.sg
+    :alt: Convex Developers
+    :target: https://convex.world
 
 convex-api-py API Documentation
 ===============================
