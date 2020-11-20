@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ConvexAPI class &mdash; convex-api-py 0.0.5 documentation</title>
+  <title>ConvexAPI class &mdash; convex-api-py 0.0.6 documentation</title>
   
 
   
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.0.5
+                0.0.6
               </div>
             
           
@@ -292,6 +292,28 @@ This send method will automatically retry again</p></li>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>The dict returned from the result of the sent transaction.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="convex_api.convex_api.ConvexAPI.topup_account">
+<code class="sig-name descname">topup_account</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">account</span></em>, <em class="sig-param"><span class="n">min_balance</span><span class="o">=</span><span class="default_value">1000000</span></em>, <em class="sig-param"><span class="n">retry_count</span><span class="o">=</span><span class="default_value">2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.convex_api.ConvexAPI.topup_account" title="Permalink to this definition">¶</a></dt>
+<dd><p>Topup an account from the block chain faucet, so that the balance of the account is above or equal to
+the <cite>min_balanace</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>amount</strong> (<em>number</em>) – The amount of funds to request</p></li>
+<li><p><strong>account</strong> (<a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><em>Account</em></a>) – The account to receive funds for</p></li>
+<li><p><strong>min_balance</strong> (<em>number</em>) – Minimum account balance that will allowed before a topup occurs</p></li>
+</ul>
+</dd>
+<dt class="field-even">Param number retry_count</dt>
+<dd class="field-even"><p>The number of times the faucet will be called to get above or equal to the  <cite>min_balance</cite></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The amount transfered to the account</p>
 </dd>
 </dl>
 </dd></dl>
