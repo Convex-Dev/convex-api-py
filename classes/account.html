@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Account class &mdash; convex-api-py 0.0.6 documentation</title>
+  <title>Account class &mdash; convex-api-py 0.0.7 documentation</title>
   
 
   
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.0.6
+                0.0.7
               </div>
             
           
@@ -207,19 +207,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt id="convex_api.account.Account.create_from_bytes">
-<em class="property">static </em><code class="sig-name descname">create_from_bytes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.account.Account.create_from_bytes" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create the an account from a private key in bytes.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Account object with the private/public key</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="convex_api.account.Account.create_new">
-<em class="property">static </em><code class="sig-name descname">create_new</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.account.Account.create_new" title="Permalink to this definition">¶</a></dt>
+<dt id="convex_api.account.Account.create">
+<em class="property">static </em><code class="sig-name descname">create</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.account.Account.create" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a new account with a random key and address</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -258,6 +247,17 @@ Then saves this in a file.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>The private key as a PEM formated encrypted string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="convex_api.account.Account.import_from_bytes">
+<em class="property">static </em><code class="sig-name descname">import_from_bytes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.account.Account.import_from_bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Import an account from a private key in bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Account object with the private/public key</p>
 </dd>
 </dl>
 </dd></dl>
