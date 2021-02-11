@@ -239,7 +239,7 @@ For security reasons all of the keys, and text returned by the accounts are only
 <dl class="py method">
 <dt id="convex_api.account.Account.create">
 <em class="property">static </em><code class="sig-name descname">create</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.account.Account.create" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a new account with a random key and address.</p>
+<dd><p>Create a new account with a random key and an empty address.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>New Account object</p>
@@ -250,6 +250,8 @@ For security reasons all of the keys, and text returned by the accounts are only
 </dl>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># create an account with no address</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">account</span> <span class="o">=</span> <span class="n">Account</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+<span class="go">&gt;&gt; account.is_address</span>
+<span class="go">False</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># create two accounts with the same public/private keys</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">account_1</span> <span class="o">=</span> <span class="n">convex_api</span><span class="o">.</span><span class="n">create_account</span><span class="p">(</span><span class="n">account</span><span class="p">)</span>
