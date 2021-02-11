@@ -184,7 +184,21 @@
 <dl class="py method">
 <dt id="convex_api.convex_api.ConvexAPI.create_account">
 <code class="sig-name descname">create_account</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">account</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">sequence_retry_count</span><span class="o">=</span><span class="default_value">20</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.convex_api.ConvexAPI.create_account" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Create a new account with the convex network.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>account</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><em>object</em></a>) – Account object that you whish to use as the signing account. The Account object
+contains the public/private keys to access and submit commands on the convex network.</p></li>
+<li><p><strong>sequence_retry_count</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – Number of retries to create the account. If too many clients are trying to
+create accounts on the same node, then we will get sequence errors.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A new account object, or the current supplied account object with a new <cite>address</cite> property set</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="convex_api.convex_api.ConvexAPI.get_account_info">

@@ -166,6 +166,13 @@
 <dt id="convex_api.account.Account">
 <em class="property">class </em><code class="sig-prename descclassname">convex_api.account.</code><code class="sig-name descname">Account</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">private_key</span></em>, <em class="sig-param"><span class="n">address</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.account.Account" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>The Convex account class, contains the public/private keys and possibly an address.</p>
+<p>You can create a new account object, it will only have it’s public/private keys but does not have a valid account address.
+To obtain a new account address, you need to call the <a class="reference internal" href="convex_api.html#convex_api.convex_api.ConvexAPI.create_account" title="convex_api.convex_api.ConvexAPI.create_account"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ConvexAPI.create_account()</span></code></a> with the new account object.</p>
+<p>This is so that you can use the same public/private keys for multiple convex accounts.</p>
+<p>Once you have your new account you need to save the public/private keys using the <cite>export..</cite> methods and also you
+need to save the account address.</p>
+<p>To re-use the account again, you can import the keys and set the account address using one of the <cite>import..</cite> methods.</p>
 <dl class="py method">
 <dt id="convex_api.account.Account.address">
 <em class="property">property </em><code class="sig-name descname">address</code><a class="headerlink" href="#convex_api.account.Account.address" title="Permalink to this definition">¶</a></dt>
