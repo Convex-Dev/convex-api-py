@@ -163,42 +163,42 @@
   <div class="section" id="convexapi-class">
 <h1>ConvexAPI class<a class="headerlink" href="#convexapi-class" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt id="convex_api.convex_api.ConvexAPI">
-<em class="property">class </em><code class="sig-prename descclassname">convex_api.convex_api.</code><code class="sig-name descname">ConvexAPI</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">url</span></em>, <em class="sig-param"><span class="n">language</span><span class="o">=</span><span class="default_value">'convex-lisp'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.convex_api.ConvexAPI" title="Permalink to this definition">¶</a></dt>
+<dt id="convex_api.ConvexAPI">
+<em class="property">class </em><code class="sig-prename descclassname">convex_api.</code><code class="sig-name descname">ConvexAPI</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">url</span></em>, <em class="sig-param"><span class="n">language</span><span class="o">=</span><span class="default_value">'convex-lisp'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.ConvexAPI" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="py attribute">
-<dt id="convex_api.convex_api.ConvexAPI.LANGUAGE_ALLOWED">
-<code class="sig-name descname">LANGUAGE_ALLOWED</code><em class="property"> = ['convex-lisp', 'convex-scrypt']</em><a class="headerlink" href="#convex_api.convex_api.ConvexAPI.LANGUAGE_ALLOWED" title="Permalink to this definition">¶</a></dt>
+<dt id="convex_api.ConvexAPI.LANGUAGE_ALLOWED">
+<code class="sig-name descname">LANGUAGE_ALLOWED</code><em class="property"> = ['convex-lisp', 'convex-scrypt']</em><a class="headerlink" href="#convex_api.ConvexAPI.LANGUAGE_ALLOWED" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="convex_api.convex_api.ConvexAPI.LANGUAGE_LISP">
-<code class="sig-name descname">LANGUAGE_LISP</code><em class="property"> = 'convex-lisp'</em><a class="headerlink" href="#convex_api.convex_api.ConvexAPI.LANGUAGE_LISP" title="Permalink to this definition">¶</a></dt>
+<dt id="convex_api.ConvexAPI.LANGUAGE_LISP">
+<code class="sig-name descname">LANGUAGE_LISP</code><em class="property"> = 'convex-lisp'</em><a class="headerlink" href="#convex_api.ConvexAPI.LANGUAGE_LISP" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="convex_api.convex_api.ConvexAPI.LANGUAGE_SCRYPT">
-<code class="sig-name descname">LANGUAGE_SCRYPT</code><em class="property"> = 'convex-scrypt'</em><a class="headerlink" href="#convex_api.convex_api.ConvexAPI.LANGUAGE_SCRYPT" title="Permalink to this definition">¶</a></dt>
+<dt id="convex_api.ConvexAPI.LANGUAGE_SCRYPT">
+<code class="sig-name descname">LANGUAGE_SCRYPT</code><em class="property"> = 'convex-scrypt'</em><a class="headerlink" href="#convex_api.ConvexAPI.LANGUAGE_SCRYPT" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="convex_api.convex_api.ConvexAPI.create_account">
-<code class="sig-name descname">create_account</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">account</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">sequence_retry_count</span><span class="o">=</span><span class="default_value">20</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.convex_api.ConvexAPI.create_account" title="Permalink to this definition">¶</a></dt>
+<dt id="convex_api.ConvexAPI.create_account">
+<code class="sig-name descname">create_account</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">account</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">sequence_retry_count</span><span class="o">=</span><span class="default_value">20</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.ConvexAPI.create_account" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a new account address on the convex network.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>account</strong> (<a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><em>Account</em></a><em>, </em><em>optional</em>) – <p><a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object that you whish to use as the signing account.
-The <a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object contains the public/private keys to access and submit commands
+<li><p><strong>account</strong> (<a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><em>Account</em></a><em>, </em><em>optional</em>) – <p><a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object that you whish to use as the signing account.
+The <a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object contains the public/private keys to access and submit commands
 on the convex network. The address property will be changed by this method.</p>
-<p>If no object given, then this method will automatically create a new <a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object.</p>
+<p>If no object given, then this method will automatically create a new <a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object.</p>
 </p></li>
 <li><p><strong>sequence_retry_count</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a><em>, </em><em>optional</em>) – Number of retries to create the account. If too many clients are trying to
 create accounts on the same node, then we will get sequence errors.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A new <a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object, or the current supplied <a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object with a new <cite>address</cite> property set</p>
+<dd class="field-even"><p>A new <a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object, or the current supplied <a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object with a new <cite>address</cite> property set</p>
 </dd>
 </dl>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">convex_api</span> <span class="kn">import</span> <span class="n">ConvexAPI</span>
@@ -217,8 +217,8 @@ create accounts on the same node, then we will get sequence errors.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="convex_api.convex_api.ConvexAPI.get_account_info">
-<code class="sig-name descname">get_account_info</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">address_account</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.convex_api.ConvexAPI.get_account_info" title="Permalink to this definition">¶</a></dt>
+<dt id="convex_api.ConvexAPI.get_account_info">
+<code class="sig-name descname">get_account_info</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">address_account</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.ConvexAPI.get_account_info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get account information. This will only work with an account that has a balance or has had some transactions
 processed on the convex network. New accounts with no transfer or transactions will raise:</p>
 <blockquote>
@@ -227,7 +227,7 @@ processed on the convex network. New accounts with no transfer or transactions w
 <p>The returned information is dictionary of account information.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>address_account</strong> (<a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><em>Account</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – <a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object or address of an account to get current information on.</p>
+<dd class="field-odd"><p><strong>address_account</strong> (<a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><em>Account</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – <a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object or address of an account to get current information on.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>dict of information, such as</p>
@@ -246,15 +246,15 @@ processed on the convex network. New accounts with no transfer or transactions w
 </dd></dl>
 
 <dl class="py method">
-<dt id="convex_api.convex_api.ConvexAPI.get_address">
-<code class="sig-name descname">get_address</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">function_name</span></em>, <em class="sig-param"><span class="n">address_account</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.convex_api.ConvexAPI.get_address" title="Permalink to this definition">¶</a></dt>
+<dt id="convex_api.ConvexAPI.get_address">
+<code class="sig-name descname">get_address</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">function_name</span></em>, <em class="sig-param"><span class="n">address_account</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.ConvexAPI.get_address" title="Permalink to this definition">¶</a></dt>
 <dd><p>Query the network for a contract ( function ) address. The contract must have been deployed
 by the account address provided. If not then no address will be returned</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>function_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Name of the contract/function</p></li>
-<li><p><strong>address_account</strong> (<a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><em>Account</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – <a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object or str address of an account to use for running this query.</p></li>
+<li><p><strong>address_account</strong> (<a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><em>Account</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – <a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object or str address of an account to use for running this query.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -270,16 +270,16 @@ by the account address provided. If not then no address will be returned</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="convex_api.convex_api.ConvexAPI.get_balance">
-<code class="sig-name descname">get_balance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">address_account</span></em>, <em class="sig-param"><span class="n">account_from</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.convex_api.ConvexAPI.get_balance" title="Permalink to this definition">¶</a></dt>
+<dt id="convex_api.ConvexAPI.get_balance">
+<code class="sig-name descname">get_balance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">address_account</span></em>, <em class="sig-param"><span class="n">account_from</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.ConvexAPI.get_balance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a balance of an account.</p>
 <p>At the moment the account needs to have a balance to get the balance of it’s account or any
 other account. Event though this is using a query request.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>address_account</strong> (<a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><em>Account</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Address or <a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object to get the funds for.</p></li>
-<li><p><strong>account_from</strong> (<a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><em>Account</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><em>optional</em>) – Optional <a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object or account address to make the request.</p></li>
+<li><p><strong>address_account</strong> (<a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><em>Account</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Address or <a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object to get the funds for.</p></li>
+<li><p><strong>account_from</strong> (<a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><em>Account</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><em>optional</em>) – Optional <a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object or account address to make the request.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -300,22 +300,22 @@ other account. Event though this is using a query request.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="convex_api.convex_api.ConvexAPI.language">
-<em class="property">property </em><code class="sig-name descname">language</code><a class="headerlink" href="#convex_api.convex_api.ConvexAPI.language" title="Permalink to this definition">¶</a></dt>
+<dt id="convex_api.ConvexAPI.language">
+<em class="property">property </em><code class="sig-name descname">language</code><a class="headerlink" href="#convex_api.ConvexAPI.language" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the default language to use when calling the API commands</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="convex_api.convex_api.ConvexAPI.query">
-<code class="sig-name descname">query</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">transaction</span></em>, <em class="sig-param"><span class="n">address_account</span></em>, <em class="sig-param"><span class="n">language</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.convex_api.ConvexAPI.query" title="Permalink to this definition">¶</a></dt>
+<dt id="convex_api.ConvexAPI.query">
+<code class="sig-name descname">query</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">transaction</span></em>, <em class="sig-param"><span class="n">address_account</span></em>, <em class="sig-param"><span class="n">language</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.ConvexAPI.query" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run a query transaction on the block chain. Since this does not change the network state, and
 the account does not need to sign the transaction. No funds will be used when executing
-this query. For this reason you can just pass the account address, or if you want to the <a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object.</p>
+this query. For this reason you can just pass the account address, or if you want to the <a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>transaction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Transaction to execute. This can only be a read only transaction.</p></li>
-<li><p><strong>address_account</strong> (<a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><em>Account</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – <a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object or int address of an account to use for running this query.</p></li>
+<li><p><strong>address_account</strong> (<a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><em>Account</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – <a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object or int address of an account to use for running this query.</p></li>
 <li><p><strong>language</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><em>optional</em>) – The type of language to use, if not provided the default language set will be used.</p></li>
 </ul>
 </dd>
@@ -341,14 +341,14 @@ this query. For this reason you can just pass the account address, or if you wan
 </dd></dl>
 
 <dl class="py method">
-<dt id="convex_api.convex_api.ConvexAPI.request_funds">
-<code class="sig-name descname">request_funds</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">amount</span></em>, <em class="sig-param"><span class="n">account</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.convex_api.ConvexAPI.request_funds" title="Permalink to this definition">¶</a></dt>
+<dt id="convex_api.ConvexAPI.request_funds">
+<code class="sig-name descname">request_funds</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">amount</span></em>, <em class="sig-param"><span class="n">account</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.ConvexAPI.request_funds" title="Permalink to this definition">¶</a></dt>
 <dd><p>Request funds for an account from the block chain faucet.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>amount</strong> (<em>number</em>) – The amount of funds to request</p></li>
-<li><p><strong>account</strong> (<a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><em>Account</em></a>) – The <a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object to receive funds too</p></li>
+<li><p><strong>account</strong> (<a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><em>Account</em></a>) – The <a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object to receive funds too</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -365,14 +365,14 @@ this query. For this reason you can just pass the account address, or if you wan
 </dd></dl>
 
 <dl class="py method">
-<dt id="convex_api.convex_api.ConvexAPI.send">
-<code class="sig-name descname">send</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">transaction</span></em>, <em class="sig-param"><span class="n">account</span></em>, <em class="sig-param"><span class="n">language</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">sequence_retry_count</span><span class="o">=</span><span class="default_value">20</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.convex_api.ConvexAPI.send" title="Permalink to this definition">¶</a></dt>
+<dt id="convex_api.ConvexAPI.send">
+<code class="sig-name descname">send</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">transaction</span></em>, <em class="sig-param"><span class="n">account</span></em>, <em class="sig-param"><span class="n">language</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">sequence_retry_count</span><span class="o">=</span><span class="default_value">20</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.ConvexAPI.send" title="Permalink to this definition">¶</a></dt>
 <dd><p>Send transaction code to the block chain node.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>transaction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – The transaction as a string to send</p></li>
-<li><p><strong>account</strong> (<a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><em>Account</em></a>) – The account that needs to sign the message to send</p></li>
+<li><p><strong>account</strong> (<a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><em>Account</em></a>) – The account that needs to sign the message to send</p></li>
 <li><p><strong>language</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><em>optional</em>) – Language to use for this transaction. Defaults to LANGUAGE_LISP.</p></li>
 <li><p><strong>sequence_retry_count</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a><em>, </em><em>optional</em>) – Number of retries to do if a SEQUENCE error occurs.
 When sending multiple send requsts on the same account, you can get SEQUENCE errors,
@@ -401,14 +401,14 @@ This send method will automatically retry again</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="convex_api.convex_api.ConvexAPI.topup_account">
-<code class="sig-name descname">topup_account</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">account</span></em>, <em class="sig-param"><span class="n">min_balance</span><span class="o">=</span><span class="default_value">1000000</span></em>, <em class="sig-param"><span class="n">retry_count</span><span class="o">=</span><span class="default_value">8</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.convex_api.ConvexAPI.topup_account" title="Permalink to this definition">¶</a></dt>
+<dt id="convex_api.ConvexAPI.topup_account">
+<code class="sig-name descname">topup_account</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">account</span></em>, <em class="sig-param"><span class="n">min_balance</span><span class="o">=</span><span class="default_value">1000000</span></em>, <em class="sig-param"><span class="n">retry_count</span><span class="o">=</span><span class="default_value">8</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.ConvexAPI.topup_account" title="Permalink to this definition">¶</a></dt>
 <dd><p>Topup an account from the block chain faucet, so that the balance of the account is above or equal to
 the <cite>min_balanace</cite>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>account</strong> (<a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><em>Account</em></a>) – The <a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object to receive funds for</p></li>
+<li><p><strong>account</strong> (<a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><em>Account</em></a>) – The <a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object to receive funds for</p></li>
 <li><p><strong>min_balance</strong> (<em>number</em><em>, </em><em>optional</em>) – Minimum account balance that will allowed before a topup occurs</p></li>
 <li><p><strong>retry_count</strong> (<em>number</em><em>, </em><em>optional</em>) – The number of times the faucet will be called to get above or equal to the  <cite>min_balance</cite></p></li>
 </ul>
@@ -430,15 +430,15 @@ the <cite>min_balanace</cite>.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="convex_api.convex_api.ConvexAPI.transfer">
-<code class="sig-name descname">transfer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">to_address_account</span></em>, <em class="sig-param"><span class="n">amount</span></em>, <em class="sig-param"><span class="n">account</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.convex_api.ConvexAPI.transfer" title="Permalink to this definition">¶</a></dt>
+<dt id="convex_api.ConvexAPI.transfer">
+<code class="sig-name descname">transfer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">to_address_account</span></em>, <em class="sig-param"><span class="n">amount</span></em>, <em class="sig-param"><span class="n">account</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.ConvexAPI.transfer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transfer funds from on account to another.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>to_address_account</strong> (<a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><em>Account</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Address or <a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object to send the funds too</p></li>
+<li><p><strong>to_address_account</strong> (<a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><em>Account</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Address or <a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object to send the funds too</p></li>
 <li><p><strong>amount</strong> (<em>number</em>) – Amount to transfer</p></li>
-<li><p><strong>account</strong> (<a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><em>Account</em></a>) – <a class="reference internal" href="account.html#convex_api.account.Account" title="convex_api.account.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object to send the funds from</p></li>
+<li><p><strong>account</strong> (<a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><em>Account</em></a>) – <a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object to send the funds from</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
