@@ -173,20 +173,94 @@ To obtain a new account address, you need to call the <a class="reference intern
 <p>Once you have your new account you need to save the public/private keys using the <cite>export..</cite> methods and also you
 need to save the account address.</p>
 <p>To re-use the account again, you can import the keys and set the account address using one of the <cite>import..</cite> methods.</p>
+<p><strong>Note</strong>
+For security reasons all of the keys, and text returned by the accounts are only truncated ending with a <strong>`…`</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># import convex-api</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">convex_api</span> <span class="kn">import</span> <span class="n">ConvexAPI</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># setup the network connection</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">convex_api</span> <span class="o">=</span> <span class="n">ConvexAPI</span><span class="p">(</span><span class="s1">&#39;https://convex.world&#39;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># create a new account and address</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">account</span> <span class="o">=</span> <span class="n">convex_api</span><span class="o">.</span><span class="n">create_account</span><span class="p">()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># export the private key to a file</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">account</span><span class="o">.</span><span class="n">export_to_file</span><span class="p">(</span><span class="s1">&#39;/tmp/my_account.pem&#39;</span><span class="p">,</span> <span class="s1">&#39;my secret password&#39;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># save the address for later</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_address</span> <span class="o">=</span> <span class="n">account</span><span class="o">.</span><span class="n">address</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># ----</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># now import the account and address for later use</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">reload_account</span> <span class="o">=</span> <span class="n">Account</span><span class="o">.</span><span class="n">import_from_file</span><span class="p">(</span><span class="s1">&#39;/tmp/my_account.pem&#39;</span><span class="p">,</span> <span class="s1">&#39;my secret password&#39;</span><span class="p">,</span> <span class="n">my_address</span><span class="p">)</span>
+</pre></div>
+</div>
 <dl class="py method">
 <dt id="convex_api.account.Account.address">
 <em class="property">property </em><code class="sig-name descname">address</code><a class="headerlink" href="#convex_api.account.Account.address" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the network account address</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># create an account with the network</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">account</span> <span class="o">=</span> <span class="n">convex_api</span><span class="o">.</span><span class="n">create_account</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">account</span><span class="o">.</span><span class="n">address</span><span class="p">)</span>
+<span class="go">42</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="convex_api.account.Account.copy">
+<code class="sig-name descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.account.Account.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copies the account public/private keys and returns a new account object with the same address</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A new account object.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#convex_api.account.Account" title="convex_api.account.Account">Account</a></p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># create an account with the network</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">account</span> <span class="o">=</span> <span class="n">convex_api</span><span class="o">.</span><span class="n">create_account</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_account</span> <span class="o">=</span> <span class="n">account</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">new_account</span><span class="o">.</span><span class="n">is_address</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="py method">
 <dt id="convex_api.account.Account.create">
 <em class="property">static </em><code class="sig-name descname">create</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.account.Account.create" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a new account with a random key and address</p>
+<dd><p>Create a new account with a random key and address.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>New Account object</p>
 </dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#convex_api.account.Account" title="convex_api.account.Account">Account</a></p>
+</dd>
 </dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># create an account with no address</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">account</span> <span class="o">=</span> <span class="n">Account</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># create two accounts with the same public/private keys</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">account_1</span> <span class="o">=</span> <span class="n">convex_api</span><span class="o">.</span><span class="n">create_account</span><span class="p">(</span><span class="n">account</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">account_1</span><span class="o">.</span><span class="n">address</span><span class="p">)</span>
+<span class="go">42</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">account_2</span> <span class="o">=</span> <span class="n">convex_api</span><span class="o">.</span><span class="n">create_account</span><span class="p">(</span><span class="n">account</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">account_2</span><span class="o">.</span><span class="n">address</span><span class="p">)</span>
+<span class="go">43</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -202,12 +276,34 @@ Then saves this in a file.</p>
 </ul>
 </dd>
 </dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># create an account with the network</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">account</span> <span class="o">=</span> <span class="n">convex_api</span><span class="o">.</span><span class="n">create_account</span><span class="p">()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># export the private key to a file</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">account</span><span class="o">.</span><span class="n">export_to_file</span><span class="p">(</span><span class="s1">&#39;my_account.pem&#39;</span><span class="p">,</span> <span class="s1">&#39;secret password&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py method">
 <dt id="convex_api.account.Account.export_to_mnemonic">
 <em class="property">property </em><code class="sig-name descname">export_to_mnemonic</code><a class="headerlink" href="#convex_api.account.Account.export_to_mnemonic" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Export the private key as a mnemonic words. You must keep this secret since the private key can be
+recreated using the words.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>mnemonic word list of the private key</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># create an account with the network</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">account</span> <span class="o">=</span> <span class="n">convex_api</span><span class="o">.</span><span class="n">create_account</span><span class="p">()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># export the private key for later use</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">account</span><span class="o">.</span><span class="n">export_to_mnemonic</span><span class="p">())</span>
+<span class="go">grief stuff resemble dry frozen exercise ...</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="py method">
 <dt id="convex_api.account.Account.export_to_text">
@@ -221,6 +317,16 @@ Then saves this in a file.</p>
 <dd class="field-even"><p>The private key as a PEM formated encrypted string</p>
 </dd>
 </dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># create an account with the network</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">account</span> <span class="o">=</span> <span class="n">convex_api</span><span class="o">.</span><span class="n">create_account</span><span class="p">()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># export the private key for later use</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">account</span><span class="o">.</span><span class="n">export_to_text</span><span class="p">(</span><span class="s1">&#39;secret password&#39;</span><span class="p">))</span>
+<span class="go">-----BEGIN ENCRYPTED PRIVATE KEY-----</span>
+<span class="go">MIGbMFcGCSqGSIb3DQEFDTBKMCkGCSqGSIb3DQEFDDAcBAhKG+LC3hJoJQICCAAw</span>
+<span class="go">DAYIKoZIhvcNAgkFAD ...</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -229,12 +335,19 @@ Then saves this in a file.</p>
 <dd><p>Import an account from a private key in bytes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>address</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – address of the account</p>
+<dd class="field-odd"><p><strong>address</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a><em>, </em><em>optional</em>) – address of the account</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>Account object with the private/public key</p>
 </dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#convex_api.account.Account" title="convex_api.account.Account">Account</a></p>
+</dd>
 </dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># create an account object from a raw private key</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">account</span> <span class="o">=</span> <span class="n">Account</span><span class="o">.</span><span class="n">import_from_bytes</span><span class="p">(</span><span class="mh">0x0</span><span class="n">x973f69bcd654b26475917072</span><span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -246,19 +359,47 @@ Then saves this in a file.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – Filename to read</p></li>
 <li><p><strong>password</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – password to decrypt the private key</p></li>
-<li><p><strong>address</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – address of the account</p></li>
+<li><p><strong>address</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a><em>, </em><em>optional</em>) – address of the account</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>Account with the private/public key</p>
 </dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#convex_api.account.Account" title="convex_api.account.Account">Account</a></p>
+</dd>
 </dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># create an account object from a enrcypted pem saved in a file</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">account</span> <span class="o">=</span> <span class="n">Account</span><span class="o">.</span><span class="n">import_from_file</span><span class="p">(</span><span class="n">my_account_key</span><span class="o">.</span><span class="n">pem</span><span class="p">,</span> <span class="s1">&#39;my secret password&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py method">
 <dt id="convex_api.account.Account.import_from_mnemonic">
 <em class="property">static </em><code class="sig-name descname">import_from_mnemonic</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">words</span></em>, <em class="sig-param"><span class="n">address</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.account.Account.import_from_mnemonic" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Creates a new account object using a list of words. These words contain the private key and must be kept secret.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>words</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – List of mnemonic words to read</p></li>
+<li><p><strong>address</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a><em>, </em><em>optional</em>) – address of the account</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Account object with the public/private key</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#convex_api.account.Account" title="convex_api.account.Account">Account</a></p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># create an account object from a mnemonic word list with the account address 42</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># the address in this example has been created by using the method `ConvexAPI.create_account`</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">account</span> <span class="o">=</span> <span class="n">Account</span><span class="o">.</span><span class="n">import_from_text</span><span class="p">(</span><span class="s1">&#39;my word list that is the private key ..&#39;</span><span class="p">,</span> <span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="py method">
 <dt id="convex_api.account.Account.import_from_text">
@@ -269,11 +410,33 @@ Then saves this in a file.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>text</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – PAM text string with the encrypted key text</p></li>
 <li><p><strong>password</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – password to decrypt the private key</p></li>
-<li><p><strong>address</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – address of the account</p></li>
+<li><p><strong>address</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a><em>, </em><em>optional</em>) – address of the account</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>Account object with the public/private key</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#convex_api.account.Account" title="convex_api.account.Account">Account</a></p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># create an account object from a enrcypted pem text</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pem_text</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;-----BEGIN ENCRYPTED PRIVATE KEY-----</span>
+<span class="go">    MIGbMFcGCSqGSIb3DQEFDTBKMCkGCSqGSIb3DQEFDDAcBAi3qm1zgjCO5gICCAAw</span>
+<span class="go">    DAYIKoZIhvcNAgkFADAdBglghkgBZQMEASoEENjvj1n...</span>
+<span class="go">&#39;&#39;&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">account</span> <span class="o">=</span> <span class="n">Account</span><span class="o">.</span><span class="n">import_from_text</span><span class="p">(</span><span class="n">pem_text</span><span class="p">,</span> <span class="s1">&#39;my secret password&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="convex_api.account.Account.is_address">
+<em class="property">property </em><code class="sig-name descname">is_address</code><a class="headerlink" href="#convex_api.account.Account.is_address" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return true if the address for this account object is set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if this object has a valid address</p>
 </dd>
 </dl>
 </dd></dl>
@@ -284,9 +447,20 @@ Then saves this in a file.</p>
 <dd><p>Return the public key of the account in the format ‘0x….’</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>str public_key with leading ‘0x’</p>
+<dd class="field-odd"><p>public_key with leading ‘0x’</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></p>
 </dd>
 </dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># create an account with the network</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">account</span> <span class="o">=</span> <span class="n">convex_api</span><span class="o">.</span><span class="n">create_account</span><span class="p">()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># show the public key as a hex string</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">account</span><span class="o">.</span><span class="n">public_key</span><span class="p">)</span>
+<span class="go">0x36d8c5c40dbe2d1b0131acf41c38b9d37ebe04d85...</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -295,9 +469,20 @@ Then saves this in a file.</p>
 <dd><p>Return the public key of the account without the leading ‘0x’</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>str public_key without the leading ‘0x’</p>
+<dd class="field-odd"><p>public_key without the leading ‘0x’</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></p>
 </dd>
 </dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># create an account with the network</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">account</span> <span class="o">=</span> <span class="n">convex_api</span><span class="o">.</span><span class="n">create_account</span><span class="p">()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># show the public key as a hex string with the leading &#39;0x&#39; removed</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">account</span><span class="o">.</span><span class="n">public_key_api</span><span class="p">)</span>
+<span class="go">36d8c5c40dbe2d1b0131acf41c38b9d37ebe04d85...</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -306,9 +491,20 @@ Then saves this in a file.</p>
 <dd><p>Return the public key address of the account in the byte format</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>str Address in bytes</p>
+<dd class="field-odd"><p>Address in bytes</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>byte</p>
 </dd>
 </dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># create an account with the network</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">account</span> <span class="o">=</span> <span class="n">convex_api</span><span class="o">.</span><span class="n">create_account</span><span class="p">()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># show the public key as bytes</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">account</span><span class="o">.</span><span class="n">public_key_bytes</span><span class="p">)</span>
+<span class="go">b&#39;6\xd8\xc5\xc4\r\xbe-\x1b\x011\xac\xf4\x1c8..</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -320,6 +516,14 @@ Then saves this in a file.</p>
 <dd class="field-odd"><p>str public_key in checksum format</p>
 </dd>
 </dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># create an account with the network</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">account</span> <span class="o">=</span> <span class="n">convex_api</span><span class="o">.</span><span class="n">create_account</span><span class="p">()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># show the public key as a hex string in checksum format</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">account</span><span class="o">.</span><span class="n">public_key_checksum</span><span class="p">)</span>
+<span class="go">0x36D8c5C40dbE2D1b0131ACf41c38b9D37eBe04D85...</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -334,6 +538,14 @@ Then saves this in a file.</p>
 <dd class="field-even"><p>Hex string of the signed text</p>
 </dd>
 </dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># create an account with no address</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">account</span> <span class="o">=</span> <span class="n">Account</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># sign a given hash</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sig</span> <span class="o">=</span> <span class="n">account</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="s1">&#39;7e2f1062f5fc51ed65a28b5945b49425aa42df6b7e67107efec357794096e05e&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span>
+<span class="go">&#39;5d41b964c63d1087ad66e58f4f9d3fe2b7bd0560b..&#39;</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </dd></dl>
