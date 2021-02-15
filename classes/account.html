@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Account class &mdash; convex-api-py 0.0.8 documentation</title>
+  <title>Account class &mdash; convex-api-py 0.1.0 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.0.8
+                0.1.0
               </div>
             
           
@@ -164,7 +164,7 @@
 <h1>Account class<a class="headerlink" href="#account-class" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="convex_api.Account">
-<em class="property">class </em><code class="sig-prename descclassname">convex_api.</code><code class="sig-name descname">Account</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">private_key</span></em>, <em class="sig-param"><span class="n">address</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.Account" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">convex_api.</span></code><code class="sig-name descname"><span class="pre">Account</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">private_key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.Account" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Create a new account with a private key as a Ed25519PrivateKey. It is better to use
 one of the following static methods to create an Account object:</p>
@@ -217,7 +217,7 @@ For security reasons all of the keys, and text returned by the accounts are only
 </div>
 <dl class="py method">
 <dt id="convex_api.Account.address">
-<em class="property">property </em><code class="sig-name descname">address</code><a class="headerlink" href="#convex_api.Account.address" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">address</span></code><a class="headerlink" href="#convex_api.Account.address" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>the network account address</p>
@@ -236,7 +236,7 @@ For security reasons all of the keys, and text returned by the accounts are only
 
 <dl class="py method">
 <dt id="convex_api.Account.copy">
-<code class="sig-name descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.Account.copy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">copy</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.Account.copy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Copies the account public/private keys and returns a new account object with the same address</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -257,7 +257,7 @@ For security reasons all of the keys, and text returned by the accounts are only
 
 <dl class="py method">
 <dt id="convex_api.Account.create">
-<em class="property">static </em><code class="sig-name descname">create</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.Account.create" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">create</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.Account.create" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a new account with a random key and an empty address.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -286,7 +286,7 @@ For security reasons all of the keys, and text returned by the accounts are only
 
 <dl class="py method">
 <dt id="convex_api.Account.export_to_file">
-<code class="sig-name descname">export_to_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">password</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.Account.export_to_file" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">export_to_file</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.Account.export_to_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Export the private key to a file. This uses <cite>export_to_text</cite> to export as a string.
 Then saves this in a file.</p>
 <dl class="field-list simple">
@@ -308,7 +308,7 @@ Then saves this in a file.</p>
 
 <dl class="py method">
 <dt id="convex_api.Account.export_to_mnemonic">
-<em class="property">property </em><code class="sig-name descname">export_to_mnemonic</code><a class="headerlink" href="#convex_api.Account.export_to_mnemonic" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">export_to_mnemonic</span></code><a class="headerlink" href="#convex_api.Account.export_to_mnemonic" title="Permalink to this definition">¶</a></dt>
 <dd><p>Export the private key as a mnemonic words. You must keep this secret since the private key can be
 recreated using the words.</p>
 <dl class="field-list simple">
@@ -328,7 +328,7 @@ recreated using the words.</p>
 
 <dl class="py method">
 <dt id="convex_api.Account.export_to_text">
-<code class="sig-name descname">export_to_text</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">password</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.Account.export_to_text" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">export_to_text</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.Account.export_to_text" title="Permalink to this definition">¶</a></dt>
 <dd><p>Export the private key to an encrypted PEM string.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -352,7 +352,7 @@ recreated using the words.</p>
 
 <dl class="py method">
 <dt id="convex_api.Account.import_from_bytes">
-<em class="property">static </em><code class="sig-name descname">import_from_bytes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em>, <em class="sig-param"><span class="n">address</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.Account.import_from_bytes" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">import_from_bytes</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.Account.import_from_bytes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Import an account from a private key in bytes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -373,7 +373,7 @@ recreated using the words.</p>
 
 <dl class="py method">
 <dt id="convex_api.Account.import_from_file">
-<em class="property">static </em><code class="sig-name descname">import_from_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">password</span></em>, <em class="sig-param"><span class="n">address</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.Account.import_from_file" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">import_from_file</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.Account.import_from_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load the encrypted private key from file. The file is saved in PEM format encrypted with a password</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -398,7 +398,7 @@ recreated using the words.</p>
 
 <dl class="py method">
 <dt id="convex_api.Account.import_from_mnemonic">
-<em class="property">static </em><code class="sig-name descname">import_from_mnemonic</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">words</span></em>, <em class="sig-param"><span class="n">address</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.Account.import_from_mnemonic" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">import_from_mnemonic</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">words</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.Account.import_from_mnemonic" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a new account object using a list of words. These words contain the private key and must be kept secret.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -424,7 +424,7 @@ recreated using the words.</p>
 
 <dl class="py method">
 <dt id="convex_api.Account.import_from_text">
-<em class="property">static </em><code class="sig-name descname">import_from_text</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span></em>, <em class="sig-param"><span class="n">password</span></em>, <em class="sig-param"><span class="n">address</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.Account.import_from_text" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">import_from_text</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.Account.import_from_text" title="Permalink to this definition">¶</a></dt>
 <dd><p>Import an accout from an encrypted PEM string.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -453,7 +453,7 @@ recreated using the words.</p>
 
 <dl class="py method">
 <dt id="convex_api.Account.is_address">
-<em class="property">property </em><code class="sig-name descname">is_address</code><a class="headerlink" href="#convex_api.Account.is_address" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">is_address</span></code><a class="headerlink" href="#convex_api.Account.is_address" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return true if the address for this account object is set</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -464,7 +464,7 @@ recreated using the words.</p>
 
 <dl class="py method">
 <dt id="convex_api.Account.public_key">
-<em class="property">property </em><code class="sig-name descname">public_key</code><a class="headerlink" href="#convex_api.Account.public_key" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">public_key</span></code><a class="headerlink" href="#convex_api.Account.public_key" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the public key of the account in the format ‘0x….’</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -486,7 +486,7 @@ recreated using the words.</p>
 
 <dl class="py method">
 <dt id="convex_api.Account.public_key_api">
-<em class="property">property </em><code class="sig-name descname">public_key_api</code><a class="headerlink" href="#convex_api.Account.public_key_api" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">public_key_api</span></code><a class="headerlink" href="#convex_api.Account.public_key_api" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the public key of the account without the leading ‘0x’</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -508,7 +508,7 @@ recreated using the words.</p>
 
 <dl class="py method">
 <dt id="convex_api.Account.public_key_bytes">
-<em class="property">property </em><code class="sig-name descname">public_key_bytes</code><a class="headerlink" href="#convex_api.Account.public_key_bytes" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">public_key_bytes</span></code><a class="headerlink" href="#convex_api.Account.public_key_bytes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the public key address of the account in the byte format</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -530,7 +530,7 @@ recreated using the words.</p>
 
 <dl class="py method">
 <dt id="convex_api.Account.public_key_checksum">
-<em class="property">property </em><code class="sig-name descname">public_key_checksum</code><a class="headerlink" href="#convex_api.Account.public_key_checksum" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">public_key_checksum</span></code><a class="headerlink" href="#convex_api.Account.public_key_checksum" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the public key of the account with checksum upper/lower case characters</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -549,7 +549,7 @@ recreated using the words.</p>
 
 <dl class="py method">
 <dt id="convex_api.Account.sign">
-<code class="sig-name descname">sign</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">hash_text</span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.Account.sign" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">sign</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hash_text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.Account.sign" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sign a hash text using the private key.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
