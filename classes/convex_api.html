@@ -209,7 +209,7 @@ create accounts on the same node, then we will get sequence errors.</p></li>
 <span class="gp">&gt;&gt;&gt; </span><span class="mi">42</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1">#create a new account address, but use the same keys as `account`</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">new_account_address</span> <span class="o">=</span> <span class="n">convex_api</span><span class="o">.</span><span class="n">create_account</span><span class="p">(</span><span class="n">account</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_account_address</span> <span class="o">=</span> <span class="n">convex_api</span><span class="o">.</span><span class="n">create_account</span><span class="p">(</span><span class="n">account</span><span class="o">=</span><span class="n">account</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">new_account</span><span class="o">.</span><span class="n">address</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="mi">43</span>
 </pre></div>
@@ -306,6 +306,12 @@ other account. Event though this is using a query request.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="convex_api.ConvexAPI.load_account">
+<code class="sig-name descname"><span class="pre">load_account</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">account</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.ConvexAPI.load_account" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load an account using the account name. If successfull return the account address</p>
+</dd></dl>
+
+<dl class="py method">
 <dt id="convex_api.ConvexAPI.query">
 <code class="sig-name descname"><span class="pre">query</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transaction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address_account</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.ConvexAPI.query" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run a query transaction on the block chain. Since this does not change the network state, and
@@ -341,6 +347,12 @@ this query. For this reason you can just pass the account address, or if you wan
 </dd></dl>
 
 <dl class="py method">
+<dt id="convex_api.ConvexAPI.register_account_name">
+<code class="sig-name descname"><span class="pre">register_account_name</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">account</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.ConvexAPI.register_account_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register an account with the given address, with a name.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt id="convex_api.ConvexAPI.request_funds">
 <code class="sig-name descname"><span class="pre">request_funds</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">amount</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">account</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.ConvexAPI.request_funds" title="Permalink to this definition">¶</a></dt>
 <dd><p>Request funds for an account from the block chain faucet.</p>
@@ -363,6 +375,11 @@ this query. For this reason you can just pass the account address, or if you wan
 </pre></div>
 </div>
 </dd></dl>
+
+<dl class="py method">
+<dt id="convex_api.ConvexAPI.resolve_account_name">
+<code class="sig-name descname"><span class="pre">resolve_account_name</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.ConvexAPI.resolve_account_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="py method">
 <dt id="convex_api.ConvexAPI.send">
