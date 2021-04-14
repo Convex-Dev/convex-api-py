@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>ConvexAPI class &mdash; convex-api-py 0.1.2 documentation</title>
+  <title>ConvexAPI class &mdash; convex-api-py 0.1.3 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.2
+                0.1.3
               </div>
             
           
@@ -447,7 +447,7 @@ a valid account address.</p>
 <code class="sig-name descname"><span class="pre">resolve_name</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.ConvexAPI.resolve_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resolves any Convex Name Services to an address.
 :param string name Name of the the CNS Service.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">convex</span><span class="o">.</span><span class="n">resolve_account_name</span><span class="p">(</span><span class="s1">&#39;convex.nft-tokens&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">convex</span><span class="o">.</span><span class="n">resolve_name</span><span class="p">(</span><span class="s1">&#39;convex.nft-tokens&#39;</span><span class="p">)</span>
 <span class="go">25</span>
 </pre></div>
 </div>
@@ -578,6 +578,47 @@ the <cite>min_balanace</cite>.</p>
 <span class="go">100</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">convex_api</span><span class="o">.</span><span class="n">get_balance</span><span class="p">(</span><span class="n">account</span><span class="p">))</span>
 <span class="go">9998520</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="convex_api.ConvexAPI.transfer_account">
+<code class="sig-name descname"><span class="pre">transfer_account</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_account</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_account</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.ConvexAPI.transfer_account" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>WARNING</strong>
+If you do not save the <cite>from_account</cite> keys for later use, this call can stop you
+from accessing your transfered <cite>to_account</cite>.</p>
+<p>Transfer and copy the keys from the <cite>from_account</cite> over too the <cite>to_acount</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>from_account</strong> (<a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><em>Account</em></a>) – <a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object that has public/private keys you with to copy</p></li>
+<li><p><strong>to_account</strong> (<a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><em>Account</em></a>) – <a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object that has an address and you wish to change to now</p></li>
+</ul>
+</dd>
+</dl>
+<p>use the <cite>to_account</cite> access keys.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A new account object that has the same name and address as the <cite>to_account</cite>, but with</p>
+</dd>
+</dl>
+<p>the access keys of the <cite>from_account</cite>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a new account with new public/priavte keys and address</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">account</span> <span class="o">=</span> <span class="n">convex_api</span><span class="o">.</span><span class="n">create_account</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">account</span><span class="o">.</span><span class="n">public_key</span>
+<span class="s1">&#39;0xae4c019e68591e085d52cdb41924bde067d864cecb1780faa37142054b0fd8ef&#39;</span>
+
+<span class="c1"># get a saved account keys</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">import_account</span> <span class="o">=</span> <span class="n">Account</span><span class="o">.</span><span class="n">import_from_file</span><span class="p">(</span><span class="s1">&#39;my_account.pem&#39;</span><span class="p">,</span> <span class="s1">&#39;secret&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;</span> <span class="n">import_account</span><span class="o">.</span><span class="n">public_key</span>
+<span class="s1">&#39;5288fec4153b702430771dfac8aed0b21cafca4344dae0d47b97f0bf532b3306&#39;</span>
+
+
+<span class="c1"># transfer the loaded keys from the `import_account`, to `account`</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">account</span> <span class="o">=</span> <span class="n">convex</span><span class="o">.</span><span class="n">transfer_account</span><span class="p">(</span><span class="n">import_account</span><span class="p">,</span> <span class="n">account</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">account</span><span class="o">.</span><span class="n">public_key</span>
+<span class="s1">&#39;5288fec4153b702430771dfac8aed0b21cafca4344dae0d47b97f0bf532b3306&#39;</span>
 </pre></div>
 </div>
 </dd></dl>
