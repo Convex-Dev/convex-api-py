@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Index &mdash; convex-api-py 0.1.4 documentation</title>
+  <title>Index &mdash; convex-api-py 0.2.0 documentation</title>
   
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.1.4
+                0.2.0
               </div>
             
           
@@ -92,7 +92,8 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="classes/account.html">Account class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="classes/convex_api.html">ConvexAPI class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes/api.html">API class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes/key_pair.html">KeyPair class</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules/exceptions.html">Exceptions Module</a></li>
 </ul>
 
@@ -168,6 +169,7 @@
  | <a href="#E"><strong>E</strong></a>
  | <a href="#G"><strong>G</strong></a>
  | <a href="#I"><strong>I</strong></a>
+ | <a href="#K"><strong>K</strong></a>
  | <a href="#L"><strong>L</strong></a>
  | <a href="#N"><strong>N</strong></a>
  | <a href="#P"><strong>P</strong></a>
@@ -186,19 +188,15 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="classes/account.html#convex_api.Account.address">address (convex_api.Account property)</a>
 </li>
+      <li><a href="classes/api.html#convex_api.API">API (class in convex_api)</a>
+</li>
   </ul></td>
 </tr></table>
 
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="classes/convex_api.html#convex_api.ConvexAPI">ConvexAPI (class in convex_api)</a>
-</li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="classes/account.html#convex_api.Account.create">create() (convex_api.Account static method)</a>
-</li>
-      <li><a href="classes/convex_api.html#convex_api.ConvexAPI.create_account">create_account() (convex_api.ConvexAPI method)</a>
+      <li><a href="classes/api.html#convex_api.API.create_account">create_account() (convex_api.API method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -208,13 +206,13 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/exceptions.html#convex_api.exceptions">exceptions (in module convex_api)</a>
 </li>
-      <li><a href="classes/account.html#convex_api.Account.export_to_file">export_to_file() (convex_api.Account method)</a>
+      <li><a href="classes/key_pair.html#convex_api.KeyPair.export_to_file">export_to_file() (convex_api.KeyPair method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="classes/account.html#convex_api.Account.export_to_mnemonic">export_to_mnemonic (convex_api.Account property)</a>
+      <li><a href="classes/key_pair.html#convex_api.KeyPair.export_to_mnemonic">export_to_mnemonic (convex_api.KeyPair property)</a>
 </li>
-      <li><a href="classes/account.html#convex_api.Account.export_to_text">export_to_text() (convex_api.Account method)</a>
+      <li><a href="classes/key_pair.html#convex_api.KeyPair.export_to_text">export_to_text() (convex_api.KeyPair method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -222,13 +220,13 @@
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="classes/convex_api.html#convex_api.ConvexAPI.get_account_info">get_account_info() (convex_api.ConvexAPI method)</a>
+      <li><a href="classes/api.html#convex_api.API.get_account_info">get_account_info() (convex_api.API method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="classes/convex_api.html#convex_api.ConvexAPI.get_address">get_address() (convex_api.ConvexAPI method)</a>
+      <li><a href="classes/api.html#convex_api.API.get_address">get_address() (convex_api.API method)</a>
 </li>
-      <li><a href="classes/convex_api.html#convex_api.ConvexAPI.get_balance">get_balance() (convex_api.ConvexAPI method)</a>
+      <li><a href="classes/api.html#convex_api.API.get_balance">get_balance() (convex_api.API method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -236,19 +234,31 @@
 <h2 id="I">I</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="classes/account.html#convex_api.Account.import_from_account">import_from_account() (convex_api.Account static method)</a>
+      <li><a href="classes/key_pair.html#convex_api.KeyPair.import_from_bytes">import_from_bytes() (convex_api.KeyPair static method)</a>
 </li>
-      <li><a href="classes/account.html#convex_api.Account.import_from_bytes">import_from_bytes() (convex_api.Account static method)</a>
+      <li><a href="classes/key_pair.html#convex_api.KeyPair.import_from_file">import_from_file() (convex_api.KeyPair static method)</a>
 </li>
-      <li><a href="classes/account.html#convex_api.Account.import_from_file">import_from_file() (convex_api.Account static method)</a>
+      <li><a href="classes/key_pair.html#convex_api.KeyPair.import_from_mnemonic">import_from_mnemonic() (convex_api.KeyPair static method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="classes/account.html#convex_api.Account.import_from_mnemonic">import_from_mnemonic() (convex_api.Account static method)</a>
-</li>
-      <li><a href="classes/account.html#convex_api.Account.import_from_text">import_from_text() (convex_api.Account static method)</a>
+      <li><a href="classes/key_pair.html#convex_api.KeyPair.import_from_text">import_from_text() (convex_api.KeyPair static method)</a>
 </li>
       <li><a href="classes/account.html#convex_api.Account.is_address">is_address (convex_api.Account property)</a>
+</li>
+      <li><a href="classes/key_pair.html#convex_api.KeyPair.is_equal">is_equal() (convex_api.KeyPair method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="K">K</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="classes/account.html#convex_api.Account.key_pair">key_pair (convex_api.Account property)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="classes/key_pair.html#convex_api.KeyPair">KeyPair (class in convex_api)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -256,17 +266,17 @@
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="classes/convex_api.html#convex_api.ConvexAPI.language">language (convex_api.ConvexAPI property)</a>
+      <li><a href="classes/api.html#convex_api.API.language">language (convex_api.API property)</a>
 </li>
-      <li><a href="classes/convex_api.html#convex_api.ConvexAPI.LANGUAGE_ALLOWED">LANGUAGE_ALLOWED (convex_api.ConvexAPI attribute)</a>
+      <li><a href="classes/api.html#convex_api.API.LANGUAGE_ALLOWED">LANGUAGE_ALLOWED (convex_api.API attribute)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="classes/convex_api.html#convex_api.ConvexAPI.LANGUAGE_LISP">LANGUAGE_LISP (convex_api.ConvexAPI attribute)</a>
+      <li><a href="classes/api.html#convex_api.API.LANGUAGE_LISP">LANGUAGE_LISP (convex_api.API attribute)</a>
 </li>
-      <li><a href="classes/convex_api.html#convex_api.ConvexAPI.LANGUAGE_SCRYPT">LANGUAGE_SCRYPT (convex_api.ConvexAPI attribute)</a>
+      <li><a href="classes/api.html#convex_api.API.LANGUAGE_SCRYPT">LANGUAGE_SCRYPT (convex_api.API attribute)</a>
 </li>
-      <li><a href="classes/convex_api.html#convex_api.ConvexAPI.load_account">load_account() (convex_api.ConvexAPI method)</a>
+      <li><a href="classes/api.html#convex_api.API.load_account">load_account() (convex_api.API method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -283,14 +293,18 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="classes/account.html#convex_api.Account.public_key">public_key (convex_api.Account property)</a>
+
+      <ul>
+        <li><a href="classes/key_pair.html#convex_api.KeyPair.public_key">(convex_api.KeyPair property)</a>
 </li>
-      <li><a href="classes/account.html#convex_api.Account.public_key_api">public_key_api (convex_api.Account property)</a>
-</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="classes/account.html#convex_api.Account.public_key_bytes">public_key_bytes (convex_api.Account property)</a>
+      <li><a href="classes/key_pair.html#convex_api.KeyPair.public_key_api">public_key_api (convex_api.KeyPair property)</a>
 </li>
-      <li><a href="classes/account.html#convex_api.Account.public_key_checksum">public_key_checksum (convex_api.Account property)</a>
+      <li><a href="classes/key_pair.html#convex_api.KeyPair.public_key_bytes">public_key_bytes (convex_api.KeyPair property)</a>
+</li>
+      <li><a href="classes/key_pair.html#convex_api.KeyPair.public_key_checksum">public_key_checksum (convex_api.KeyPair property)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -298,7 +312,7 @@
 <h2 id="Q">Q</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="classes/convex_api.html#convex_api.ConvexAPI.query">query() (convex_api.ConvexAPI method)</a>
+      <li><a href="classes/api.html#convex_api.API.query">query() (convex_api.API method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -306,17 +320,17 @@
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="classes/convex_api.html#convex_api.ConvexAPI.register_account_name">register_account_name() (convex_api.ConvexAPI method)</a>
+      <li><a href="classes/api.html#convex_api.API.register_account_name">register_account_name() (convex_api.API method)</a>
 </li>
-      <li><a href="classes/convex_api.html#convex_api.ConvexAPI.registry">registry (convex_api.ConvexAPI property)</a>
+      <li><a href="classes/api.html#convex_api.API.registry">registry (convex_api.API property)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="classes/convex_api.html#convex_api.ConvexAPI.request_funds">request_funds() (convex_api.ConvexAPI method)</a>
+      <li><a href="classes/api.html#convex_api.API.request_funds">request_funds() (convex_api.API method)</a>
 </li>
-      <li><a href="classes/convex_api.html#convex_api.ConvexAPI.resolve_account_name">resolve_account_name() (convex_api.ConvexAPI method)</a>
+      <li><a href="classes/api.html#convex_api.API.resolve_account_name">resolve_account_name() (convex_api.API method)</a>
 </li>
-      <li><a href="classes/convex_api.html#convex_api.ConvexAPI.resolve_name">resolve_name() (convex_api.ConvexAPI method)</a>
+      <li><a href="classes/api.html#convex_api.API.resolve_name">resolve_name() (convex_api.API method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -324,27 +338,31 @@
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="classes/convex_api.html#convex_api.ConvexAPI.send">send() (convex_api.ConvexAPI method)</a>
+      <li><a href="classes/api.html#convex_api.API.send">send() (convex_api.API method)</a>
+</li>
+      <li><a href="classes/api.html#convex_api.API.setup_account">setup_account() (convex_api.API method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="classes/convex_api.html#convex_api.ConvexAPI.setup_account">setup_account() (convex_api.ConvexAPI method)</a>
-</li>
       <li><a href="classes/account.html#convex_api.Account.sign">sign() (convex_api.Account method)</a>
+
+      <ul>
+        <li><a href="classes/key_pair.html#convex_api.KeyPair.sign">(convex_api.KeyPair method)</a>
 </li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
 <h2 id="T">T</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="classes/convex_api.html#convex_api.ConvexAPI.topup_account">topup_account() (convex_api.ConvexAPI method)</a>
+      <li><a href="classes/api.html#convex_api.API.topup_account">topup_account() (convex_api.API method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="classes/convex_api.html#convex_api.ConvexAPI.transfer">transfer() (convex_api.ConvexAPI method)</a>
+      <li><a href="classes/api.html#convex_api.API.transfer">transfer() (convex_api.API method)</a>
 </li>
-      <li><a href="classes/convex_api.html#convex_api.ConvexAPI.transfer_account">transfer_account() (convex_api.ConvexAPI method)</a>
+      <li><a href="classes/api.html#convex_api.API.transfer_account">transfer_account() (convex_api.API method)</a>
 </li>
   </ul></td>
 </tr></table>

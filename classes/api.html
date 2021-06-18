@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>ConvexAPI class &mdash; convex-api-py 0.1.4 documentation</title>
+  <title>API class &mdash; convex-api-py 0.2.0 documentation</title>
   
 
   
@@ -42,7 +42,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Exceptions Module" href="../modules/exceptions.html" />
+    <link rel="next" title="KeyPair class" href="key_pair.html" />
     <link rel="prev" title="Account class" href="account.html" /> 
 </head>
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                0.1.4
+                0.2.0
               </div>
             
           
@@ -94,7 +94,8 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="account.html">Account class</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">ConvexAPI class</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="key_pair.html">KeyPair class</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/exceptions.html">Exceptions Module</a></li>
 </ul>
 
@@ -144,13 +145,13 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>ConvexAPI class</li>
+      <li>API class</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../_sources/classes/convex_api.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/classes/api.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -163,39 +164,37 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="convexapi-class">
-<h1>ConvexAPI class<a class="headerlink" href="#convexapi-class" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="api-class">
+<h1>API class<a class="headerlink" href="#api-class" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt class="sig sig-object py" id="convex_api.ConvexAPI">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">convex_api.</span></span><span class="sig-name descname"><span class="pre">ConvexAPI</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'convex-lisp'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.ConvexAPI" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="convex_api.API">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">convex_api.</span></span><span class="sig-name descname"><span class="pre">API</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'convex-lisp'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.API" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="convex_api.ConvexAPI.LANGUAGE_ALLOWED">
-<span class="sig-name descname"><span class="pre">LANGUAGE_ALLOWED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">['convex-lisp',</span> <span class="pre">'convex-scrypt']</span></em><a class="headerlink" href="#convex_api.ConvexAPI.LANGUAGE_ALLOWED" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="convex_api.API.LANGUAGE_ALLOWED">
+<span class="sig-name descname"><span class="pre">LANGUAGE_ALLOWED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">['convex-lisp',</span> <span class="pre">'convex-scrypt']</span></em><a class="headerlink" href="#convex_api.API.LANGUAGE_ALLOWED" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="convex_api.ConvexAPI.LANGUAGE_LISP">
-<span class="sig-name descname"><span class="pre">LANGUAGE_LISP</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'convex-lisp'</span></em><a class="headerlink" href="#convex_api.ConvexAPI.LANGUAGE_LISP" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="convex_api.API.LANGUAGE_LISP">
+<span class="sig-name descname"><span class="pre">LANGUAGE_LISP</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'convex-lisp'</span></em><a class="headerlink" href="#convex_api.API.LANGUAGE_LISP" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="convex_api.ConvexAPI.LANGUAGE_SCRYPT">
-<span class="sig-name descname"><span class="pre">LANGUAGE_SCRYPT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'convex-scrypt'</span></em><a class="headerlink" href="#convex_api.ConvexAPI.LANGUAGE_SCRYPT" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="convex_api.API.LANGUAGE_SCRYPT">
+<span class="sig-name descname"><span class="pre">LANGUAGE_SCRYPT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'convex-scrypt'</span></em><a class="headerlink" href="#convex_api.API.LANGUAGE_SCRYPT" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="convex_api.ConvexAPI.create_account">
-<span class="sig-name descname"><span class="pre">create_account</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">account</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sequence_retry_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.ConvexAPI.create_account" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="convex_api.API.create_account">
+<span class="sig-name descname"><span class="pre">create_account</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key_pair</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sequence_retry_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.API.create_account" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a new account address on the convex network.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>account</strong> (<a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><em>Account</em></a><em>, </em><em>optional</em>) – <p><a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object that you whish to use as the signing account.
-The <a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object contains the public/private keys to access and submit commands
-on the convex network.</p>
-<p>If no object given, then this method will automatically create a new <a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object.</p>
-</p></li>
+<li><p><strong>key_pair</strong> (<a class="reference internal" href="key_pair.html#convex_api.KeyPair" title="convex_api.KeyPair"><em>KeyPair</em></a>) – <a class="reference internal" href="key_pair.html#convex_api.KeyPair" title="convex_api.KeyPair"><code class="xref py py-class docutils literal notranslate"><span class="pre">KeyPair</span></code></a> object that you whish to use as the signing account.
+The <a class="reference internal" href="key_pair.html#convex_api.KeyPair" title="convex_api.KeyPair"><code class="xref py py-class docutils literal notranslate"><span class="pre">KeyPair</span></code></a> object contains the public/private keys to access and submit commands
+on the convex network.</p></li>
 <li><p><strong>sequence_retry_count</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a><em>, </em><em>optional</em>) – Number of retries to create the account. If too many clients are trying to
 create accounts on the same node, then we will get sequence errors.</p></li>
 </ul>
@@ -204,15 +203,16 @@ create accounts on the same node, then we will get sequence errors.</p></li>
 <dd class="field-even"><p>A new <a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object, or copy of the <a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object with a new <cite>address</cite> property value set</p>
 </dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">convex_api</span> <span class="kn">import</span> <span class="n">ConvexAPI</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">convex_api</span> <span class="o">=</span> <span class="n">ConvexAPI</span><span class="p">(</span><span class="s1">&#39;https://convex.world&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">convex_api</span> <span class="kn">import</span> <span class="n">API</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">convex</span> <span class="o">=</span> <span class="n">API</span><span class="p">(</span><span class="s1">&#39;https://convex.world&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Create a new account with new public/priavte keys and address</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">account</span> <span class="o">=</span> <span class="n">convex_api</span><span class="o">.</span><span class="n">create_account</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">key_pair</span> <span class="o">=</span> <span class="n">KeyPair</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">account</span> <span class="o">=</span> <span class="n">convex</span><span class="o">.</span><span class="n">create_account</span><span class="p">(</span><span class="n">key_pair</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">account</span><span class="o">.</span><span class="n">address</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="mi">42</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1">#create a new account address, but use the same keys as `account`</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">new_account_address</span> <span class="o">=</span> <span class="n">convex_api</span><span class="o">.</span><span class="n">create_account</span><span class="p">(</span><span class="n">account</span><span class="o">=</span><span class="n">account</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_account_address</span> <span class="o">=</span> <span class="n">convex</span><span class="o">.</span><span class="n">create_account</span><span class="p">(</span><span class="n">account</span><span class="o">=</span><span class="n">account</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">new_account</span><span class="o">.</span><span class="n">address</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="mi">43</span>
 </pre></div>
@@ -220,8 +220,8 @@ create accounts on the same node, then we will get sequence errors.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="convex_api.ConvexAPI.get_account_info">
-<span class="sig-name descname"><span class="pre">get_account_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address_account</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.ConvexAPI.get_account_info" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="convex_api.API.get_account_info">
+<span class="sig-name descname"><span class="pre">get_account_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address_account</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.API.get_account_info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get account information. This will only work with an account that has a balance or has had some transactions
 processed on the convex network. New accounts with no transfer or transactions will raise:</p>
 <blockquote>
@@ -249,8 +249,8 @@ processed on the convex network. New accounts with no transfer or transactions w
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="convex_api.ConvexAPI.get_address">
-<span class="sig-name descname"><span class="pre">get_address</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address_account</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.ConvexAPI.get_address" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="convex_api.API.get_address">
+<span class="sig-name descname"><span class="pre">get_address</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address_account</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.API.get_address" title="Permalink to this definition">¶</a></dt>
 <dd><p>Query the network for a contract ( function ) address. The contract must have been deployed
 by the account address provided. If not then no address will be returned</p>
 <dl class="field-list simple">
@@ -273,8 +273,8 @@ by the account address provided. If not then no address will be returned</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="convex_api.ConvexAPI.get_balance">
-<span class="sig-name descname"><span class="pre">get_balance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address_account</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">account_from</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.ConvexAPI.get_balance" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="convex_api.API.get_balance">
+<span class="sig-name descname"><span class="pre">get_balance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address_account</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">account_from</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.API.get_balance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a balance of an account.</p>
 <p>At the moment the account needs to have a balance to get the balance of it’s account or any
 other account. Event though this is using a query request.</p>
@@ -303,25 +303,25 @@ other account. Event though this is using a query request.</p>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="convex_api.ConvexAPI.language">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">language</span></span><a class="headerlink" href="#convex_api.ConvexAPI.language" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="convex_api.API.language">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">language</span></span><a class="headerlink" href="#convex_api.API.language" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the default language to use when calling the API commands</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="convex_api.ConvexAPI.load_account">
-<span class="sig-name descname"><span class="pre">load_account</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">account</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.ConvexAPI.load_account" title="Permalink to this definition">¶</a></dt>
-<dd><p>Load an account using the account name. If successfull return the <a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object with the address set.</p>
+<dt class="sig sig-object py" id="convex_api.API.load_account">
+<span class="sig-name descname"><span class="pre">load_account</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_pair</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.API.load_account" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load an account using the correct name. If successfull return the <a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object with the address set.</p>
 <p>This is a Query operation, so no convex tokens are used in loading the account.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – name of the account to load</p></li>
-<li><p><strong>account</strong> (<a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><em>Account</em></a>) – <a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object to import</p></li>
+<li><p><strong>key_pair</strong> (<a class="reference internal" href="key_pair.html#convex_api.KeyPair" title="convex_api.KeyPair"><em>KeyPair</em></a>) – <a class="reference internal" href="key_pair.html#convex_api.KeyPair" title="convex_api.KeyPair"><code class="xref py py-class docutils literal notranslate"><span class="pre">KeyPair</span></code></a> object to import for the account</p></li>
 </ul>
 </dd>
 <dt class="field-even">Results</dt>
-<dd class="field-even"><p><a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object with the address and name set, if not found then return None</p>
+<dd class="field-even"><p><a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object with the address and name set and key_pair, if not found then return None</p>
 </dd>
 </dl>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Create a new account with new public/priavte keys and address</span>
@@ -336,8 +336,8 @@ other account. Event though this is using a query request.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="convex_api.ConvexAPI.query">
-<span class="sig-name descname"><span class="pre">query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transaction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address_account</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.ConvexAPI.query" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="convex_api.API.query">
+<span class="sig-name descname"><span class="pre">query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transaction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address_account</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.API.query" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run a query transaction on the block chain. Since this does not change the network state, and
 the account does not need to sign the transaction. No funds will be used when executing
 this query. For this reason you can just pass the account address, or if you want to the <a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object.</p>
@@ -371,8 +371,8 @@ this query. For this reason you can just pass the account address, or if you wan
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="convex_api.ConvexAPI.register_account_name">
-<span class="sig-name descname"><span class="pre">register_account_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address_account</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">account</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.ConvexAPI.register_account_name" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="convex_api.API.register_account_name">
+<span class="sig-name descname"><span class="pre">register_account_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address_account</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">account</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.API.register_account_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Register or update an account address with an account name.</p>
 <p>This call will submit to the CNS (Convex Name Service), a name in the format
 “<cite>account.&lt;your_name&gt;</cite>”. You need to have some convex balance in your account, and
@@ -387,8 +387,8 @@ a valid account address.</p>
 </dd>
 </dl>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># load the register account</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">register_account</span> <span class="o">=</span> <span class="n">convex</span><span class="o">.</span><span class="n">load_account</span><span class="p">(</span><span class="s1">&#39;register_account&#39;</span><span class="p">,</span> <span class="n">import_account</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">account</span> <span class="o">=</span> <span class="n">convex</span><span class="o">.</span><span class="n">create_account</span><span class="p">(</span><span class="n">import_account</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">register_account</span> <span class="o">=</span> <span class="n">convex</span><span class="o">.</span><span class="n">load_account</span><span class="p">(</span><span class="s1">&#39;register_account&#39;</span><span class="p">,</span> <span class="n">key_pair</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">account</span> <span class="o">=</span> <span class="n">convex</span><span class="o">.</span><span class="n">create_account</span><span class="p">(</span><span class="n">key_pair</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">account</span><span class="o">.</span><span class="n">address</span><span class="p">)</span>
 <span class="go">1024</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">account</span> <span class="o">=</span> <span class="n">convex</span><span class="o">.</span><span class="n">register_account</span><span class="p">(</span><span class="s1">&#39;my_new_account&#39;</span><span class="p">,</span> <span class="n">account</span><span class="o">.</span><span class="n">address</span><span class="p">,</span> <span class="n">register_account</span><span class="p">)</span>
@@ -406,13 +406,13 @@ a valid account address.</p>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="convex_api.ConvexAPI.registry">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">registry</span></span><a class="headerlink" href="#convex_api.ConvexAPI.registry" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="convex_api.API.registry">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">registry</span></span><a class="headerlink" href="#convex_api.API.registry" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="convex_api.ConvexAPI.request_funds">
-<span class="sig-name descname"><span class="pre">request_funds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">amount</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">account</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.ConvexAPI.request_funds" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="convex_api.API.request_funds">
+<span class="sig-name descname"><span class="pre">request_funds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">amount</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">account</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.API.request_funds" title="Permalink to this definition">¶</a></dt>
 <dd><p>Request funds for an account from the block chain faucet.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -435,8 +435,8 @@ a valid account address.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="convex_api.ConvexAPI.resolve_account_name">
-<span class="sig-name descname"><span class="pre">resolve_account_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.ConvexAPI.resolve_account_name" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="convex_api.API.resolve_account_name">
+<span class="sig-name descname"><span class="pre">resolve_account_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.API.resolve_account_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resolves an account name to an address.
 :param string name Name of the account to resolve.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">convex</span><span class="o">.</span><span class="n">resolve_account_name</span><span class="p">(</span><span class="s1">&#39;my_account&#39;</span><span class="p">)</span>
@@ -446,8 +446,8 @@ a valid account address.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="convex_api.ConvexAPI.resolve_name">
-<span class="sig-name descname"><span class="pre">resolve_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.ConvexAPI.resolve_name" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="convex_api.API.resolve_name">
+<span class="sig-name descname"><span class="pre">resolve_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.API.resolve_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resolves any Convex Name Services to an address.
 :param string name Name of the the CNS Service.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">convex</span><span class="o">.</span><span class="n">resolve_name</span><span class="p">(</span><span class="s1">&#39;convex.nft-tokens&#39;</span><span class="p">)</span>
@@ -457,8 +457,8 @@ a valid account address.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="convex_api.ConvexAPI.send">
-<span class="sig-name descname"><span class="pre">send</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transaction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">account</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sequence_retry_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.ConvexAPI.send" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="convex_api.API.send">
+<span class="sig-name descname"><span class="pre">send</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transaction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">account</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sequence_retry_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.API.send" title="Permalink to this definition">¶</a></dt>
 <dd><p>Send transaction code to the block chain node.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -475,26 +475,27 @@ This send method will automatically retry again</p></li>
 <dd class="field-even"><p>The dict returned from the result of the sent transaction.</p>
 </dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">convex_api</span> <span class="kn">import</span> <span class="n">ConvexAPI</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">convex_api</span> <span class="o">=</span> <span class="n">ConvexAPI</span><span class="p">(</span><span class="s1">&#39;https://convex.world&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">convex_api</span> <span class="kn">import</span> <span class="n">API</span><span class="p">,</span> <span class="n">KeyPair</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">convex</span> <span class="o">=</span> <span class="n">API</span><span class="p">(</span><span class="s1">&#39;https://convex.world&#39;</span><span class="p">)</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Create a new account with new public/priavte keys and address</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">account</span> <span class="o">=</span> <span class="n">convex_api</span><span class="o">.</span><span class="n">create_account</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Create a new account with new public/private keys and address</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">key_pair</span> <span class="o">=</span> <span class="n">KeyPair</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">account</span> <span class="o">=</span> <span class="n">convex</span><span class="o">.</span><span class="n">create_account</span><span class="p">(</span><span class="n">key_pair</span><span class="p">)</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># request some funds to do stuff</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">convex_api</span><span class="o">.</span><span class="n">request_funds</span><span class="p">(</span><span class="mi">100000</span><span class="p">,</span> <span class="n">account</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">convex</span><span class="o">.</span><span class="n">request_funds</span><span class="p">(</span><span class="mi">100000</span><span class="p">,</span> <span class="n">account</span><span class="p">))</span>
 <span class="go">100000</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># submit a transaction using the new account</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">convex_api</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;(map inc [ 1 2 3 4])&#39;</span><span class="p">,</span> <span class="n">account</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">convex</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;(map inc [ 1 2 3 4])&#39;</span><span class="p">,</span> <span class="n">account</span><span class="p">))</span>
 <span class="go">{&#39;value&#39;: [2, 3, 4, 5]}</span>
 </pre></div>
 </div>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="convex_api.ConvexAPI.setup_account">
-<span class="sig-name descname"><span class="pre">setup_account</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">import_account</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">register_account</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.ConvexAPI.setup_account" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="convex_api.API.setup_account">
+<span class="sig-name descname"><span class="pre">setup_account</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_pair</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">register_account</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.API.setup_account" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convenience method to create or load an account based on the account name.
 If the account name cannot be found then account will be created and account name registered,
 if the name is found, then account and it’s address with that name will be loaded.</p>
@@ -502,7 +503,7 @@ if the name is found, then account and it’s address with that name will be loa
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – name of the account to create or load</p></li>
-<li><p><strong>account</strong> (<a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><em>Account</em></a>) – <a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object to import</p></li>
+<li><p><strong>key_pair</strong> (<a class="reference internal" href="key_pair.html#convex_api.KeyPair" title="convex_api.KeyPair"><em>KeyPair</em></a>) – <a class="reference internal" href="key_pair.html#convex_api.KeyPair" title="convex_api.KeyPair"><code class="xref py py-class docutils literal notranslate"><span class="pre">KeyPair</span></code></a> object to use to sign for the account.</p></li>
 <li><p><strong>register_account</strong> (<a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><em>Account</em></a>) – Optional <a class="reference internal" href="account.html#convex_api.Account" title="convex_api.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object to use for registration of the account</p></li>
 </ul>
 </dd>
@@ -511,10 +512,10 @@ if the name is found, then account and it’s address with that name will be loa
 </dd>
 </dl>
 <p><strong>Note</strong> If you do not provide a register_account, then this method calls the
-<a class="reference internal" href="#convex_api.ConvexAPI.topup_account" title="convex_api.ConvexAPI.topup_account"><code class="xref py py-meth docutils literal notranslate"><span class="pre">topup_account()</span></code></a> method to get enougth funds to register an account name.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">import_account</span> <span class="o">=</span> <span class="n">Account</span><span class="o">.</span><span class="n">import_from_file</span><span class="p">(</span><span class="s1">&#39;my_account.pem&#39;</span><span class="p">,</span> <span class="s1">&#39;secret&#39;</span><span class="p">)</span>
+<a class="reference internal" href="#convex_api.API.topup_account" title="convex_api.API.topup_account"><code class="xref py py-meth docutils literal notranslate"><span class="pre">topup_account()</span></code></a> method to get enougth funds to register an account name.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">import_key_pair</span> <span class="o">=</span> <span class="n">KeyPair</span><span class="o">.</span><span class="n">import_from_file</span><span class="p">(</span><span class="s1">&#39;my_account.pem&#39;</span><span class="p">,</span> <span class="s1">&#39;secret&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># create or load the account named &#39;my_account&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">account</span> <span class="o">=</span> <span class="n">convex</span><span class="o">.</span><span class="n">setup_account</span><span class="p">(</span><span class="s1">&#39;my_account&#39;</span><span class="p">,</span> <span class="n">import_account</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">account</span> <span class="o">=</span> <span class="n">convex</span><span class="o">.</span><span class="n">setup_account</span><span class="p">(</span><span class="s1">&#39;my_account&#39;</span><span class="p">,</span> <span class="n">import_key_pair</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">account</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 <span class="go">my_account</span>
 </pre></div>
@@ -522,8 +523,8 @@ if the name is found, then account and it’s address with that name will be loa
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="convex_api.ConvexAPI.topup_account">
-<span class="sig-name descname"><span class="pre">topup_account</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">account</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_balance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">retry_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.ConvexAPI.topup_account" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="convex_api.API.topup_account">
+<span class="sig-name descname"><span class="pre">topup_account</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">account</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_balance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">retry_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.API.topup_account" title="Permalink to this definition">¶</a></dt>
 <dd><p>Topup an account from the block chain faucet, so that the balance of the account is above or equal to
 the <cite>min_balanace</cite>.</p>
 <dl class="field-list simple">
@@ -551,8 +552,8 @@ the <cite>min_balanace</cite>.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="convex_api.ConvexAPI.transfer">
-<span class="sig-name descname"><span class="pre">transfer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">to_address_account</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amount</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">account</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.ConvexAPI.transfer" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="convex_api.API.transfer">
+<span class="sig-name descname"><span class="pre">transfer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">to_address_account</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amount</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">account</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.API.transfer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transfer funds from on account to another.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -586,8 +587,8 @@ the <cite>min_balanace</cite>.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="convex_api.ConvexAPI.transfer_account">
-<span class="sig-name descname"><span class="pre">transfer_account</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_account</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_account</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.ConvexAPI.transfer_account" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="convex_api.API.transfer_account">
+<span class="sig-name descname"><span class="pre">transfer_account</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_account</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_account</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.API.transfer_account" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>WARNING</strong>
 If you do not save the <cite>from_account</cite> keys for later use, this call can stop you
 from accessing your transfered <cite>to_account</cite>.</p>
@@ -636,7 +637,7 @@ from accessing your transfered <cite>to_account</cite>.</p>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../modules/exceptions.html" class="btn btn-neutral float-right" title="Exceptions Module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="key_pair.html" class="btn btn-neutral float-right" title="KeyPair class" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="account.html" class="btn btn-neutral float-left" title="Account class" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
