@@ -5,49 +5,14 @@
 """
 import binascii
 import re
+from typing import TypeGuard, Union
 
 
 from cryptography.hazmat.backends.openssl.backend import backend
 from cryptography.hazmat.primitives import hashes
 
 
-def to_address(value):
-    """
-    Convert address text with possible leading '#' to an interger address value.
-
-    :param str text: Address text to convert
-
-    :returns: Integer address or None if not a valid address
-
-    """
-    if isinstance(value, int):
-        return int(value)
-    elif is_account(value):
-        return value.address
-    elif isinstance(value, str):
-        try:
-            address = int(re.sub(r'^#', '', value.strip()))
-        except ValueError:
-            return None
-        return address
-
-
-def is_address(text):
-    """
-    Returns True if the text value is a valid address.
-
-    :param str, int text: Possible address field.
-
-    :returns: True if the text field is a valid address.
-
-    """
-    value = to_address(text)
-    if isinstance(value, int):
-        return value >= 0
-    return False
-
-
-def is_public_key_hex(public_key):
+def is_public_key_hex(public_key: str) -> bool:
     """
     Returns True if the value passed is a valid public key.
 
@@ -58,12 +23,12 @@ def is_public_key_hex(public_key):
     """
     if is_hexstr(add_0x_prefix(public_key)):
         address_base = remove_0x_prefix(public_key)
-        if len(address_base) == 64:
+        if address_base and len(address_base) == 64:
             return True
     return False
 
 
-def is_public_key(public_key):
+def is_public_key(public_key: str) -> bool:
     """
     Returns True if the value passed is a valid public key.
 
@@ -79,7 +44,7 @@ def is_public_key(public_key):
     return False
 
 
-def to_public_key_checksum(public_key):
+def to_public_key_checksum(public_key: str) -> Union[str, None]:
     """
     Convert a public key to a checksum key. This will first make all a-f chars lower case
     then convert a-f chars to uppercase depending on the hash of the public key.
@@ -90,9 +55,20 @@ def to_public_key_checksum(public_key):
 
     """
     digest = hashes.Hash(hashes.SHA3_256(), backend=backend)
-    digest.update(to_bytes(hexstr=public_key))
+    public_key_bytes = to_bytes(hexstr=public_key)
+    if not public_key_bytes:
+        return None
+    
+    digest.update(public_key_bytes)
+    
     public_key_hash = remove_0x_prefix(to_hex(digest.finalize()))
+    if not public_key_hash:
+        return None
+
     public_key_clean = remove_0x_prefix(public_key.lower())
+    if not public_key_clean:
+        return None
+
     checksum = ''
     hash_index = 0
     for value in public_key_clean:
@@ -106,7 +82,7 @@ def to_public_key_checksum(public_key):
     return add_0x_prefix(checksum)
 
 
-def is_public_key_checksum(public_key):
+def is_public_key_checksum(public_key: str) -> bool:
     """
     Returns True if the public_key passed is a valid checksum.
 
@@ -115,10 +91,10 @@ def is_public_key_checksum(public_key):
     :returns: True if the key passed has the correct checksum applied to it
 
     """
-    return remove_0x_prefix(public_key) and remove_0x_prefix(public_key) == remove_0x_prefix(to_public_key_checksum(public_key))
+    return bool(remove_0x_prefix(public_key)) and remove_0x_prefix(public_key) == remove_0x_prefix(to_public_key_checksum(public_key))
 
 
-def is_hexstr(text):
+def is_hexstr(text: Union[str, None]) -> TypeGuard[str]:
     """
     Return True if the text passed is a hex string.
 
@@ -126,10 +102,13 @@ def is_hexstr(text):
 
     :returns: True if all chars are hex
     """
-    return re.match('^0x[0-9a-f]+$', text, re.IGNORECASE)
+    if text:
+        return bool(re.match('^0x[0-9a-f]+$', text, re.IGNORECASE))
+    else:
+        return False
 
 
-def add_0x_prefix(text):
+def add_0x_prefix(text: Union[str, None]) -> Union[str, None]:
     """
     Append the 0x prefix to the hex chars
 
@@ -142,7 +121,7 @@ def add_0x_prefix(text):
         return '0x' + remove_0x_prefix(text)
 
 
-def remove_0x_prefix(text):
+def remove_0x_prefix(text: Union[str, None]) -> Union[str, None]:
     """
     Removes the '0x' from the front of the hex string.
 
@@ -155,7 +134,7 @@ def remove_0x_prefix(text):
         return re.sub(r'^0x', '', text, re.IGNORECASE)
 
 
-def to_bytes(data=None, hexstr=None):
+def to_bytes(data: Union[bytes, int, None] = None, hexstr: Union[str, None] = None) -> Union[bytes, None]:
     """
     Convert byte data or hexstr to bytes.
 
@@ -182,6 +161,4 @@ def to_hex(value):
     return add_0x_prefix(binascii.hexlify(value).decode())
 
 
-def is_account(value):
-    from convex_api import Account
-    return isinstance(value, Account)
+

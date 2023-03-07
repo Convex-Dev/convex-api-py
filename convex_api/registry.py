@@ -4,10 +4,9 @@
 
 """
 import logging
-
+from convex_api.account import Account
+from convex_api.api import API
 from convex_api.exceptions import ConvexAPIError
-from convex_api.utils import to_address
-
 
 logger = logging.getLogger(__name__)
 
@@ -16,15 +15,15 @@ QUERY_ACCOUNT_ADDRESS = 9
 
 class Registry:
 
-    def __init__(self, convex):
+    def __init__(self, convex: API):
         self._convex = convex
         self._address = None
         self._items = {}
 
-    def is_registered(self, name):
+    def is_registered(self, name: str):
         return self.item(name) is not None
 
-    def item(self, name):
+    def item(self, name: str):
         if name not in self._items:
             result = self._convex.query(f'(get cns-database (symbol "{name}"))', self.address)
             logger.debug(f'cns-database: {result}')
@@ -37,7 +36,7 @@ class Registry:
         self._items = {}
         self._address = None
 
-    def register(self, name, contract_address, account):
+    def register(self, name: str, contract_address, account):
         result = self._convex.send(f'(call #{self.address} (register {{:name (symbol "{name}")}}))', account)
         logger.debug(f'register result: {result}')
         if result and 'value' in result:
@@ -54,12 +53,12 @@ class Registry:
                 logger.debug(f'convex error: {e}')
                 raise
 
-    def resolve_owner(self, name):
+    def resolve_owner(self, name: str):
         item = self.item(name)
         if item:
             return item[1]
 
-    def resolve_address(self, name):
+    def resolve_address(self, name: str):
         item = self.item(name)
         if item:
             return item[0]
@@ -68,6 +67,6 @@ class Registry:
     def address(self):
         if self._address is None:
             result = self._convex.query('(address *registry*)', QUERY_ACCOUNT_ADDRESS)
-            self._registry_address = to_address(result['value'])
+            self._registry_address = Account.to_address(result['value'])
             logger.debug(f'registry_address: {self._registry_address}')
         return self._registry_address

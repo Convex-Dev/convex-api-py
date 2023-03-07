@@ -1,5 +1,11 @@
 ## Change log
 
+### Unreleased
+
++   Rename Address method is_address to has_address
++   Move convex_api.utils.is_address to Address static method is_address
++   Move...
+
 ### 0.2.6
 +   Add cr, tab to contract text encoding
 

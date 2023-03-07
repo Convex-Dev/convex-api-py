@@ -5,12 +5,53 @@
 
 """
 
-from convex_api.utils import to_address
-
+import re
+from typing import TypeGuard, Union
+from convex_api.key_pair import KeyPair
 
 class Account:
 
-    def __init__(self, key_pair, address, name=None):
+    @staticmethod
+    def is_account(value: Union['Account', int, str]) -> TypeGuard['Account']:
+        return isinstance(value, Account)
+
+    @staticmethod
+    def is_address(text: Union[int, str]) -> bool:
+        """
+        Returns True if the text value is a valid address.
+
+        :param str, int text: Possible address field.
+
+        :returns: True if the text field is a valid address.
+
+        """
+        value = Account.to_address(text)
+        if isinstance(value, int):
+            return value >= 0
+        return False
+
+    @staticmethod
+    def to_address(value: Union['Account', int, str]) -> Union[int, None]:
+        """
+        Convert address text with possible leading '#' to an interger address value.
+
+        :param str text: Address text to convert
+
+        :returns: Integer address or None if not a valid address
+
+        """
+        if isinstance(value, int):
+            return int(value)
+        elif Account.is_account(value):
+            return value.address
+        elif isinstance(value, str):
+            try:
+                address = int(re.sub(r'^#', '', value.strip()))
+            except ValueError:
+                return None
+            return address
+
+    def __init__(self, key_pair: KeyPair, address: Union['Account', int, str], name: Union[str, None] = None):
         """
 
         Create a new account with a private key KeyPair.
@@ -50,10 +91,10 @@ class Account:
 
         """
         self._key_pair = key_pair
-        self._address = to_address(address)
+        self._address = Account.to_address(address)
         self._name = name
 
-    def sign(self, hash_text):
+    def sign(self, hash_text: str) -> Union[str, None]:
         """
 
         Sign a hash text using the internal key_pair.
@@ -78,7 +119,7 @@ class Account:
         return f'Account {self.address}:{self.key_pair.public_key}'
 
     @property
-    def is_address(self):
+    def has_address(self) -> bool:
         """
 
         Return true if the address for this account object is set
@@ -89,7 +130,7 @@ class Account:
         return self._address is not None
 
     @property
-    def address(self):
+    def address(self) -> Union[int, None]:
         """
 
         :returns: the network account address
@@ -107,7 +148,7 @@ class Account:
         return self._address
 
     @address.setter
-    def address(self, value):
+    def address(self, value: Union['Account', int, str]) -> None:
         """
 
         Sets the network address of this account
@@ -125,18 +166,18 @@ class Account:
             >>> account.address = 42
 
         """
-        self._address = to_address(value)
+        self._address = Account.to_address(value)
 
     @property
-    def name(self):
+    def name(self) -> Union[str, None]:
         return self._name
 
     @name.setter
-    def name(self, value):
+    def name(self, value: str) -> None:
         self._name = value
 
     @property
-    def public_key(self):
+    def public_key(self) -> bytes:
         """
 
         Return the public key of the account in the format '0x....'
@@ -157,7 +198,7 @@ class Account:
         return self._key_pair.public_key_bytes
 
     @property
-    def key_pair(self):
+    def key_pair(self) -> KeyPair:
         """
 
         Return the internal KeyPair object for this account

@@ -6,12 +6,12 @@ Convex Contract
 """
 
 import re
-
-from convex_api.utils import to_address
-
+from typing import Union
+from convex_api.account import Account
+from convex_api.api import API
 
 class Contract:
-    def __init__(self, convex):
+    def __init__(self, convex: API):
         """
 
         Contract class to provide access and name resolution to deployed convex contracts.
@@ -22,7 +22,7 @@ class Contract:
         self._address = None
         self._owner_address = None
 
-    def load(self, name=None, address=None, owner_address=None):
+    def load(self, name: Union[str, None] = None, address: Union[Account, int, str, None] = None, owner_address: Union[Account, int, str, None] = None):
         """
 
         Load a contract details using it's registered name or directly using it's known address.
@@ -49,11 +49,18 @@ class Contract:
         if owner_address is None:
             owner_address = address
 
-        self._address = to_address(address)
-        self._owner_address = to_address(owner_address)
+        self._address = Account.to_address(address)
+        self._owner_address = Account.to_address(owner_address)
         return self._address
 
-    def deploy(self, account, text=None, filename=None, name=None, owner_account=None):
+    def deploy(
+        self, 
+        account: Account, 
+        text: Union[str, None] = None, 
+        filename: Union[str, None] = None, 
+        name: Union[str, None] = None, 
+        owner_account: Union[Account, None] = None
+    ):
         """
 
         Deploy a new/updated contract on the convex network.
@@ -88,14 +95,14 @@ class Contract:
     """
         result = self._convex.send(deploy_line, account)
         if result and 'value' in result:
-            address = to_address(result["value"])
+            address = Account.to_address(result["value"])
             if name:
                 if owner_account is None:
                     owner_account = account
                 self._convex.registry.register(name, address, owner_account)
             return address
 
-    def register_contract_name(self, name, address, account):
+    def register_contract_name(self, name: str, address, account):
         """
 
         Register a contract address with a resolvable name. This name can be used on the Convex network to resolve
@@ -143,12 +150,12 @@ class Contract:
         if not self._address:
             raise ValueError(f'No contract address found for {self._name}')
         if account_address is None:
-            account_address = to_address(account_address)
+            account_address = Account.to_address(account_address)
         if account_address is None:
             account_address = self._address
         return self._convex.query(f'(call #{self._address} {transaction})', account_address)
 
-    def resolve_address(self, name):
+    def resolve_address(self, name: str):
         """
 
         Return an address from a registered name.
@@ -156,7 +163,7 @@ class Contract:
         """
         return self._convex.registry.resolve_address(name)
 
-    def resolve_owner_address(self, name):
+    def resolve_owner_address(self, name: str):
         """
 
         Returns the register owner of a registered name.
@@ -165,7 +172,7 @@ class Contract:
         return self._convex.registry.resolve_owner(name)
 
     @property
-    def is_registered(self):
+    def is_registered(self) -> bool:
         return self._address is not None
 
     @property

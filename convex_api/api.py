@@ -9,6 +9,7 @@ import logging
 import re
 import secrets
 import time
+from typing import Any, Literal, Union
 
 from urllib.parse import urljoin
 
@@ -23,9 +24,7 @@ from convex_api.exceptions import (
 from convex_api.key_pair import KeyPair
 from convex_api.registry import Registry
 from convex_api.utils import (
-    is_account,
     remove_0x_prefix,
-    to_address
 )
 
 # min amount to do a topup account
@@ -41,7 +40,7 @@ class API:
     # LANGUAGE_SCRYPT = 'convex-scrypt'
     LANGUAGE_ALLOWED = [LANGUAGE_LISP]
 
-    def __init__(self, url, language=LANGUAGE_LISP):
+    def __init__(self, url: str, language: Literal['convex-lisp'] = LANGUAGE_LISP):
         self._url = url
 
         if language not in API.LANGUAGE_ALLOWED:
@@ -49,7 +48,7 @@ class API:
         self._language = language
         self._registry = Registry(self)
 
-    def create_account(self, key_pair, sequence_retry_count=20):
+    def create_account(self, key_pair: KeyPair, sequence_retry_count: int = 20) -> Union[Account, None]:
         """
 
         Create a new account address on the convex network.
@@ -87,18 +86,25 @@ class API:
         if key_pair and not isinstance(key_pair, KeyPair):
             raise TypeError(f'key_pair value {key_pair} must be a type convex_api.KeyPair')
 
-        create_account_url = urljoin(self._url, '/api/v1/createAccount')
+        
+        accountKey = key_pair.public_key_api
+        if not accountKey:
+            return None
+        
         account_data = {
-            'accountKey': key_pair.public_key_api,
+            'accountKey': accountKey,
         }
 
+        create_account_url = urljoin(self._url, '/api/v1/createAccount')
         logger.debug(f'create_account {create_account_url} {account_data}')
         result = self._transaction_post(create_account_url, account_data)
         logger.debug(f'create_account result {result}')
-        account = Account(key_pair, to_address(result['address']))
+        
+        account = Account(key_pair, Account.to_address(result['address']))
+        
         return account
 
-    def load_account(self, name, key_pair):
+    def load_account(self, name: str, key_pair: KeyPair) -> Union[Account, None]:
         """
 
         Load an account using the correct name. If successfull return the :class:`.Account` object with the address set.
@@ -127,7 +133,7 @@ class API:
             new_account = Account(key_pair, address, name=name)
             return new_account
 
-    def setup_account(self, name, key_pair, register_account=None):
+    def setup_account(self, name: str, key_pair: KeyPair , register_account: Union[Account, None] = None) -> Union[Account, None]:
         """
 
         Convenience method to create or load an account based on the account name.
@@ -168,7 +174,7 @@ class API:
             account = self.register_account_name(name, account, register_account)
         return account
 
-    def register_account_name(self, name, address_account, account=None):
+    def register_account_name(self, name: str, address_account: Union[int, Account], account: Union[Account, None] = None) -> Account:
         """
 
         Register or update an account address with an account name.
@@ -202,8 +208,8 @@ class API:
         """
 
         # is the address_account field only an address?
-        address = to_address(address_account)
-        if is_account(address_account) and account is None:
+        address = Account.to_address(address_account)
+        if Account.is_account(address_account) and account is None:
             account = address_account
 
         # we must have a valid account to do the registration
@@ -216,7 +222,7 @@ class API:
         self._registry.register(f'account.{name}', address, account)
         return Account(account.key_pair, address=address, name=name)
 
-    def send(self, transaction, account, language=None, sequence_retry_count=20):
+    def send(self, transaction: str, account: Account, language: Union[Literal['convex-lisp'], None] = None, sequence_retry_count: int = 20):
         """
         Send transaction code to the block chain node.
 
@@ -280,7 +286,7 @@ class API:
                 break
         return result
 
-    def query(self, transaction, address_account, language=None):
+    def query(self, transaction: str, address_account: Union[int, str, Account], language: Union[Literal['convex-lisp'], None] = None):
         """
 
         Run a query transaction on the block chain. Since this does not change the network state, and
@@ -315,11 +321,11 @@ class API:
             {'value': 100000}
 
         """
-        address = to_address(address_account)
+        address = Account.to_address(address_account)
 
         return self._transaction_query(address, transaction, language)
 
-    def request_funds(self, amount, account):
+    def request_funds(self, amount: int, account: Account):
         """
 
         Request funds for an account from the block chain faucet.
@@ -419,7 +425,7 @@ class API:
         """
         result = self.query(line, address_account)
         if result and 'value' in result:
-            return to_address(result['value'])
+            return Account.to_address(result['value'])
 
     def get_balance(self, address_account, account_from=None):
         """
@@ -452,11 +458,11 @@ class API:
 
         """
         value = 0
-        address = to_address(address_account)
+        address = Account.to_address(address_account)
 
         address_from = address
         if account_from:
-            address_from = to_address(account_from)
+            address_from = Account.to_address(account_from)
         line = f'(balance #{address})'
         """
         if self._language == API.LANGUAGE_SCRYPT:
@@ -472,7 +478,7 @@ class API:
             value = result['value']
         return value
 
-    def transfer(self, to_address_account, amount, account):
+    def transfer(self, to_address_account: Union[Account, int, str], amount: Union[int, float], account: Union[Account, int, str]):
         """
 
         Transfer funds from on account to another.
@@ -505,7 +511,7 @@ class API:
             9998520
 
         """
-        transfer_to_address = to_address(to_address_account)
+        transfer_to_address = Account.to_address(to_address_account)
         if not to_address:
             raise ValueError(f'You must provide a valid to account/address ({transfer_to_address}) to transfer funds too')
 
@@ -519,7 +525,7 @@ class API:
             return result['value']
         return 0
 
-    def transfer_account(self, from_account, to_account):
+    def transfer_account(self, from_account: Union[Account, int, str], to_account: Union[Account, int, str]):
         """
 
         **WARNING**
@@ -574,7 +580,7 @@ class API:
         if result and 'value' in result and from_account.key_pair.is_equal(result['value']):
             return Account(from_account.key_pair, to_account.address, to_account.name)
 
-    def get_account_info(self, address_account):
+    def get_account_info(self, address_account: Union[Account, int, str]):
         """
 
         Get account information. This will only work with an account that has a balance or has had some transactions
@@ -601,7 +607,7 @@ class API:
             'sequence': 0, 'type': 'user'}
 
         """
-        address = to_address(address_account)
+        address = Account.to_address(address_account)
 
         account_url = urljoin(self._url, f'/api/v1/accounts/{address}')
         logger.debug(f'get_account_info {account_url}')
@@ -614,7 +620,7 @@ class API:
         logger.debug(f'get_account_info repsonse {result}')
         return result
 
-    def resolve_account_name(self, name):
+    def resolve_account_name(self, name: str):
         """
         Resolves an account name to an address.
         :param string name Name of the account to resolve.
@@ -627,7 +633,7 @@ class API:
         """
         return self._registry.resolve_address(f'account.{name}')
 
-    def resolve_name(self, name):
+    def resolve_name(self, name: str):
         """
         Resolves any Convex Name Services to an address.
         :param string name Name of the the CNS Service.
@@ -640,14 +646,14 @@ class API:
         """
         return self._registry.resolve_address(name)
 
-    def load_contract(self, name):
+    def load_contract(self, name: str):
         from convex_api.contract import Contract
 
         contract = Contract(self)
         if contract.load(name=name):
             return contract
 
-    def _transaction_post(self, url, data, sequence_retry_count=20):
+    def _transaction_post(self, url: str, data: dict[str, Any], sequence_retry_count: int = 20):
         max_sleep_time_seconds = 1
         while sequence_retry_count >= 0:
             response = requests.post(url, data=json.dumps(data))
@@ -668,7 +674,7 @@ class API:
                 raise ConvexRequestError('_transaction_post', response.status_code, response.text)
         return result
 
-    def _transaction_prepare(self, transaction, address, language=None, sequence_number=None):
+    def _transaction_prepare(self, transaction, address: Union[Account, int, str], language: Union[Literal['convex-lisp'], None] = None, sequence_number: Union[int, None] = None):
         """
 
         """
@@ -676,7 +682,7 @@ class API:
             language = self._language
         prepare_url = urljoin(self._url, '/api/v1/transaction/prepare')
         data = {
-            'address': to_address(address),
+            'address': Account.to_address(address),
             'lang': language,
             'source': transaction,
         }
@@ -698,7 +704,7 @@ class API:
         """
         submit_url = urljoin(self._url, '/api/v1/transaction/submit')
         data = {
-            'address': to_address(address),
+            'address': Account.to_address(address),
             'accountKey': public_key,
             'hash': hash_data,
             'sig': remove_0x_prefix(signed_data)
@@ -710,7 +716,7 @@ class API:
             raise ConvexAPIError('_transaction_submit', result['errorCode'], result['value'])
         return result
 
-    def _transaction_query(self, address, transaction, language=None):
+    def _transaction_query(self, address: Union[Account, int, str], transaction, language: Union[Literal['convex-lisp'], None] = None):
         """
 
         """
@@ -740,5 +746,5 @@ class API:
         return self._language
 
     @property
-    def registry(self):
+    def registry(self) -> Registry:
         return self._registry
