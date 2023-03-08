@@ -117,8 +117,10 @@ def add_0x_prefix(text: Union[str, None]) -> Union[str, None]:
     :returns: The text with a `0x` appended to the front
 
     """
-    if text:
-        return '0x' + remove_0x_prefix(text)
+    if text is not None:
+        result: Union[str, None] = remove_0x_prefix(text)
+        if result is not None:
+            return '0x' 
 
 
 def remove_0x_prefix(text: Union[str, None]) -> Union[str, None]:
@@ -130,7 +132,7 @@ def remove_0x_prefix(text: Union[str, None]) -> Union[str, None]:
     :results: Removed '0x' from the hex string.
 
     """
-    if text:
+    if text is not None:
         return re.sub(r'^0x', '', text, re.IGNORECASE)
 
 
@@ -144,13 +146,15 @@ def to_bytes(data: Union[bytes, int, None] = None, hexstr: Union[str, None] = No
     :returns Bytes of the hex data
 
     """
-    if data:
+    if data is not None:
         return data.to_bytes(32, 'big')
     elif hexstr and is_hexstr(add_0x_prefix(hexstr)):
-        return binascii.unhexlify(remove_0x_prefix(hexstr))
+        hex = remove_0x_prefix(hexstr)
+        if hex is not None:
+            return binascii.unhexlify(hex)
 
 
-def to_hex(value):
+def to_hex(value: bytes) -> Union[str, None]:
     """
     Convert byte data to hex.
 

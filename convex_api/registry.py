@@ -4,6 +4,7 @@
 
 """
 import logging
+from typing import Tuple, Union
 from convex_api.account import Account
 from convex_api.api import API
 from convex_api.exceptions import ConvexAPIError
@@ -18,7 +19,7 @@ class Registry:
     def __init__(self, convex: API):
         self._convex = convex
         self._address = None
-        self._items = {}
+        self._items: dict[str, Union[Tuple[int, int], None]] = {}
 
     def is_registered(self, name: str):
         return self.item(name) is not None
@@ -36,7 +37,7 @@ class Registry:
         self._items = {}
         self._address = None
 
-    def register(self, name: str, contract_address, account):
+    def register(self, name: str, contract_address: int, account: Account):
         result = self._convex.send(f'(call #{self.address} (register {{:name (symbol "{name}")}}))', account)
         logger.debug(f'register result: {result}')
         if result and 'value' in result:
@@ -46,25 +47,25 @@ class Registry:
                 if result and 'value' in result:
                     items = result['value']
                     if name in items:
-                        item = items[name]
+                        item: Tuple[int, int] = items[name]
                         self._items[name] = item
                         return item
             except ConvexAPIError as e:
                 logger.debug(f'convex error: {e}')
                 raise
 
-    def resolve_owner(self, name: str):
+    def resolve_owner(self, name: str) -> Union[int, None]:
         item = self.item(name)
         if item:
             return item[1]
 
-    def resolve_address(self, name: str):
+    def resolve_address(self, name: str) -> Union[int, None]:
         item = self.item(name)
         if item:
             return item[0]
 
     @property
-    def address(self):
+    def address(self) -> Union[int, None]:
         if self._address is None:
             result = self._convex.query('(address *registry*)', QUERY_ACCOUNT_ADDRESS)
             self._registry_address = Account.to_address(result['value'])

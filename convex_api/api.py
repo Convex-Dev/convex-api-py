@@ -88,7 +88,7 @@ class API:
 
         
         accountKey = key_pair.public_key_api
-        if not accountKey:
+        if accountKey is None:
             return None
         
         account_data = {
@@ -174,7 +174,12 @@ class API:
             account = self.register_account_name(name, account, register_account)
         return account
 
-    def register_account_name(self, name: str, address_account: Union[int, Account], account: Union[Account, None] = None) -> Account:
+    def register_account_name(
+        self, 
+        name: str, 
+        address_account: Union[Account, int, str], 
+        account: Union[Account, None] = None
+    ) -> Account:
         """
 
         Register or update an account address with an account name.
@@ -358,7 +363,12 @@ class API:
             raise ValueError(f'request_funds: returned account is not correct {result["address"]}')
         return result['amount']
 
-    def topup_account(self, account, min_balance=TOPUP_ACCOUNT_MIN_BALANCE, retry_count=8):
+    def topup_account(
+        self, 
+        account: Account, 
+        min_balance: Union[int, float] = TOPUP_ACCOUNT_MIN_BALANCE, 
+        retry_count: int = 8
+    ):
         """
 
         Topup an account from the block chain faucet, so that the balance of the account is above or equal to
@@ -395,7 +405,7 @@ class API:
             retry_count -= 1
         return transfer_amount
 
-    def get_address(self, function_name, address_account):
+    def get_address(self, function_name: str, address_account: Union[Account, int, str]):
         """
 
         Query the network for a contract ( function ) address. The contract must have been deployed
@@ -427,7 +437,7 @@ class API:
         if result and 'value' in result:
             return Account.to_address(result['value'])
 
-    def get_balance(self, address_account, account_from=None):
+    def get_balance(self, address_account: Union[Account, int, str], account_from: Union[Account, int, str, None] = None):
         """
 
         Get a balance of an account.
@@ -478,7 +488,7 @@ class API:
             value = result['value']
         return value
 
-    def transfer(self, to_address_account: Union[Account, int, str], amount: Union[int, float], account: Union[Account, int, str]):
+    def transfer(self, to_address_account: Union[Account, int, str], amount: Union[int, float], account: Account):
         """
 
         Transfer funds from on account to another.
@@ -512,7 +522,7 @@ class API:
 
         """
         transfer_to_address = Account.to_address(to_address_account)
-        if not to_address:
+        if transfer_to_address is None:
             raise ValueError(f'You must provide a valid to account/address ({transfer_to_address}) to transfer funds too')
 
         line = f'(transfer #{transfer_to_address} {amount})'
@@ -620,7 +630,7 @@ class API:
         logger.debug(f'get_account_info repsonse {result}')
         return result
 
-    def resolve_account_name(self, name: str):
+    def resolve_account_name(self, name: str) -> Union[int, None]:
         """
         Resolves an account name to an address.
         :param string name Name of the account to resolve.
@@ -633,7 +643,7 @@ class API:
         """
         return self._registry.resolve_address(f'account.{name}')
 
-    def resolve_name(self, name: str):
+    def resolve_name(self, name: str) -> Union[int, None]:
         """
         Resolves any Convex Name Services to an address.
         :param string name Name of the the CNS Service.
@@ -698,7 +708,7 @@ class API:
 
         return result
 
-    def _transaction_submit(self, address, public_key, hash_data, signed_data):
+    def _transaction_submit(self, address: Union[Account, int, str], public_key: str, hash_data, signed_data):
         """
 
         """
@@ -716,7 +726,7 @@ class API:
             raise ConvexAPIError('_transaction_submit', result['errorCode'], result['value'])
         return result
 
-    def _transaction_query(self, address: Union[Account, int, str], transaction, language: Union[Literal['convex-lisp'], None] = None):
+    def _transaction_query(self, address: Union[Account, int, str], transaction: str, language: Union[Literal['convex-lisp'], None] = None):
         """
 
         """

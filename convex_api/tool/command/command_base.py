@@ -103,7 +103,7 @@ class CommandBase(ABC):
         return Account(key_pair, info['address'], name=info['name'])
 
     def is_address(self, value):
-        return is_address(value)
+        return Account.is_address(value)
 
     @abstractmethod
     def create_parser(self, sub_parser):

@@ -17,7 +17,7 @@ from convex_api.tool.output import Output
 
 
 
-def test_account_create_command(convex_url):
+def test_account_create_command(convex_url: str):
     args = Mock()
 
     args.url = convex_url
