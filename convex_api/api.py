@@ -45,7 +45,7 @@ class API:
 
         if language not in API.LANGUAGE_ALLOWED:
             raise ValueError(f'Invalid language: {language}')
-        self._language = language
+        self._language: Literal['convex-lisp'] = language
         self._registry = Registry(self)
 
     def create_account(self, key_pair: KeyPair, sequence_retry_count: int = 20) -> Union[Account, None]:
@@ -265,10 +265,10 @@ class API:
 
 
         """
-        if not transaction:
-            raise ValueError('You need to provide a valid transaction')
-        if not isinstance(transaction, str):
-            raise TypeError('The transaction must be a type str')
+        # if not transaction:
+        #     raise ValueError('You need to provide a valid transaction')
+        # if not isinstance(transaction, str):
+        #     raise TypeError('The transaction must be a type str')
 
         result = None
         max_sleep_time_seconds = 1
@@ -291,7 +291,12 @@ class API:
                 break
         return result
 
-    def query(self, transaction: str, address_account: Union[int, str, Account], language: Union[Literal['convex-lisp'], None] = None):
+    def query(
+        self, 
+        transaction: str, 
+        address_account: Union[int, str, Account], 
+        language: Union[Literal['convex-lisp'], None] = None
+    ):
         """
 
         Run a query transaction on the block chain. Since this does not change the network state, and
@@ -327,10 +332,12 @@ class API:
 
         """
         address = Account.to_address(address_account)
+        if address is None:
+            raise ValueError('You need to provide a valid address to query the block chain')
 
         return self._transaction_query(address, transaction, language)
 
-    def request_funds(self, amount: int, account: Account):
+    def request_funds(self, amount: Union[int, float], account: Account):
         """
 
         Request funds for an account from the block chain faucet.
@@ -726,7 +733,12 @@ class API:
             raise ConvexAPIError('_transaction_submit', result['errorCode'], result['value'])
         return result
 
-    def _transaction_query(self, address: Union[Account, int, str], transaction: str, language: Union[Literal['convex-lisp'], None] = None):
+    def _transaction_query(
+        self, 
+        address: Union[Account, int, str], 
+        transaction: str, 
+        language: Union[Literal['convex-lisp'], None] = None
+    ):
         """
 
         """

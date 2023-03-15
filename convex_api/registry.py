@@ -65,9 +65,12 @@ class Registry:
             return item[0]
 
     @property
-    def address(self) -> Union[int, None]:
+    def address(self) -> int:
         if self._address is None:
             result = self._convex.query('(address *registry*)', QUERY_ACCOUNT_ADDRESS)
-            self._registry_address = Account.to_address(result['value'])
+            registry_address = Account.to_address(result['value'])
+            if registry_address is None:
+                raise ValueError(f'Invalid registry address: {result["value"]}')
+            self._registry_address = registry_address 
             logger.debug(f'registry_address: {self._registry_address}')
         return self._registry_address

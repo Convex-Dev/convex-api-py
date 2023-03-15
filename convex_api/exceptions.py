@@ -6,7 +6,7 @@
 
 
 class ConvexBaseError(Exception):
-    def __init__(self, source, code, text):
+    def __init__(self, source: str, code: str, text: str):
         self.source = source
         self.code = code
         self.text = text

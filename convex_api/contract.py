@@ -22,7 +22,12 @@ class Contract:
         self._address = None
         self._owner_address = None
 
-    def load(self, name: Union[str, None] = None, address: Union[Account, int, str, None] = None, owner_address: Union[Account, int, str, None] = None):
+    def load(
+        self, 
+        name: Union[str, None] = None, 
+        address: Union[Account, int, str, None] = None, 
+        owner_address: Union[Account, int, str, None] = None
+    ):
         """
 
         Load a contract details using it's registered name or directly using it's known address.
@@ -96,13 +101,15 @@ class Contract:
         result = self._convex.send(deploy_line, account)
         if result and 'value' in result:
             address = Account.to_address(result["value"])
+            if address is None:
+                raise ValueError(f'Invalid address: {result["value"]}')
             if name:
                 if owner_account is None:
                     owner_account = account
                 self._convex.registry.register(name, address, owner_account)
             return address
 
-    def register_contract_name(self, name: str, address, account):
+    def register_contract_name(self, name: str, address: int, account: Account):
         """
 
         Register a contract address with a resolvable name. This name can be used on the Convex network to resolve
@@ -119,7 +126,7 @@ class Contract:
         """
         return self._convex.registry.register(name, address, account)
 
-    def send(self, transaction, account):
+    def send(self, transaction: str, account: Account):
         """
 
         Sends a contract transaction to the contract. You need to run `load` before calling this method.
@@ -135,7 +142,7 @@ class Contract:
             raise ValueError(f'No contract address found for {self._name}')
         return self._convex.send(f'(call #{self._address} {transaction})', account)
 
-    def query(self, transaction, account_address=None):
+    def query(self, transaction: str, account_address: Union[Account, int, str, None] = None):
         """
 
         Sends a query to the contract.
@@ -149,7 +156,7 @@ class Contract:
         """
         if not self._address:
             raise ValueError(f'No contract address found for {self._name}')
-        if account_address is None:
+        if account_address is not None:
             account_address = Account.to_address(account_address)
         if account_address is None:
             account_address = self._address
@@ -188,7 +195,7 @@ class Contract:
         return self._name
 
     @staticmethod
-    def escape_string(text):
+    def escape_string(text: str) -> str:
         """
         Escape any string and replace quote chars with leading escape chars
 

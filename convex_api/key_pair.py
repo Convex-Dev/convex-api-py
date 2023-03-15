@@ -113,7 +113,7 @@ class KeyPair:
         return private_data.decode()
 
     @property
-    def export_to_mnemonic(self):
+    def export_to_mnemonic(self) -> str:
         """
 
         Export the private key as a mnemonic words. You must keep this secret since the private key can be

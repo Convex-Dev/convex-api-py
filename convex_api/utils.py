@@ -154,7 +154,7 @@ def to_bytes(data: Union[bytes, int, None] = None, hexstr: Union[str, None] = No
             return binascii.unhexlify(hex)
 
 
-def to_hex(value: bytes) -> Union[str, None]:
+def to_hex(value: bytes) -> str:
     """
     Convert byte data to hex.
 

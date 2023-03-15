@@ -91,7 +91,10 @@ class Account:
 
         """
         self._key_pair = key_pair
-        self._address = Account.to_address(address)
+        address_as_int = Account.to_address(address)
+        if address_as_int is None:
+            raise ValueError(f'Invalid address {address}')
+        self._address = address_as_int
         self._name = name
 
     def sign(self, hash_text: str) -> Union[str, None]:
@@ -130,7 +133,7 @@ class Account:
         return self._address is not None
 
     @property
-    def address(self) -> Union[int, None]:
+    def address(self) -> int:
         """
 
         :returns: the network account address
@@ -166,7 +169,10 @@ class Account:
             >>> account.address = 42
 
         """
-        self._address = Account.to_address(value)
+        address = Account.to_address(value)
+        if address is None:
+            raise ValueError(f'Invalid address {value}')
+        self._address = address
 
     @property
     def name(self) -> Union[str, None]:
