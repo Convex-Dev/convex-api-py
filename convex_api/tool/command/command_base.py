@@ -16,8 +16,6 @@ from convex_api import (
     Account,
     KeyPair
 )
-from convex_api.utils import is_address
-
 
 logger = logging.getLogger('convex_tools')
 

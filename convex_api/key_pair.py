@@ -5,23 +5,226 @@
 
 """
 
+import binascii
+import re
 from typing import Union
 from cryptography.hazmat.backends import default_backend
+from cryptography.hazmat.backends.openssl.backend import backend as openssl_backend
+from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
 
 
 from mnemonic import Mnemonic
 
-from convex_api.utils import (
-    remove_0x_prefix,
-    to_bytes,
-    to_hex,
-    to_public_key_checksum
-)
-
-
 class KeyPair:
+
+    @staticmethod
+    def add_0x_prefix(hexstr: str) -> str:
+        """
+
+        Add a 0x prefix to a string.
+
+        :param str hexstr: The string to add the 0x prefix to
+
+        :returns: The string with the 0x prefix
+
+        .. code-block:: python
+
+            >>> KeyPair.add_0x_prefix('123')
+            '0x123'
+
+        """
+        if hexstr:
+            return '0x' + KeyPair.remove_0x_prefix(hexstr)
+        else:
+            return '0x'
+
+    @staticmethod
+    def remove_0x_prefix(hexstr: str) -> str:
+        """
+
+        Remove a 0x prefix from a string.
+
+        :param str hexstr: The string to remove the 0x prefix from
+
+        :returns: The string without the 0x prefix
+
+        .. code-block:: python
+
+            >>> KeyPair.remove_0x_prefix('0x123')
+            '123'
+
+        """
+        if hexstr:
+            return re.sub(r'^0x', '', hexstr, re.IGNORECASE)
+        else:
+            return ''
+
+    @staticmethod
+    def is_hexstr(hexstr: str) -> bool:
+        """
+
+        Check if a string is a valid hex string.
+
+        :param str hexstr: The string to check
+
+        :returns: True if the string is a valid hex string
+
+        .. code-block:: python
+
+            >>> KeyPair.is_hexstr('0x123')
+            True
+
+            >>> KeyPair.is_hexstr('0x123g')
+            False
+
+        """
+        if hexstr:
+            return bool(re.match(r'^0x[0-9a-f]+$', hexstr, re.IGNORECASE))
+        else: 
+            return False                                                  
+
+    @staticmethod
+    def hex_to_bytes(hexstr: str) -> bytes:
+        """
+
+        Convert a hex string to bytes.
+
+        :param str hexstr: The hex string to convert
+
+        :returns: The hex string as bytes
+
+        .. code-block:: python
+
+            >>> KeyPair.hex_to_bytes('0x123')
+            b'\\x01\\x23'
+
+        """
+        if KeyPair.is_hexstr(KeyPair.add_0x_prefix(hexstr)):
+            return binascii.unhexlify(KeyPair.remove_0x_prefix(hexstr))
+        else:
+            raise ValueError('Invalid hex string')
+
+    @staticmethod
+    def to_bytes(data: Union[int, bytes]) -> bytes:
+        """
+
+        Convert data to bytes.
+
+        :param int, bytes data: The data to convert
+
+        :returns: The data as bytes
+
+        .. code-block:: python
+
+            >>> KeyPair.data_to_bytes(0x123)
+            b'\\x01\\x23'
+
+            >>> KeyPair.data_to_bytes(b'\\x01\\x23')
+            b'\\x01\\x23'
+
+        """
+        if isinstance(data, int):
+            return data.to_bytes(32, 'big')
+        else:
+            return data
+
+    @staticmethod
+    def to_hex(data: bytes) -> str:
+        """
+
+        Convert bytes to a hex string.
+
+        :param bytes data: The bytes to convert
+
+        :returns: The bytes as a hex string
+
+        .. code-block:: python
+
+            >>> KeyPair.to_hex(b'\\x01\\x23')
+            '0x0123'
+
+        """
+        return KeyPair.add_0x_prefix(binascii.hexlify(data).decode())
+
+    @staticmethod
+    def to_public_key_checksum(public_key: str) -> str:
+        """
+
+        Convert a public key to a checksum key. This will first make all a-f characters lowercase
+        then convert a-f characters to uppercase depending on the hash of the public key.
+
+        :param str public_key: The public key to convert to a checksum key
+
+        :returns: The checksum key of the public key
+
+        """
+        digest = hashes.Hash(hashes.SHA256(), backend=openssl_backend)
+        public_key_bytes = KeyPair.hex_to_bytes(public_key)
+        digest.update(public_key_bytes)
+        public_key_hash = KeyPair.remove_0x_prefix(KeyPair.to_hex(digest.finalize()))
+        public_key_clean = KeyPair.remove_0x_prefix(public_key.lower())
+
+        checksum = ''
+        hash_index = 0
+        for value in public_key_clean:
+            if int(public_key_hash[hash_index], 16) >= 8:
+                checksum += value.upper()
+            else:
+                checksum += value
+            hash_index += 1
+            if hash_index >= len(public_key_hash):
+                hash_index = 0
+        return KeyPair.add_0x_prefix(checksum)
+
+
+    @staticmethod
+    def is_public_key_checksum(public_key: str) -> bool:
+        """
+
+        Check if a public key is a checksum key.
+
+        :param str public_key: The public key to check
+
+        :returns: True if the public key is a checksum key
+
+        """
+        return KeyPair.remove_0x_prefix(KeyPair.to_public_key_checksum(public_key)) == KeyPair.remove_0x_prefix(public_key)
+
+    @staticmethod
+    def is_public_key_hex(public_key: str) -> bool:
+        """
+
+        Check if a public key is a valid hex public key.
+
+        :param str public_key: The public key to check
+
+        :returns: True if the public key is a valid hex public key
+
+        """
+        if KeyPair.is_hexstr(KeyPair.add_0x_prefix(public_key)):
+            if len(KeyPair.remove_0x_prefix(public_key)) == 64:
+                return True
+        return False
+
+    @staticmethod
+    def is_public_key(public_key: str) -> bool:
+        """
+
+        Check if a public key is a valid public key.
+
+        :param str public_key: The public key to check
+
+        :returns: True if the public key is a valid public key
+
+        """
+        if KeyPair.is_public_key_checksum(public_key):
+            return True
+        elif KeyPair.is_public_key_hex(public_key):
+            return True
+        else:
+            return False
 
     def __init__(self, private_key: Union[Ed25519PrivateKey, None] = None):
         """
@@ -75,11 +278,11 @@ class KeyPair:
             '5d41b964c63d1087ad66e58f4f9d3fe2b7bd0560b..'
 
         """
-        hash_data = to_bytes(hexstr=hash_text)
-        if not hash_data:
-            return None
+        hash_data = KeyPair.hex_to_bytes(hash_text)
+        # if not hash_data: TODO empty string?
+        #     return None
         signed_hash_bytes = self._private_key.sign(hash_data)
-        return to_hex(signed_hash_bytes)
+        return KeyPair.to_hex(signed_hash_bytes)
 
     def export_to_text(self, password: Union[str, bytes]):
         """
@@ -190,7 +393,7 @@ class KeyPair:
         return public_key_bytes
 
     @property
-    def public_key(self):
+    def public_key(self) -> str:
         """
 
         Return the public key of the KeyPair in the format '0x....'
@@ -208,7 +411,7 @@ class KeyPair:
             0x36d8c5c40dbe2d1b0131acf41c38b9d37ebe04d85...
 
         """
-        return to_hex(self.public_key_bytes)
+        return KeyPair.to_hex(self.public_key_bytes)
 
     @property
     def public_key_api(self):
@@ -230,10 +433,10 @@ class KeyPair:
 
 
         """
-        return remove_0x_prefix(self.public_key_checksum)
+        return KeyPair.remove_0x_prefix(self.public_key_checksum)
 
     @property
-    def public_key_checksum(self):
+    def public_key_checksum(self) -> str:
         """
 
         Return the public key of the KeyPair with checksum upper/lower case characters
@@ -251,7 +454,7 @@ class KeyPair:
 
         """
 
-        return to_public_key_checksum(self.public_key)
+        return KeyPair.to_public_key_checksum(self.public_key)
 
     def is_equal(self, public_key_pair: Union['KeyPair', str]) -> bool:
         """
@@ -263,20 +466,12 @@ class KeyPair:
         :returns: True if the public_key_pair str or KeyPair have the same public key as this object.
 
         """
-        public_key = None
         if isinstance(public_key_pair, KeyPair):
-            public_key = remove_0x_prefix(public_key_pair.public_key)
+            public_key = public_key_pair.public_key
         else:
-            public_key = remove_0x_prefix(public_key_pair)
-
-        if public_key is None:
-            return False
-
-        public_key_checksum = remove_0x_prefix(self.public_key_checksum)
-        if public_key_checksum is None:
-            return False
-
-        return public_key_checksum.lower() == public_key.lower()
+            public_key = public_key_pair
+ 
+        return KeyPair.remove_0x_prefix(self.public_key_checksum).lower() == KeyPair.remove_0x_prefix(public_key).lower()
 
     @staticmethod
     def import_from_bytes(value: bytes) -> 'KeyPair':

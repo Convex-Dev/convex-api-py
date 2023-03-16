@@ -9,11 +9,6 @@ import secrets
 
 
 from convex_api.key_pair import KeyPair
-from convex_api.utils import (
-    to_bytes,
-    remove_0x_prefix
-)
-
 
 
 SIGN_HASH_TEXT = '5bb1ce718241bfec110552b86bb7cccf0d95b8a5f462fbf6dff7c48543622ba5'
@@ -32,12 +27,12 @@ def test_key_pair_create_from_bytes(test_key_pair_info):
 def test_key_pair_address_bytes(test_key_pair_info):
     key_pair = KeyPair.import_from_bytes(test_key_pair_info['private_bytes'])
     assert(key_pair)
-    assert(key_pair.public_key_bytes == to_bytes(hexstr=test_key_pair_info['public_key']))
+    assert(key_pair.public_key_bytes == KeyPair.hex_to_bytes(test_key_pair_info['public_key']))
 
 def test_key_pair_address_api(test_key_pair_info):
     key_pair = KeyPair.import_from_bytes(test_key_pair_info['private_bytes'])
     assert(key_pair)
-    assert(key_pair.public_key_api == remove_0x_prefix(test_key_pair_info['public_key']))
+    assert(key_pair.public_key_api == KeyPair.remove_0x_prefix(test_key_pair_info['public_key']))
 
 def test_key_pair_address_checksum(test_key_pair_info):
     key_pair = KeyPair.import_from_bytes(test_key_pair_info['private_bytes'])

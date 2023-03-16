@@ -7,27 +7,21 @@ import requests
 
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
 from cryptography.hazmat.primitives import serialization
-
-from convex_api.utils import (
-    to_hex,
-    remove_0x_prefix,
-    to_bytes,
-    to_public_key_checksum
-)
+from convex_api.key_pair import KeyPair
 
 
 PRIVATE_TEST_KEY = 0x973f69bcd654b264759170724e1e30ccd2e75fc46b7993fd24ce755f0a8c24d0
 PUBLIC_ADDRESS = '5288fec4153b702430771dfac8aed0b21cafca4344dae0d47b97f0bf532b3306'
 
 def get_test_account():
-    private_key = Ed25519PrivateKey.from_private_bytes(to_bytes(PRIVATE_TEST_KEY))
+    private_key = Ed25519PrivateKey.from_private_bytes(KeyPair.to_bytes(PRIVATE_TEST_KEY))
 
     public_key = private_key.public_key()
     public_key_bytes = public_key.public_bytes(
         encoding=serialization.Encoding.Raw,
         format=serialization.PublicFormat.Raw
     )
-    public_address = remove_0x_prefix(to_hex(public_key_bytes))
+    public_address = KeyPair.remove_0x_prefix(KeyPair.to_hex(public_key_bytes))
     assert(public_address == PUBLIC_ADDRESS)
     return private_key, public_address
 
@@ -38,13 +32,13 @@ def generate_test_keys():
         encoding=serialization.Encoding.Raw,
         format=serialization.PublicFormat.Raw
     )
-    public_address = remove_0x_prefix(to_hex(public_key_bytes))
+    public_address = KeyPair.remove_0x_prefix(KeyPair.to_hex(public_key_bytes))
     return private_key, public_address
 
 
 def create_account(convex_url, public_address):
     account_data = {
-        'accountKey': remove_0x_prefix(to_public_key_checksum(public_address)),
+        'accountKey': KeyPair.remove_0x_prefix(KeyPair.to_public_key_checksum(public_address)),
     }
     url = f'{convex_url}/api/v1/createAccount'
     print('create_account send to ', url, 'data:', account_data)
@@ -90,14 +84,14 @@ def test_submit_transaction(convex_url):
 
     #submit
     print(result)
-    hash_data = to_bytes(hexstr=result['hash'])
+    hash_data = KeyPair.hex_to_bytes(result['hash'])
     signed_hash_bytes = private_key.sign(hash_data)
-    signed_hash = to_hex(signed_hash_bytes)
+    signed_hash = KeyPair.to_hex(signed_hash_bytes)
     submit_data = {
         'address': f'#{address}',
         'accountKey': public_address,
         'hash': result['hash'],
-        'sig': remove_0x_prefix(signed_hash)
+        'sig': KeyPair.remove_0x_prefix(signed_hash)
     }
 
     url = f'{convex_url}/api/v1/transaction/submit'

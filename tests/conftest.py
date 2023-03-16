@@ -11,7 +11,6 @@ import secrets
 from convex_api.account import Account
 from convex_api.api import API
 from convex_api.key_pair import KeyPair
-from convex_api.utils import to_bytes
 
 logging.basicConfig(level=logging.DEBUG)
 logging.getLogger('urllib3').setLevel(logging.INFO)
@@ -38,7 +37,7 @@ TEST_ACCOUNT_NAME = 'test.convex-api'
 def test_key_pair_info():
     return {
         'private_hex' : PRIVATE_TEST_KEY,
-        'private_bytes': to_bytes(PRIVATE_TEST_KEY),
+        'private_bytes': KeyPair.to_bytes(PRIVATE_TEST_KEY),
         'private_text': PRIVATE_TEST_KEY_TEXT,
         'private_password': PRIVATE_TEST_KEY_PASSWORD,
         'private_mnemonic': PRIVATE_KEY_MNEMONIC,

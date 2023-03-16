@@ -23,14 +23,13 @@ from convex_api.exceptions import (
 )
 from convex_api.key_pair import KeyPair
 from convex_api.registry import Registry
-from convex_api.utils import (
-    remove_0x_prefix,
-)
 
 # min amount to do a topup account
 TOPUP_ACCOUNT_MIN_BALANCE = 10000000
 
 logger = logging.getLogger(__name__)
+
+from devtools import debug
 
 
 class API:
@@ -82,10 +81,6 @@ class API:
 
 
         """
-
-        if key_pair and not isinstance(key_pair, KeyPair):
-            raise TypeError(f'key_pair value {key_pair} must be a type convex_api.KeyPair')
-
         
         accountKey = key_pair.public_key_api
         if accountKey is None:
@@ -96,10 +91,11 @@ class API:
         }
 
         create_account_url = urljoin(self._url, '/api/v1/createAccount')
+
         logger.debug(f'create_account {create_account_url} {account_data}')
         result = self._transaction_post(create_account_url, account_data)
         logger.debug(f'create_account result {result}')
-        
+      
         account = Account(key_pair, Account.to_address(result['address']))
         
         return account
@@ -674,6 +670,7 @@ class API:
             response = requests.post(url, data=json.dumps(data))
             if response.status_code == 200:
                 result = response.json()
+                debug(result)
                 break
             elif response.status_code == 400:
                 if not re.search(':SEQUENCE ', response.text):
@@ -728,7 +725,7 @@ class API:
             'address': Account.to_address(address),
             'accountKey': public_key,
             'hash': hash_data,
-            'sig': remove_0x_prefix(signed_data)
+            'sig': KeyPair.remove_0x_prefix(signed_data)
         }
         logger.debug(f'_transaction_submit {submit_url} {data}')
         result = self._transaction_post(submit_url, data)

@@ -4,9 +4,10 @@
 
 """
 import logging
-from typing import Tuple, Union
+from typing import Tuple, Union, TYPE_CHECKING
 from convex_api.account import Account
-from convex_api.api import API
+if TYPE_CHECKING:
+    from convex_api.api import API
 from convex_api.exceptions import ConvexAPIError
 
 logger = logging.getLogger(__name__)
@@ -16,7 +17,7 @@ QUERY_ACCOUNT_ADDRESS = 9
 
 class Registry:
 
-    def __init__(self, convex: API):
+    def __init__(self, convex: 'API'):
         self._convex = convex
         self._address = None
         self._items: dict[str, Union[Tuple[int, int], None]] = {}
