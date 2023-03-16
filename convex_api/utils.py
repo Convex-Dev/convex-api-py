@@ -123,7 +123,7 @@ def add_0x_prefix(text: Union[str, None]) -> Union[str, None]:
             return '0x' 
 
 
-def remove_0x_prefix(text: Union[str, None]) -> Union[str, None]:
+def remove_0x_prefix(text: str) -> str:
     """
     Removes the '0x' from the front of the hex string.
 
@@ -132,7 +132,7 @@ def remove_0x_prefix(text: Union[str, None]) -> Union[str, None]:
     :results: Removed '0x' from the hex string.
 
     """
-    if text is not None:
+    if text:
         return re.sub(r'^0x', '', text, re.IGNORECASE)
 
 

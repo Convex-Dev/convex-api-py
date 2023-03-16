@@ -265,10 +265,8 @@ class API:
 
 
         """
-        # if not transaction:
-        #     raise ValueError('You need to provide a valid transaction')
-        # if not isinstance(transaction, str):
-        #     raise TypeError('The transaction must be a type str')
+        if not transaction:
+            raise ValueError('You need to provide a valid transaction')
 
         result = None
         max_sleep_time_seconds = 1
@@ -691,7 +689,13 @@ class API:
                 raise ConvexRequestError('_transaction_post', response.status_code, response.text)
         return result
 
-    def _transaction_prepare(self, transaction, address: Union[Account, int, str], language: Union[Literal['convex-lisp'], None] = None, sequence_number: Union[int, None] = None):
+    def _transaction_prepare(
+        self, 
+        transaction: str, 
+        address: Union[Account, int, str], 
+        language: Union[Literal['convex-lisp'], None] = None, 
+        sequence_number: Union[int, None] = None
+    ):
         """
 
         """

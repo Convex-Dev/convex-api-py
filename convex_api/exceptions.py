@@ -5,8 +5,11 @@
 """
 
 
+from typing import Union
+
+
 class ConvexBaseError(Exception):
-    def __init__(self, source: str, code: str, text: str):
+    def __init__(self, source: str, code: Union[int, str], text: str):
         self.source = source
         self.code = code
         self.text = text

@@ -253,7 +253,7 @@ class KeyPair:
 
         return to_public_key_checksum(self.public_key)
 
-    def is_equal(self, public_key_pair: Union['KeyPair', str]):
+    def is_equal(self, public_key_pair: Union['KeyPair', str]) -> bool:
         """
 
         Compare the value to see if it is the same as this key_pair
@@ -265,13 +265,18 @@ class KeyPair:
         """
         public_key = None
         if isinstance(public_key_pair, KeyPair):
-            public_key = public_key_pair.public_key
-        elif isinstance(public_key_pair, str):
-            public_key = public_key_pair
+            public_key = remove_0x_prefix(public_key_pair.public_key)
         else:
-            raise TypeError('invalid key_pair or public_key')
+            public_key = remove_0x_prefix(public_key_pair)
 
-        return remove_0x_prefix(self.public_key_checksum).lower() == remove_0x_prefix(public_key).lower()
+        if public_key is None:
+            return False
+
+        public_key_checksum = remove_0x_prefix(self.public_key_checksum)
+        if public_key_checksum is None:
+            return False
+
+        return public_key_checksum.lower() == public_key.lower()
 
     @staticmethod
     def import_from_bytes(value: bytes) -> 'KeyPair':
@@ -321,8 +326,10 @@ class KeyPair:
             text = text.encode()
 
         private_key = serialization.load_pem_private_key(text, password, backend=default_backend())
-        if private_key:
-            return KeyPair(private_key)
+        if not isinstance(private_key, Ed25519PrivateKey):
+            raise ValueError('Invalid private key type')
+    
+        return KeyPair(private_key)
 
     @staticmethod
     def import_from_mnemonic(words: str) -> 'KeyPair':

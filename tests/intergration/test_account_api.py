@@ -36,7 +36,6 @@ def test_account_api_multi_create_account(convex_url):
 
     assert(account_1.public_key == account_1.public_key)
     assert(account_1.public_key == account_2.public_key)
-    assert(account_1.has_address)
     assert(account_1.address != account_2.address)
 
 

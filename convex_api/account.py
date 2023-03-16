@@ -122,17 +122,6 @@ class Account:
         return f'Account {self.address}:{self.key_pair.public_key}'
 
     @property
-    def has_address(self) -> bool:
-        """
-
-        Return true if the address for this account object is set
-
-        :returns: True if this object has a valid address
-
-        """
-        return self._address is not None
-
-    @property
     def address(self) -> int:
         """
 
