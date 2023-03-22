@@ -20,7 +20,8 @@ with open('CHANGELOG.md') as changelog_file:
 install_requirements = [
     'cryptography',
     'requests',
-    'mnemonic'
+    'mnemonic',
+    'pydantic'
 ]
 
 setup_requirements = ['pytest-runner', ]

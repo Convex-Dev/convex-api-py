@@ -30,8 +30,8 @@ class Registry:
             result = self._convex.query(f'(get cns-database (symbol "{name}"))', self.address)
             logger.debug(f'cns-database: {result}')
             self._items[name] = None
-            if result and 'value' in result and isinstance(result['value'], (list, tuple)):
-                self._items[name] = result['value']
+            if isinstance(result.value, (list, tuple)):
+                self._items[name] = result.value
         return self._items[name]
 
     def clear(self):
@@ -69,9 +69,6 @@ class Registry:
     def address(self) -> int:
         if self._address is None:
             result = self._convex.query('(address *registry*)', QUERY_ACCOUNT_ADDRESS)
-            registry_address = Account.to_address(result['value'])
-            if registry_address is None:
-                raise ValueError(f'Invalid registry address: {result["value"]}')
-            self._registry_address = registry_address 
+            self._registry_address = Account.to_address(result.value)
             logger.debug(f'registry_address: {self._registry_address}')
         return self._registry_address

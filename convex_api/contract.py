@@ -99,10 +99,8 @@ class Contract:
 )
     """
         result = self._convex.send(deploy_line, account)
-        if result and 'value' in result:
-            address = Account.to_address(result["value"])
-            if address is None:
-                raise ValueError(f'Invalid address: {result["value"]}')
+        if result is not None and result.value:
+            address = Account.to_address(result.value)
             if name:
                 if owner_account is None:
                     owner_account = account

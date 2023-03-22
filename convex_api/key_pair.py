@@ -262,7 +262,7 @@ class KeyPair:
         self._private_key = private_key
         self._public_key = private_key.public_key()
 
-    def sign(self, hash_text: str) -> Union[str, None]:
+    def sign(self, hash_text: str) -> str:
         """
 
         Sign a hash text using the private key.

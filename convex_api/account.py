@@ -6,14 +6,10 @@
 """
 
 import re
-from typing import TypeGuard, Union
+from typing import Union
 from convex_api.key_pair import KeyPair
 
 class Account:
-
-    @staticmethod
-    def is_account(value: Union['Account', int, str]) -> TypeGuard['Account']:
-        return isinstance(value, Account)
 
     @staticmethod
     def is_address(text: Union[int, str]) -> bool:
@@ -25,30 +21,29 @@ class Account:
         :returns: True if the text field is a valid address.
 
         """
-        value = Account.to_address(text)
-        if isinstance(value, int):
-            return value >= 0
-        return False
+        return Account.to_address(text) >= 0
 
     @staticmethod
-    def to_address(value: Union['Account', int, str]) -> Union[int, None]:
+    def to_address(value: Union['Account', int, str]) -> int:
         """
         Convert address text with possible leading '#' to an interger address value.
 
         :param str text: Address text to convert
 
-        :returns: Integer address or None if not a valid address
+        :returns: Integer address
+
+        :raises ValueError: If the address is not valid
 
         """
-        if isinstance(value, int):
-            return int(value)
-        elif Account.is_account(value):
+        if isinstance(value, Account):
             return value.address
-        elif isinstance(value, str):
+        elif isinstance(value, int):
+            return int(value)
+        else:
             try:
                 address = int(re.sub(r'^#', '', value.strip()))
             except ValueError:
-                return None
+                raise ValueError(f'Invalid address {value}')
             return address
 
     def __init__(self, key_pair: KeyPair, address: Union['Account', int, str], name: Union[str, None] = None):
@@ -91,13 +86,10 @@ class Account:
 
         """
         self._key_pair = key_pair
-        address_as_int = Account.to_address(address)
-        if address_as_int is None:
-            raise ValueError(f'Invalid address {address}')
-        self._address = address_as_int
+        self._address = Account.to_address(address)
         self._name = name
 
-    def sign(self, hash_text: str) -> Union[str, None]:
+    def sign(self, hash_text: str) -> str:
         """
 
         Sign a hash text using the internal key_pair.
@@ -158,10 +150,7 @@ class Account:
             >>> account.address = 42
 
         """
-        address = Account.to_address(value)
-        if address is None:
-            raise ValueError(f'Invalid address {value}')
-        self._address = address
+        self._address = Account.to_address(value)
 
     @property
     def name(self) -> Union[str, None]:
