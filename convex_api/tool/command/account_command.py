@@ -19,9 +19,11 @@ from .account_topup_command import AccountTopupCommand
 from .command_base import CommandBase
 from .help_command import HelpCommand
 
+
 class AccountArgs(BaseArgs):
     command: Literal['account']
     account_command: Literal['balance', 'create', 'info', 'fund', 'name', 'resolve', 'topup', 'help']
+
 
 class AccountCommand(CommandBase):
 

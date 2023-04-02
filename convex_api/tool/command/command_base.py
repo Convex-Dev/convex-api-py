@@ -25,16 +25,18 @@ logger = logging.getLogger('convex_tools')
 
 DEFAULT_CONVEX_URL = 'https://convex.world'
 
+
 class NameAddress(TypedDict):
     name: Union[str, None]
     address: int
+
 
 class CommandBase(ABC):
     def __init__(self, name: str, sub_parser: SubParsersAction):
         self._name = name
         # TODO: If we include this it causes a type hinting error in resolve_to_name_address
-        #       Should we somehow assert that load_convex has been called ? 
-        #self._convex = None
+        #       Should we somehow assert that load_convex has been called ?
+        # self._convex = None
         self._sub_parser = sub_parser
         self._command_list: list['CommandBase'] = []
         if sub_parser:
@@ -65,7 +67,7 @@ class CommandBase(ABC):
     def print_help(self):
         self._sub_parser.choices[self._name].print_help()
 
-    def resolve_to_name_address(self, name_address: str, output: Output) -> Union[NameAddress, None]:        
+    def resolve_to_name_address(self, name_address: str, output: Output) -> Union[NameAddress, None]:
         name = None
         address = None
 
@@ -74,7 +76,7 @@ class CommandBase(ABC):
             name = name_address
 
         if not address:
-            address =  Account.to_address(name_address)
+            address = Account.to_address(name_address)
 
         if not self.is_address(address):
             output.add_error(f'{address} is not an convex account address')

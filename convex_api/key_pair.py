@@ -17,6 +17,7 @@ from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
 
 from mnemonic import Mnemonic
 
+
 class KeyPair:
 
     @staticmethod
@@ -82,8 +83,8 @@ class KeyPair:
         """
         if hexstr:
             return bool(re.match(r'^0x[0-9a-f]+$', hexstr, re.IGNORECASE))
-        else: 
-            return False                                                  
+        else:
+            return False
 
     @staticmethod
     def hex_to_bytes(hexstr: str) -> bytes:
@@ -177,7 +178,6 @@ class KeyPair:
             if hash_index >= len(public_key_hash):
                 hash_index = 0
         return KeyPair.add_0x_prefix(checksum)
-
 
     @staticmethod
     def is_public_key_checksum(public_key: str) -> bool:
@@ -470,7 +470,7 @@ class KeyPair:
             public_key = public_key_pair.public_key
         else:
             public_key = public_key_pair
- 
+
         return KeyPair.remove_0x_prefix(self.public_key_checksum).lower() == KeyPair.remove_0x_prefix(public_key).lower()
 
     @staticmethod
@@ -523,7 +523,7 @@ class KeyPair:
         private_key = serialization.load_pem_private_key(text, password, backend=default_backend())
         if not isinstance(private_key, Ed25519PrivateKey):
             raise ValueError('Invalid private key type')
-    
+
         return KeyPair(private_key)
 
     @staticmethod

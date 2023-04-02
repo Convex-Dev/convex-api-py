@@ -20,11 +20,13 @@ logger = logging.getLogger(__name__)
 
 DEFAULT_FUND_AMOUNT = 100000000
 
+
 class PeerCreateArgs(BaseArgs):
     command: Literal['peer']
     peer_command: Literal['create']
     topup: bool = True
     name: Union[str, None] = None
+
 
 class PeerCreateCommand(CommandBase):
 

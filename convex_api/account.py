@@ -9,6 +9,7 @@ import re
 from typing import Union
 from convex_api.key_pair import KeyPair
 
+
 class Account:
 
     @staticmethod

@@ -10,6 +10,7 @@ from typing import Union
 from convex_api.account import Account
 from convex_api.api import API
 
+
 class Contract:
     def __init__(self, convex: API):
         """
@@ -23,9 +24,9 @@ class Contract:
         self._owner_address = None
 
     def load(
-        self, 
-        name: Union[str, None] = None, 
-        address: Union[Account, int, str, None] = None, 
+        self,
+        name: Union[str, None] = None,
+        address: Union[Account, int, str, None] = None,
         owner_address: Union[Account, int, str, None] = None
     ):
         """
@@ -59,11 +60,11 @@ class Contract:
         return self._address
 
     def deploy(
-        self, 
-        account: Account, 
-        text: Union[str, None] = None, 
-        filename: Union[str, None] = None, 
-        name: Union[str, None] = None, 
+        self,
+        account: Account,
+        text: Union[str, None] = None,
+        filename: Union[str, None] = None,
+        name: Union[str, None] = None,
         owner_account: Union[Account, None] = None
     ):
         """

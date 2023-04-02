@@ -26,16 +26,16 @@ from convex_api.exceptions import (
 )
 from convex_api.key_pair import KeyPair
 from convex_api.models import (
-    AccountDetailsResponse, 
-    CreateAccountRequest, 
-    CreateAccountResponse, 
-    FaucetRequest, 
-    FaucetResponse, 
-    PrepareTransactionRequest, 
-    PrepareTransactionResponse, 
-    QueryRequest, 
-    QueryResponse, 
-    SubmitTransactionRequest, 
+    AccountDetailsResponse,
+    CreateAccountRequest,
+    CreateAccountResponse,
+    FaucetRequest,
+    FaucetResponse,
+    PrepareTransactionRequest,
+    PrepareTransactionResponse,
+    QueryRequest,
+    QueryResponse,
+    SubmitTransactionRequest,
     SubmitTransactionResponse
 )
 
@@ -45,6 +45,7 @@ from convex_api.registry import Registry
 TOPUP_ACCOUNT_MIN_BALANCE = 10000000
 
 logger = logging.getLogger(__name__)
+
 
 class API:
 
@@ -87,19 +88,19 @@ class API:
 
         """
         accountKey = key_pair.public_key_api
-        
+
         account_data = CreateAccountRequest(
             accountKey=accountKey
         )
 
         create_account_url = urljoin(self._url, '/api/v1/createAccount')
-        
+
         logger.debug(f'create_account {create_account_url} {account_data}')
         result = parse_obj_as(CreateAccountResponse, self._post(create_account_url, account_data))
         logger.debug(f'create_account result {result}')
-      
+
         account = Account(key_pair, Account.to_address(result.address))
-        
+
         return account
 
     def load_account(self, name: str, key_pair: KeyPair) -> Union[Account, None]:
@@ -131,7 +132,7 @@ class API:
             new_account = Account(key_pair, address, name=name)
             return new_account
 
-    def setup_account(self, name: str, key_pair: KeyPair , register_account: Union[Account, None] = None) -> Union[Account, None]:
+    def setup_account(self, name: str, key_pair: KeyPair, register_account: Union[Account, None] = None) -> Union[Account, None]:
         """
 
         Convenience method to create or load an account based on the account name.
@@ -173,9 +174,9 @@ class API:
         return account
 
     def register_account_name(
-        self, 
-        name: str, 
-        address_account: Union[Account, int, str], 
+        self,
+        name: str,
+        address_account: Union[Account, int, str],
         account: Union[Account, None] = None
     ) -> Account:
         """
@@ -286,8 +287,8 @@ class API:
         return result
 
     def query(
-        self, 
-        transaction: str, 
+        self,
+        transaction: str,
         address_account: Union[int, str, Account]
     ):
         """
@@ -358,9 +359,9 @@ class API:
         return result.amount
 
     def topup_account(
-        self, 
-        account: Account, 
-        min_balance: int = TOPUP_ACCOUNT_MIN_BALANCE, 
+        self,
+        account: Account,
+        min_balance: int = TOPUP_ACCOUNT_MIN_BALANCE,
         retry_count: int = 8
     ):
         """
@@ -640,9 +641,9 @@ class API:
             return contract
 
     def _post(
-        self, 
-        url: str, 
-        data: Union[CreateAccountRequest, FaucetRequest, QueryRequest, PrepareTransactionRequest, SubmitTransactionRequest], 
+        self,
+        url: str,
+        data: Union[CreateAccountRequest, FaucetRequest, QueryRequest, PrepareTransactionRequest, SubmitTransactionRequest],
         sequence_retry_count: int = 20
     ) -> Union[dict[str, Any], None]:
         max_sleep_time_seconds = 1
@@ -667,9 +668,9 @@ class API:
         return result
 
     def _transaction_prepare(
-        self, 
-        transaction: str, 
-        address: Union[Account, int, str], 
+        self,
+        transaction: str,
+        address: Union[Account, int, str],
         sequence_number: Union[int, None] = None
     ) -> PrepareTransactionResponse:
         """
@@ -704,10 +705,10 @@ class API:
         return result
 
     def _transaction_submit(
-        self, 
-        address: Union[Account, int, str], 
-        public_key: str, 
-        hash_data: str, 
+        self,
+        address: Union[Account, int, str],
+        public_key: str,
+        hash_data: str,
         signed_data: str
     ) -> SubmitTransactionResponse:
         """
@@ -724,8 +725,8 @@ class API:
             accountKey=public_key,
             hash=hash_data,
             sig=KeyPair.remove_0x_prefix(signed_data)
-        ) 
-        
+        )
+
         logger.debug(f'_transaction_submit {submit_url} {data}')
         result = parse_obj_as(SubmitTransactionResponse, self._post(submit_url, data))
         logger.debug(f'_transaction_submit response {result}')
@@ -736,8 +737,8 @@ class API:
         return result
 
     def _transaction_query(
-        self, 
-        address: Union[Account, int, str], 
+        self,
+        address: Union[Account, int, str],
         transaction: str
     ):
         """

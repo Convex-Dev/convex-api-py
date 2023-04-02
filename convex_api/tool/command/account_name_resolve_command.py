@@ -10,10 +10,12 @@ from convex_api.tool.command.argparse_typing import BaseArgs, SubParsersAction
 from convex_api.tool.output import Output
 from .command_base import CommandBase
 
+
 class AccountNameResolveArgs(BaseArgs):
     command: Literal['account']
     account_command: Literal['resolve']
     name: str
+
 
 class AccountNameResolveCommand(CommandBase):
 
@@ -45,5 +47,5 @@ class AccountNameResolveCommand(CommandBase):
             output.set_value('address', address)
         else:
             output.add_line('not found')
-        
+
         output.set_value('name', typed_args.name)

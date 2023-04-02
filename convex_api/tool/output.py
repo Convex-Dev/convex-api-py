@@ -7,6 +7,7 @@
 import json
 from typing import Union
 
+
 class Output:
     def __init__(self):
         self._line_list: list[str] = []

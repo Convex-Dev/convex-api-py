@@ -12,10 +12,12 @@ from convex_api.tool.output import Output
 
 from .command_base import CommandBase
 
+
 class SubmitArgs(BaseArgs):
     command: Literal['submit']
     submit: str
     name_address: str
+
 
 class SubmitCommand(CommandBase):
 
@@ -56,6 +58,6 @@ class SubmitCommand(CommandBase):
         result = convex.send(submit_args.submit, account)
         if not result:
             return
-        
+
         output.add_line(json.dumps(result))
         output.set_values(result.dict())

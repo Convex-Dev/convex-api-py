@@ -13,9 +13,11 @@ from .command_base import CommandBase
 from .help_command import HelpCommand
 from .peer_create_command import PeerCreateCommand
 
+
 class PeerArgs(BaseArgs):
     command: Literal['peer']
     peer_command: Literal['create', 'help']
+
 
 class PeerCommand(CommandBase):
 

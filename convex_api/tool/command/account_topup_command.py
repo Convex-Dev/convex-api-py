@@ -11,10 +11,12 @@ from convex_api.tool.command.argparse_typing import BaseArgs, SubParsersAction
 from convex_api.tool.output import Output
 from .command_base import CommandBase
 
+
 class AccountTopupArgs(BaseArgs):
     command: Literal['account']
     account_command: Literal['topup']
     name_address: str
+
 
 class AccountTopupCommand(CommandBase):
 

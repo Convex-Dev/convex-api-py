@@ -13,10 +13,12 @@ from .command_base import CommandBase
 
 DEFAULT_AMOUNT = 10
 
+
 class AccountBalanceArgs(BaseArgs):
     command: Literal['account']
     account_command: Literal['balance']
     name_address: str
+
 
 class AccountBalanceCommand(CommandBase):
 

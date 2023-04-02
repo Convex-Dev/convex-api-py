@@ -17,11 +17,13 @@ from .command_base import CommandBase
 
 logger = logging.getLogger(__name__)
 
+
 class AccountCreateArgs(BaseArgs):
     command: Literal['account']
     account_command: Literal['create']
     topup: bool = False
     name: Union[str, None] = None
+
 
 class AccountCreateCommand(CommandBase):
 

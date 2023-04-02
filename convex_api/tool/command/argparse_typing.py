@@ -3,6 +3,7 @@ from typing import Any, Protocol, Union
 
 from pydantic import AnyHttpUrl, BaseModel, Field
 
+
 class SubParsersAction(Protocol):
     @property
     def choices(self) -> dict[str, ArgumentParser]:
@@ -13,6 +14,7 @@ class SubParsersAction(Protocol):
 
     def __call__(self, parser: ArgumentParser, namespace: Namespace, values: Any, option_string: Union[str, None] = None) -> None:
         ...
+
 
 class BaseArgs(BaseModel):
     keyfile: Union[None, str]

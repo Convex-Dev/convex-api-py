@@ -56,7 +56,7 @@ class PrepareTransactionRequest(BaseModel):
     """REST API request for a prepare transaction request."""
     address: int
     source: str
- 
+
 
 class PrepareTransactionResponse(BaseModel):
     """REST API response from a prepare transaction request."""
@@ -77,4 +77,3 @@ class SubmitTransactionRequest(BaseModel):
 class SubmitTransactionResponse(BaseModel):
     """REST API response from a submit transaction request."""
     value: Any
-
