@@ -1,7 +1,18 @@
-from argparse import ArgumentParser, Namespace
-from typing import Any, Protocol, Union
+from argparse import (
+    ArgumentParser,
+    Namespace
+)
+from typing import (
+    Any,
+    Protocol,
+    Union
+)
 
-from pydantic import AnyHttpUrl, BaseModel, Field
+from pydantic import (
+    AnyHttpUrl,
+    BaseModel,
+    Field
+)
 
 
 class SubParsersAction(Protocol):

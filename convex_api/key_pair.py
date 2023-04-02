@@ -8,13 +8,14 @@
 import binascii
 import re
 from typing import Union
+
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.backends.openssl.backend import backend as openssl_backend
-from cryptography.hazmat.primitives import hashes
-from cryptography.hazmat.primitives import serialization
+from cryptography.hazmat.primitives import (
+    hashes,
+    serialization
+)
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
-
-
 from mnemonic import Mnemonic
 
 

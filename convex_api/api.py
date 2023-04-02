@@ -8,18 +8,18 @@ import logging
 import re
 import secrets
 import time
-
-from devtools import debug
-
-from typing import Any, Union, cast
-from pydantic.tools import parse_obj_as
-
+from typing import (
+    Any,
+    Union,
+    cast
+)
 from urllib.parse import urljoin
 
 import requests
+from devtools import debug
+from pydantic.tools import parse_obj_as
 
 from convex_api.account import Account
-
 from convex_api.exceptions import (
     ConvexAPIError,
     ConvexRequestError
@@ -38,7 +38,6 @@ from convex_api.models import (
     SubmitTransactionRequest,
     SubmitTransactionResponse
 )
-
 from convex_api.registry import Registry
 
 # min amount to do a topup account

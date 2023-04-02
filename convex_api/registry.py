@@ -4,10 +4,18 @@
 
 """
 import logging
-from typing import Tuple, Union, TYPE_CHECKING, cast
+from typing import (
+    TYPE_CHECKING,
+    Tuple,
+    Union,
+    cast
+)
+
 from convex_api.account import Account
+
 if TYPE_CHECKING:
     from convex_api.api import API
+
 from convex_api.exceptions import ConvexAPIError
 
 logger = logging.getLogger(__name__)

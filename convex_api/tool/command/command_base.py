@@ -4,21 +4,29 @@
 
 """
 
-from argparse import ArgumentParser, Namespace
 import logging
-
 from abc import (
     ABC,
     abstractmethod
 )
-from typing import TypedDict, Union
+from argparse import (
+    ArgumentParser,
+    Namespace
+)
+from typing import (
+    TypedDict,
+    Union
+)
 
 from convex_api import (
     API,
     Account,
     KeyPair
 )
-from convex_api.tool.command.argparse_typing import BaseArgs, SubParsersAction
+from convex_api.tool.command.argparse_typing import (
+    BaseArgs,
+    SubParsersAction
+)
 from convex_api.tool.output import Output
 
 logger = logging.getLogger('convex_tools')

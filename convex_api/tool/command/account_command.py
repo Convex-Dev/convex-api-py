@@ -5,10 +5,17 @@
 """
 
 from argparse import Namespace
-from typing import Literal, cast
-from convex_api.tool.command.argparse_typing import BaseArgs, SubParsersAction
+from typing import (
+    Literal,
+    cast
+)
 
+from convex_api.tool.command.argparse_typing import (
+    BaseArgs,
+    SubParsersAction
+)
 from convex_api.tool.output import Output
+
 from .account_balance_command import AccountBalanceCommand
 from .account_create_command import AccountCreateCommand
 from .account_fund_command import AccountFundCommand
