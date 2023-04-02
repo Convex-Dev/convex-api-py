@@ -3,18 +3,26 @@
     Command Query ..
 
 """
-import json
+from argparse import Namespace
+from typing import Literal
+from convex_api.tool.command.argparse_typing import BaseArgs, SubParsersAction
+
+from convex_api.tool.output import Output
 
 from .command_base import CommandBase
 
+class QueryArgs(BaseArgs):
+    command: Literal['query']
+    query: str
+    name_address: str
 
 class QueryCommand(CommandBase):
 
-    def __init__(self, sub_parser=None):
+    def __init__(self, sub_parser: SubParsersAction):
         self._command_list = []
         super().__init__('query', sub_parser)
 
-    def create_parser(self, sub_parser):
+    def create_parser(self, sub_parser: SubParsersAction):
 
         parser = sub_parser.add_parser(
             self._name,
@@ -36,16 +44,18 @@ class QueryCommand(CommandBase):
 
         return parser
 
-    def execute(self, args, output):
-        convex = self.load_convex(args.url)
+    def execute(self, args: Namespace, output: Output):
+        query_args = QueryArgs.parse_obj(vars(args))
 
-        if args.name_address:
-            info = self.resolve_to_name_address(args.name_address, output)
+        convex = self.load_convex(query_args.url)
+
+        if query_args.name_address:
+            info = self.resolve_to_name_address(query_args.name_address, output)
             if not info:
                 return
             address = info['address']
 
         address = 1
-        result = convex.query(args.query, address)
-        output.add_line(json.dumps(result))
-        output.set_values(result)
+        result = convex.query(query_args.query, address)
+        output.add_line(result.json())
+        output.set_values(result.dict())

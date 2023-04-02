@@ -4,18 +4,26 @@
 
 """
 
+from argparse import Namespace
+from typing import Literal
+from convex_api.tool.command.argparse_typing import BaseArgs, SubParsersAction
+
+from convex_api.tool.output import Output
 from .command_base import CommandBase
 
 DEFAULT_AMOUNT = 10
 
+class AccountBalanceArgs(BaseArgs):
+    command: Literal['account']
+    account_command: Literal['balance']
+    name_address: str
 
 class AccountBalanceCommand(CommandBase):
 
-    def __init__(self, sub_parser=None):
-        self._command_list = []
+    def __init__(self, sub_parser: SubParsersAction):
         super().__init__('balance', sub_parser)
 
-    def create_parser(self, sub_parser):
+    def create_parser(self, sub_parser: SubParsersAction):
 
         parser = sub_parser.add_parser(
             self._name,
@@ -31,9 +39,10 @@ class AccountBalanceCommand(CommandBase):
 
         return parser
 
-    def execute(self, args, output):
-        convex = self.load_convex(args.url)
-        info = self.resolve_to_name_address(args.name_address, output)
+    def execute(self, args: Namespace, output: Output):
+        typed_args = AccountBalanceArgs.parse_obj(vars(args))
+        convex = self.load_convex(typed_args.url)
+        info = self.resolve_to_name_address(typed_args.name_address, output)
         if not info:
             return
 

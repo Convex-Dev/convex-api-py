@@ -3,7 +3,6 @@
     Test Account class
 
 """
-import os
 import secrets
 
 

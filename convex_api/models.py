@@ -2,18 +2,24 @@ from pydantic import BaseModel, Field
 from typing import Any
 
 
+class ErrorResponse(BaseModel):
+    """REST API error response."""
+    errorCode: int
+    value: Any
+
+
 class CreateAccountRequest(BaseModel):
-    """Request for a create account request."""
+    """REST API request for a create account request."""
     accountKey: str = Field(None, min_length=64, max_length=64)
 
 
 class CreateAccountResponse(BaseModel):
-    """Response from a create account request."""
+    """REST API response from a create account request."""
     address: int
 
 
 class AccountDetailsResponse(BaseModel):
-    """Response from an account details request."""
+    """REST API response from an account details request."""
     sequence: int
     address: int
     memorySize: int
@@ -23,37 +29,37 @@ class AccountDetailsResponse(BaseModel):
 
 
 class FaucetRequest(BaseModel):
-    """Request for a faucet request."""
+    """REST API request for a faucet request."""
     address: int
     amount: int
 
 
 class FaucetResponse(BaseModel):
-    """Response from a faucet request."""
+    """REST API response from a faucet request."""
     address: int
     amount: int
     value: int
 
 
 class QueryRequest(BaseModel):
-    """Request for a query request."""
+    """REST API request for a query request."""
     address: int
     source: str
 
 
 class QueryResponse(BaseModel):
-    """Response from a query request."""
+    """REST API response from a query request."""
     value: Any
 
 
 class PrepareTransactionRequest(BaseModel):
-    """Request for a prepare transaction request."""
+    """REST API request for a prepare transaction request."""
     address: int
     source: str
  
 
 class PrepareTransactionResponse(BaseModel):
-    """Response from a prepare transaction request."""
+    """REST API response from a prepare transaction request."""
     address: int
     hash: str = Field(None, min_length=64, max_length=64)
     sequence: int
@@ -61,7 +67,7 @@ class PrepareTransactionResponse(BaseModel):
 
 
 class SubmitTransactionRequest(BaseModel):
-    """Request for a submit transaction request."""
+    """REST API request for a submit transaction request."""
     address: int
     accountKey: str = Field(None, min_length=64, max_length=64)
     hash: str = Field(None, min_length=64, max_length=64)
@@ -69,6 +75,6 @@ class SubmitTransactionRequest(BaseModel):
 
 
 class SubmitTransactionResponse(BaseModel):
-    """Response from a submit transaction request."""
+    """REST API response from a submit transaction request."""
     value: Any
 

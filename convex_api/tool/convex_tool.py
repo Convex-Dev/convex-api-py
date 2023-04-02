@@ -8,9 +8,13 @@
 
 import argparse
 import logging
+from typing import cast
+
+from devtools import debug
 
 
 from convex_api.tool.command.account_command import AccountCommand
+from convex_api.tool.command.argparse_typing import SubParsersAction
 from convex_api.tool.command.command_base import DEFAULT_CONVEX_URL
 from convex_api.tool.command.peer_command import PeerCommand
 from convex_api.tool.command.query_command import QueryCommand
@@ -75,12 +79,12 @@ def convex_tool():
         help=f'URL of the network node. Default: {DEFAULT_CONVEX_URL}',
     )
 
-    command_parser = parser.add_subparsers(
+    command_parser = cast(SubParsersAction, parser.add_subparsers(
         title='Convex commands',
         description='Command values',
         help='Convex commands',
         dest='command'
-    )
+    ))
 
     command_list = [
         AccountCommand(command_parser),
@@ -90,6 +94,9 @@ def convex_tool():
     ]
 
     args = parser.parse_args()
+
+    debug(args)
+    debug(vars(args))
 
     if args.debug:
         logging.basicConfig(level=logging.DEBUG)

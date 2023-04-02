@@ -5,7 +5,6 @@
 """
 import os
 import pytest
-import secrets
 
 
 from convex_api.key_pair import KeyPair
@@ -46,7 +45,7 @@ def test_key_pair_sign(test_key_pair_info):
     assert(sign_data == SIGN_TEXT)
 
 
-def test_key_pair_import_export_to_text(test_key_pair):
+def test_key_pair_import_export_to_text(test_key_pair: KeyPair):
     password = 'secret'
     text = test_key_pair.export_to_text(password)
     import_key_pair = KeyPair.import_from_text(text, password)
@@ -54,7 +53,7 @@ def test_key_pair_import_export_to_text(test_key_pair):
     assert(import_key_pair.public_key == test_key_pair.public_key)
 
 
-def test_key_pair_import_export_to_file(test_key_pair):
+def test_key_pair_import_export_to_file(test_key_pair: KeyPair):
     filename = '/tmp/private_key.pem'
     password = 'secret'
     if os.path.exists(filename):
@@ -67,7 +66,7 @@ def test_key_pair_import_export_to_file(test_key_pair):
     assert(import_key_pair.public_key == test_key_pair.public_key)
     os.remove(filename)
 
-def test_key_pair_export_to_mnemonic(test_key_pair):
+def test_key_pair_export_to_mnemonic(test_key_pair: KeyPair):
     words = test_key_pair.export_to_mnemonic
     assert(words)
     new_key_pair = KeyPair.import_from_mnemonic(words)
@@ -75,7 +74,7 @@ def test_key_pair_export_to_mnemonic(test_key_pair):
     assert(test_key_pair.public_key == new_key_pair.public_key)
     assert(test_key_pair.export_to_mnemonic == new_key_pair.export_to_mnemonic)
 
-def test_key_pair_is_equal(test_key_pair):
+def test_key_pair_is_equal(test_key_pair: KeyPair):
     key_pair = KeyPair()
     assert(test_key_pair.is_equal(test_key_pair))
     assert(test_key_pair.is_equal(test_key_pair.public_key_api))

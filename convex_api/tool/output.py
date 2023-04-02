@@ -5,32 +5,32 @@
 
 """
 import json
-
+from typing import Union
 
 class Output:
     def __init__(self):
-        self._line_list = []
-        self._values = {}
-        self._error_list = []
+        self._line_list: list[str] = []
+        self._values: dict[str, Union[str, int]] = {}
+        self._error_list: list[str] = []
 
-    def add_error(self, line):
+    def add_error(self, line: str):
         self._error_list.append(line)
 
-    def add_line(self, line):
+    def add_line(self, line: str):
         self._line_list.append(line)
 
-    def add_line_values(self, values):
+    def add_line_values(self, values: dict[str, Union[str, int]]):
         for name, value in values.items():
             self.add_line(f'{name}: {value}')
 
-    def set_value(self, key, value):
+    def set_value(self, key: str, value: Union[str, int]):
         self._values[key] = value
 
-    def set_values(self, values):
+    def set_values(self, values: dict[str, Union[str, int]]):
         for name, value in values.items():
             self.set_value(name, value)
 
-    def printout(self, is_json):
+    def printout(self, is_json: bool):
         if self.has_errors:
             error_lines = '\nError: '. join(self.errors)
             print(f'Error: {error_lines}')

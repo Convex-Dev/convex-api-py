@@ -4,7 +4,6 @@
 
 """
 
-import json
 import logging
 import re
 import secrets
@@ -12,7 +11,7 @@ import time
 
 from devtools import debug
 
-from typing import Any, Union
+from typing import Any, Union, cast
 from pydantic.tools import parse_obj_as
 
 from urllib.parse import urljoin
@@ -472,7 +471,7 @@ class API:
             if error.code != 'NOBODY':
                 raise
         else:
-            value = result.value
+            value = cast(int, result.value)
         return value
 
     def transfer(self, to_address_account: Union[Account, int, str], amount: Union[int, float], account: Account):
@@ -645,13 +644,13 @@ class API:
         url: str, 
         data: Union[CreateAccountRequest, FaucetRequest, QueryRequest, PrepareTransactionRequest, SubmitTransactionRequest], 
         sequence_retry_count: int = 20
-    ) -> dict[str, Any]:
+    ) -> Union[dict[str, Any], None]:
         max_sleep_time_seconds = 1
+        result: Union[dict[str, Any], None] = None
         while sequence_retry_count >= 0:
-            response = requests.post(url, data=json.dumps(data))
-            debug(url)
+            response = requests.post(url, data=data.json())
             if response.status_code == 200:
-                result: dict[str, Any] = response.json()
+                result = response.json()
                 break
             elif response.status_code == 400:
                 if not re.search(':SEQUENCE ', response.text):
@@ -730,6 +729,7 @@ class API:
         logger.debug(f'_transaction_submit {submit_url} {data}')
         result = parse_obj_as(SubmitTransactionResponse, self._post(submit_url, data))
         logger.debug(f'_transaction_submit response {result}')
+        debug(result)
         # TODO: Fix this
         # if 'errorCode' in result:
         #     raise ConvexAPIError('_transaction_submit', result['errorCode'], result['value'])

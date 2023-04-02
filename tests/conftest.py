@@ -50,7 +50,7 @@ def test_key_pair(test_key_pair_info):
     return key_pair
 
 @pytest.fixture(scope='module')
-def test_account(convex, test_key_pair):
+def test_account(convex: API, test_key_pair: KeyPair):
     test_account_name = f'{TEST_ACCOUNT_NAME}.{secrets.token_hex(8)}'
     account = convex.setup_account(test_account_name, test_key_pair)
     convex.topup_account(account)
@@ -61,12 +61,12 @@ def convex_url():
     return CONVEX_URL
 
 @pytest.fixture(scope='module')
-def convex(convex_url):
+def convex(convex_url: str):
     api = API(convex_url)
     return api
 
 @pytest.fixture(scope='module')
-def other_account(convex):
+def other_account(convex: API):
     key_pair = KeyPair()
     account = convex.create_account(key_pair)
     convex.topup_account(account)

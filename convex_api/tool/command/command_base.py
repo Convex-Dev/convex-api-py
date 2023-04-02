@@ -4,36 +4,46 @@
 
 """
 
+from argparse import ArgumentParser, Namespace
 import logging
 
 from abc import (
     ABC,
     abstractmethod
 )
+from typing import TypedDict, Union
 
 from convex_api import (
     API,
     Account,
     KeyPair
 )
+from convex_api.tool.command.argparse_typing import BaseArgs, SubParsersAction
+from convex_api.tool.output import Output
 
 logger = logging.getLogger('convex_tools')
 
 DEFAULT_CONVEX_URL = 'https://convex.world'
 
+class NameAddress(TypedDict):
+    name: Union[str, None]
+    address: int
 
 class CommandBase(ABC):
-    def __init__(self, name, sub_parser=None):
+    def __init__(self, name: str, sub_parser: SubParsersAction):
         self._name = name
-        self._convex = None
+        # TODO: If we include this it causes a type hinting error in resolve_to_name_address
+        #       Should we somehow assert that load_convex has been called ? 
+        #self._convex = None
         self._sub_parser = sub_parser
+        self._command_list: list['CommandBase'] = []
         if sub_parser:
             self.create_parser(sub_parser)
 
-    def is_command(self, name):
+    def is_command(self, name: str) -> bool:
         return self._name == name
 
-    def load_convex(self, url, default_url=None):
+    def load_convex(self, url: Union[str, None], default_url: Union[str, None] = None) -> API:
         if url is None:
             url = default_url
         if url is None:
@@ -41,7 +51,7 @@ class CommandBase(ABC):
         self._convex = API(url)
         return self._convex
 
-    def process_sub_command(self, args, output, command):
+    def process_sub_command(self, args: Namespace, output: Output, command: str):
         is_found = False
         for command_item in self._command_list:
             if command_item.is_command(command):
@@ -55,25 +65,27 @@ class CommandBase(ABC):
     def print_help(self):
         self._sub_parser.choices[self._name].print_help()
 
-    def resolve_to_name_address(self, name_address, output):
+    def resolve_to_name_address(self, name_address: str, output: Output) -> Union[NameAddress, None]:        
         name = None
         address = None
+
         if name_address:
             address = self._convex.resolve_account_name(name_address)
             name = name_address
 
         if not address:
-            address = name_address
+            address =  Account.to_address(name_address)
 
         if not self.is_address(address):
             output.add_error(f'{address} is not an convex account address')
             return
-        return {
+        result: NameAddress = {
             'name': name,
             'address': address
         }
+        return result
 
-    def import_key_pair(self, args):
+    def import_key_pair(self, args: BaseArgs):
         key_pair = None
         if args.keyfile and args.password:
             logger.debug(f'importing keyfile {args.keyfile}')
@@ -87,7 +99,7 @@ class CommandBase(ABC):
 
         return key_pair
 
-    def load_account(self, args, name_address, output):
+    def load_account(self, args: BaseArgs, name_address: str, output: Output):
 
         info = self.resolve_to_name_address(name_address, output)
         if not info:
@@ -100,15 +112,15 @@ class CommandBase(ABC):
 
         return Account(key_pair, info['address'], name=info['name'])
 
-    def is_address(self, value):
+    def is_address(self, value: Union[int, str]) -> bool:
         return Account.is_address(value)
 
     @abstractmethod
-    def create_parser(self, sub_parser):
+    def create_parser(self, sub_parser: SubParsersAction) -> ArgumentParser:
         pass
 
     @abstractmethod
-    def execute(self, args, output):
+    def execute(self, args: Namespace, output: Output):
         pass
 
     @property

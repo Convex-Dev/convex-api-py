@@ -4,11 +4,15 @@
 
 
 """
+from argparse import Namespace
 import logging
 import math
 import secrets
+from typing import Literal, Union
 
 from convex_api import KeyPair
+from convex_api.tool.command.argparse_typing import BaseArgs, SubParsersAction
+from convex_api.tool.output import Output
 
 from .command_base import CommandBase
 
@@ -16,13 +20,18 @@ logger = logging.getLogger(__name__)
 
 DEFAULT_FUND_AMOUNT = 100000000
 
+class PeerCreateArgs(BaseArgs):
+    command: Literal['peer']
+    peer_command: Literal['create']
+    topup: bool = True
+    name: Union[str, None] = None
 
 class PeerCreateCommand(CommandBase):
 
-    def __init__(self, sub_parser=None):
+    def __init__(self, sub_parser: SubParsersAction):
         super().__init__('create', sub_parser)
 
-    def create_parser(self, sub_parser):
+    def create_parser(self, sub_parser: SubParsersAction):
         parser = sub_parser.add_parser(
             self._name,
             description='Create a new account',
@@ -45,27 +54,28 @@ class PeerCreateCommand(CommandBase):
 
         return parser
 
-    def execute(self, args, output):
-        convex = self.load_convex(args.url)
+    def execute(self, args: Namespace, output: Output):
+        typed_args = PeerCreateArgs.parse_obj(vars(args))
+        convex = self.load_convex(typed_args.url)
 
-        key_pair = self.import_key_pair(args)
+        key_pair = self.import_key_pair(typed_args)
         if key_pair is None:
             key_pair = KeyPair()
 
         logger.debug('creating account')
         account = convex.create_account(key_pair)
 
-        if args.topup:
+        if typed_args.topup:
             logger.debug('auto topup of account balance')
-            for counter in range(4):
+            for _ in range(4):
                 convex.request_funds(DEFAULT_FUND_AMOUNT, account)
 
-        if args.name:
-            logger.debug(f'registering account name {args.name}')
+        if typed_args.name:
+            logger.debug(f'registering account name {typed_args.name}')
             convex.topup_account(account)
-            account = convex.register_account_name(args.name, account)
-        if args.password:
-            password = args.password
+            account = convex.register_account_name(typed_args.name, account)
+        if typed_args.password:
+            password = typed_args.password
         else:
             password = secrets.token_hex(32)
 

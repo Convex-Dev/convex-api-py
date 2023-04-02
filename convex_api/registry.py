@@ -4,7 +4,7 @@
 
 """
 import logging
-from typing import Tuple, Union, TYPE_CHECKING
+from typing import Tuple, Union, TYPE_CHECKING, cast
 from convex_api.account import Account
 if TYPE_CHECKING:
     from convex_api.api import API
@@ -31,7 +31,7 @@ class Registry:
             logger.debug(f'cns-database: {result}')
             self._items[name] = None
             if isinstance(result.value, (list, tuple)):
-                self._items[name] = result.value
+                self._items[name] = cast(Tuple[int, int], result.value)
         return self._items[name]
 
     def clear(self):
@@ -41,12 +41,12 @@ class Registry:
     def register(self, name: str, contract_address: int, account: Account):
         result = self._convex.send(f'(call #{self.address} (register {{:name (symbol "{name}")}}))', account)
         logger.debug(f'register result: {result}')
-        if result and 'value' in result:
+        if result and hasattr(result, 'value'):
             try:
                 result = self._convex.send(f'(call #{self.address} (cns-update (symbol "{name}") #{contract_address}))', account)
                 logger.debug(f'cns-update result: {result}')
-                if result and 'value' in result:
-                    items = result['value']
+                if result and hasattr(result, 'value'):
+                    items = result.value
                     if name in items:
                         item: Tuple[int, int] = items[name]
                         self._items[name] = item
