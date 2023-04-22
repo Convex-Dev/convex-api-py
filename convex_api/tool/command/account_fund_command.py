@@ -5,7 +5,10 @@
 """
 
 from argparse import Namespace
-from typing import Literal, Union
+from typing import (
+    Literal,
+    Union
+)
 
 from convex_api.tool.command.argparse_typing import (
     BaseArgs,
