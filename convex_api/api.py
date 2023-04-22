@@ -16,7 +16,6 @@ from typing import (
 from urllib.parse import urljoin
 
 import requests
-from devtools import debug
 from pydantic.tools import parse_obj_as
 
 from convex_api.account import Account
@@ -694,7 +693,6 @@ class API:
         logger.debug(f'_transaction_prepare {prepare_url} {data}')
 
         result = parse_obj_as(PrepareTransactionResponse, self._post(prepare_url, data))
-        debug(result)
 
         logger.debug(f'_transaction_prepare repsonse {result}')
         # TODO: Fix this
@@ -729,7 +727,6 @@ class API:
         logger.debug(f'_transaction_submit {submit_url} {data}')
         result = parse_obj_as(SubmitTransactionResponse, self._post(submit_url, data))
         logger.debug(f'_transaction_submit response {result}')
-        debug(result)
         # TODO: Fix this
         # if 'errorCode' in result:
         #     raise ConvexAPIError('_transaction_submit', result['errorCode'], result['value'])

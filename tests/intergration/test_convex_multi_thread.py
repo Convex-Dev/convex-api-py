@@ -3,43 +3,42 @@
     Test Convex multi thread
 
 """
-import pytest
+from typing import Any, Dict
+import pytest  # type: ignore # noqa: F401
 import secrets
 from multiprocessing import (
     Process,
     Value
 )
+from convex_api.account import Account
 
 from convex_api.api import API
 from convex_api.exceptions import ConvexAPIError
 from convex_api.key_pair import KeyPair
-from convex_api.utils import to_address
 
 TEST_FUNDING_AMOUNT = 8000000
 
-def process_on_convex(convex, test_account, result_value):
-    values = []
-    inc_values = []
-    is_sent = False
-    for counter in range(0, 4):
-        for index in range(secrets.randbelow(10) + 1):
+def process_on_convex(convex: API, test_account: Account, result_value):
+    values: list[str] = []
+    inc_values: list[int] = []
+    for _ in range(0, 4):
+        for _ in range(secrets.randbelow(10) + 1):
             value = secrets.randbelow(1000)
             values.append(str(value))
             inc_values.append(value + 1)
             value_text = " ".join(values)
         result = convex.send(f'(map inc [{value_text}])', test_account, sequence_retry_count=100)
-        assert(result)
-        assert('value' in result)
-        assert(result['value'] == inc_values)
+        assert(result is not None)
+        assert(result.value == inc_values)
     result_value.value = 1
 
 
-def test_convex_api_multi_thread_send(convex_url, test_account):
+def test_convex_api_multi_thread_send(convex_url: str, test_account: Account):
 
     process_count = 4
     convex = API(convex_url)
     convex.topup_account(test_account)
-    process_items = {}
+    process_items: Dict[int, Dict[str, Any]] = {}
     for index in range(process_count):
         result_value = Value('i', 0)
         proc = Process(target=process_on_convex, args=(convex, test_account, result_value))
@@ -54,7 +53,7 @@ def test_convex_api_multi_thread_send(convex_url, test_account):
         assert(process_item['result_value'].value == 1)
 
 
-def process_convex_account_creation(convex, result_value):
+def process_convex_account_creation(convex: API, result_value):
     key_pair = KeyPair()
     account = convex.create_account(key_pair)
     assert(account)
@@ -62,10 +61,10 @@ def process_convex_account_creation(convex, result_value):
     result_value.value = 1
 
 
-def test_convex_api_multi_thread_account_creation(convex_url):
+def test_convex_api_multi_thread_account_creation(convex_url: str):
     process_count = 20
     convex = API(convex_url)
-    process_items = {}
+    process_items: Dict[int, Dict[str, Any]] = {}
     for index in range(process_count):
         result_value = Value('i', 0)
         proc = Process(target=process_convex_account_creation, args=(convex, result_value))
@@ -80,7 +79,7 @@ def test_convex_api_multi_thread_account_creation(convex_url):
         assert(process_item['result_value'].value == 1)
 
 
-def process_convex_depoly(convex, result_value):
+def process_convex_depoly(convex: API, result_value):
     deploy_storage = """
 (def storage-example
     (deploy
@@ -105,7 +104,7 @@ def process_convex_depoly(convex, result_value):
 """
     key_pair = KeyPair()
     account = convex.create_account(key_pair)
-    for index in range(0, 10):
+    for _ in range(0, 10):
         convex.topup_account(account)
         try:
             result = convex.send(deploy_storage, account)
@@ -116,20 +115,20 @@ def process_convex_depoly(convex, result_value):
             print('*' * 132)
             result_value.value = balance
             return
-        assert(result)
-        assert(result['value'])
-        contract_address = to_address(result['value'])
+        assert(result is not None)
+        assert(result.value)
+        contract_address = Account.to_address(result.value)
         assert(contract_address)
     result_value.value = 1
 
 
-def test_convex_api_multi_thread_deploy(convex_url):
+def test_convex_api_multi_thread_deploy(convex_url: str):
     process_count = 10
     convex = API(convex_url)
     # key_pair = KeyPair()
     # account = convex.create_account(key_pair)
     # request_amount = convex.request_funds(TEST_FUNDING_AMOUNT, account)
-    process_items = {}
+    process_items: Dict[int, Dict[str, Any]] = {}
     for index in range(process_count):
         result_value = Value('i', 0)
         proc = Process(target=process_convex_depoly, args=(convex, result_value))

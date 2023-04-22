@@ -8,6 +8,7 @@ import pytest
 
 
 from convex_api.key_pair import KeyPair
+from tests.types import KeyPairInfo
 
 
 SIGN_HASH_TEXT = '5bb1ce718241bfec110552b86bb7cccf0d95b8a5f462fbf6dff7c48543622ba5'
@@ -18,27 +19,27 @@ def test_key_pair_create_new():
     assert(key_pair.public_key)
 
 
-def test_key_pair_create_from_bytes(test_key_pair_info):
+def test_key_pair_create_from_bytes(test_key_pair_info: KeyPairInfo):
     key_pair = KeyPair.import_from_bytes(test_key_pair_info['private_bytes'])
     assert(key_pair)
     assert(key_pair.public_key == test_key_pair_info['public_key'].lower())
 
-def test_key_pair_address_bytes(test_key_pair_info):
+def test_key_pair_address_bytes(test_key_pair_info: KeyPairInfo):
     key_pair = KeyPair.import_from_bytes(test_key_pair_info['private_bytes'])
     assert(key_pair)
     assert(key_pair.public_key_bytes == KeyPair.hex_to_bytes(test_key_pair_info['public_key']))
 
-def test_key_pair_address_api(test_key_pair_info):
+def test_key_pair_address_api(test_key_pair_info: KeyPairInfo):
     key_pair = KeyPair.import_from_bytes(test_key_pair_info['private_bytes'])
     assert(key_pair)
     assert(key_pair.public_key_api == KeyPair.remove_0x_prefix(test_key_pair_info['public_key']))
 
-def test_key_pair_address_checksum(test_key_pair_info):
+def test_key_pair_address_checksum(test_key_pair_info: KeyPairInfo):
     key_pair = KeyPair.import_from_bytes(test_key_pair_info['private_bytes'])
     assert(key_pair)
     assert(key_pair.public_key_checksum == test_key_pair_info['public_key'])
 
-def test_key_pair_sign(test_key_pair_info):
+def test_key_pair_sign(test_key_pair_info: KeyPairInfo):
     hash_text = SIGN_HASH_TEXT
     key_pair = KeyPair.import_from_bytes(test_key_pair_info['private_bytes'])
     sign_data = key_pair.sign(hash_text)
@@ -60,6 +61,7 @@ def test_key_pair_import_export_to_file(test_key_pair: KeyPair):
         os.remove(filename)
 
     text = test_key_pair.export_to_file(filename, password)
+    assert(text)
     assert(os.path.exists(filename))
     import_key_pair = KeyPair.import_from_file(filename, password)
     assert(import_key_pair)
@@ -82,4 +84,4 @@ def test_key_pair_is_equal(test_key_pair: KeyPair):
     assert(not key_pair.is_equal(test_key_pair.public_key_checksum))
     assert(not key_pair.is_equal(test_key_pair))
     with pytest.raises(TypeError):
-        assert(not key_pair.is_equal(test_key_pair.public_key_bytes))
+        assert(not key_pair.is_equal(test_key_pair.public_key_bytes)) # type: ignore

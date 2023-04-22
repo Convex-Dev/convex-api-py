@@ -5,7 +5,7 @@
 """
 import json
 from argparse import Namespace
-from typing import Literal
+from typing import Literal, Union
 
 from convex_api.tool.command.argparse_typing import (
     BaseArgs,
@@ -24,7 +24,7 @@ class SubmitArgs(BaseArgs):
 
 class SubmitCommand(CommandBase):
 
-    def __init__(self, sub_parser: SubParsersAction):
+    def __init__(self, sub_parser: Union[SubParsersAction, None] = None):
         self._command_list = []
         super().__init__('submit', sub_parser)
 

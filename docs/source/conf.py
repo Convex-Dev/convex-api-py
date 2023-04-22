@@ -15,7 +15,7 @@
 import os
 import sys
 import shutil
-from sphinx.domains.python import PythonDomain
+from sphinx.domains.python import PythonDomain # type: ignore # noqa: F401
 
 # print(os.path.abspath('../../'))
 sys.path.insert(0, os.path.abspath('../../'))

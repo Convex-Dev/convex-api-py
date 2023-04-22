@@ -10,9 +10,6 @@ import argparse
 import logging
 from typing import cast
 
-from devtools import debug
-
-
 from convex_api.tool.command.account_command import AccountCommand
 from convex_api.tool.command.argparse_typing import SubParsersAction
 from convex_api.tool.command.command_base import DEFAULT_CONVEX_URL
@@ -94,9 +91,6 @@ def convex_tool():
     ]
 
     args = parser.parse_args()
-
-    debug(args)
-    debug(vars(args))
 
     if args.debug:
         logging.basicConfig(level=logging.DEBUG)

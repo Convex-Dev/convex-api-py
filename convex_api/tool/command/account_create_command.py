@@ -33,7 +33,7 @@ class AccountCreateArgs(BaseArgs):
 
 class AccountCreateCommand(CommandBase):
 
-    def __init__(self, sub_parser: SubParsersAction):
+    def __init__(self, sub_parser: Union[SubParsersAction, None] = None):
         super().__init__('create', sub_parser)
 
     def create_parser(self, sub_parser: SubParsersAction):

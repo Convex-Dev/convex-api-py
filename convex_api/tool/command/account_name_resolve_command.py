@@ -5,7 +5,7 @@
 """
 
 from argparse import Namespace
-from typing import Literal
+from typing import Literal, Union
 
 from convex_api.tool.command.argparse_typing import (
     BaseArgs,
@@ -24,7 +24,7 @@ class AccountNameResolveArgs(BaseArgs):
 
 class AccountNameResolveCommand(CommandBase):
 
-    def __init__(self, sub_parser: SubParsersAction):
+    def __init__(self, sub_parser: Union[SubParsersAction, None] = None):
         super().__init__('resolve', sub_parser)
 
     def create_parser(self, sub_parser: SubParsersAction):

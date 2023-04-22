@@ -3,7 +3,7 @@
     Test contract
 
 """
-import pytest
+import pytest  # type: ignore # noqa: F401
 
 from convex_api import (
     Account,
@@ -18,7 +18,7 @@ TEST_CONTRACT_FILENAME = './tests/resources/test_contract.cvx'
 TEST_CONTRACT_NAME = 'test_contract_starfish'
 
 
-def test_convex_api_deploy_contract(convex_url, test_account):
+def test_convex_api_deploy_contract(convex_url: str, test_account: Account):
     convex = API(convex_url)
 
     # create a contract object

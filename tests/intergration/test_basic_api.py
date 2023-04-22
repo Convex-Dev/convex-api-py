@@ -36,7 +36,7 @@ def generate_test_keys():
     return private_key, public_address
 
 
-def create_account(convex_url, public_address):
+def create_account(convex_url: str, public_address: str):
     account_data = {
         'accountKey': KeyPair.remove_0x_prefix(KeyPair.to_public_key_checksum(public_address)),
     }
@@ -47,7 +47,7 @@ def create_account(convex_url, public_address):
     result = response.json()
     return result['address']
 
-def request_funds(convex_url, address):
+def request_funds(convex_url: str, address: str):
     faucet_data = {
         'address': f'#{address}',
         'amount': 10000000
@@ -61,7 +61,7 @@ def request_funds(convex_url, address):
     print('faucet response', response.json())
 
 
-def test_submit_transaction(convex_url):
+def test_submit_transaction(convex_url: str):
 
     private_key, public_address = generate_test_keys()
     address = create_account(convex_url, public_address)
@@ -104,8 +104,8 @@ def test_submit_transaction(convex_url):
 
 
 
-def test_query_lisp(convex_url):
-    private_key, public_address = generate_test_keys()
+def test_query_lisp(convex_url: str):
+    _, public_address = generate_test_keys()
     address = create_account(convex_url, public_address)
     request_funds(convex_url, address)
     query_data = {
@@ -124,8 +124,8 @@ def test_query_lisp(convex_url):
     assert(result['value'] > 0)
 
 
-def DISABLED_test_query_scrypt(convex_url):
-    private_key, public_address = generate_test_keys()
+def DISABLED_test_query_scrypt(convex_url: str):
+    _, public_address = generate_test_keys()
     address = create_account(convex_url, public_address)
     request_funds(convex_url, address)
     query_data = {

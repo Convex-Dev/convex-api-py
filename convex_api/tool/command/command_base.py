@@ -40,7 +40,7 @@ class NameAddress(TypedDict):
 
 
 class CommandBase(ABC):
-    def __init__(self, name: str, sub_parser: SubParsersAction):
+    def __init__(self, name: str, sub_parser: Union[SubParsersAction, None] = None):
         self._name = name
         # TODO: If we include this it causes a type hinting error in resolve_to_name_address
         #       Should we somehow assert that load_convex has been called ?
@@ -73,7 +73,8 @@ class CommandBase(ABC):
             self.print_help()
 
     def print_help(self):
-        self._sub_parser.choices[self._name].print_help()
+        if self._sub_parser is not None:
+            self._sub_parser.choices[self._name].print_help()
 
     def resolve_to_name_address(self, name_address: str, output: Output) -> Union[NameAddress, None]:
         name = None

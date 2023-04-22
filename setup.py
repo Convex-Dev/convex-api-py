@@ -3,8 +3,8 @@
 
 """The setup script."""
 
-import os
-from os.path import join
+import os # type: ignore # noqa: F401
+from os.path import join # type: ignore # noqa: F401
 
 from setuptools import (
     setup,
@@ -47,6 +47,7 @@ docs_requirements = [
     'sphinxcontrib-plantuml',
     'sphinx-automodapi',
     'pygments',
+    'devtools[pygments]'
 ]
 
 setup(

@@ -4,6 +4,7 @@
 
 """
 from unittest.mock import Mock
+from convex_api.account import Account
 
 from convex_api.tool.command.account_balance_command import AccountBalanceCommand
 from convex_api.tool.command.account_create_command import AccountCreateCommand
@@ -37,7 +38,7 @@ def test_account_create_command(convex_url: str):
 
 
 
-def test_account_balance_command(convex_url, test_account):
+def test_account_balance_command(convex_url: str, test_account: Account):
     args = Mock()
 
     args.url = convex_url
@@ -58,7 +59,7 @@ def test_account_balance_command(convex_url, test_account):
     assert(output.values['balance'])
 
 
-def test_account_info_command(convex_url, test_account):
+def test_account_info_command(convex_url: str, test_account: Account):
     args = Mock()
 
     args.url = convex_url
@@ -85,7 +86,7 @@ def test_account_info_command(convex_url, test_account):
     assert(output.values['type'])
 
 
-def test_account_name_resolve_command(convex_url, test_account):
+def test_account_name_resolve_command(convex_url: str, test_account: Account):
     args = Mock()
 
     args.url = convex_url
@@ -96,7 +97,7 @@ def test_account_name_resolve_command(convex_url, test_account):
     command.execute(args, output)
     assert(output.values['address'] == test_account.address)
 
-def test_account_topup_command(convex_url, test_account):
+def test_account_topup_command(convex_url: str, test_account: Account):
     args = Mock()
 
     args.url = convex_url
@@ -111,7 +112,7 @@ def test_account_topup_command(convex_url, test_account):
     command.execute(args, output)
     assert(output.values['balance'])
 
-def test_account_fund_command(convex_url, test_account):
+def test_account_fund_command(convex_url: str, test_account: Account):
     args = Mock()
 
     args.url = convex_url
@@ -126,9 +127,9 @@ def test_account_fund_command(convex_url, test_account):
     output = Output()
     command.execute(args, output)
     assert(output.values['balance'])
-    assert(output.values['amount'] == args.amount)
+    assert(output.values['amount'] == args.amount) # type: ignore
 
-def test_account_register_command(convex_url, test_account):
+def test_account_register_command(convex_url: str, test_account: Account):
     args = Mock()
 
     args.url = convex_url
@@ -143,5 +144,5 @@ def test_account_register_command(convex_url, test_account):
     command = AccountNameRegisterCommand()
     output = Output()
     command.execute(args, output)
-    assert(output.values['name'] == args.name)
-    assert(output.values['address'] == args.address)
+    assert(output.values['name'] == args.name) # type: ignore
+    assert(output.values['address'] == args.address) # type: ignore

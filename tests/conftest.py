@@ -8,9 +8,9 @@ import logging
 import pytest
 import secrets
 
-from convex_api.account import Account
 from convex_api.api import API
 from convex_api.key_pair import KeyPair
+from tests.types import KeyPairInfo
 
 logging.basicConfig(level=logging.DEBUG)
 logging.getLogger('urllib3').setLevel(logging.INFO)
@@ -34,7 +34,7 @@ CONVEX_URL = 'https://convex.world'
 TEST_ACCOUNT_NAME = 'test.convex-api'
 
 @pytest.fixture(scope='module')
-def test_key_pair_info():
+def test_key_pair_info() -> KeyPairInfo:
     return {
         'private_hex' : PRIVATE_TEST_KEY,
         'private_bytes': KeyPair.to_bytes(PRIVATE_TEST_KEY),
@@ -45,7 +45,7 @@ def test_key_pair_info():
     }
 
 @pytest.fixture(scope='module')
-def test_key_pair(test_key_pair_info):
+def test_key_pair(test_key_pair_info: KeyPairInfo):
     key_pair = KeyPair.import_from_bytes(test_key_pair_info['private_bytes'])
     return key_pair
 
@@ -53,8 +53,9 @@ def test_key_pair(test_key_pair_info):
 def test_account(convex: API, test_key_pair: KeyPair):
     test_account_name = f'{TEST_ACCOUNT_NAME}.{secrets.token_hex(8)}'
     account = convex.setup_account(test_account_name, test_key_pair)
-    convex.topup_account(account)
-    return account
+    if account is not None:
+        convex.topup_account(account)
+        return account
 
 @pytest.fixture(scope='module')
 def convex_url():
