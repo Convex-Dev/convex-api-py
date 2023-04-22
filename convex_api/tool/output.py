@@ -5,13 +5,13 @@
 
 """
 import json
-from typing import Union
+from typing import Dict, Union
 
 
 class Output:
     def __init__(self):
         self._line_list: list[str] = []
-        self._values: dict[str, Union[str, int]] = {}
+        self._values: Dict[str, Union[str, int]] = {}
         self._error_list: list[str] = []
 
     def add_error(self, line: str):
@@ -20,14 +20,14 @@ class Output:
     def add_line(self, line: str):
         self._line_list.append(line)
 
-    def add_line_values(self, values: dict[str, Union[str, int]]):
+    def add_line_values(self, values: Dict[str, Union[str, int]]):
         for name, value in values.items():
             self.add_line(f'{name}: {value}')
 
     def set_value(self, key: str, value: Union[str, int]):
         self._values[key] = value
 
-    def set_values(self, values: dict[str, Union[str, int]]):
+    def set_values(self, values: Dict[str, Union[str, int]]):
         for name, value in values.items():
             self.set_value(name, value)
 

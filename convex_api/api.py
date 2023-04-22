@@ -10,6 +10,7 @@ import secrets
 import time
 from typing import (
     Any,
+    Dict,
     Union,
     cast
 )
@@ -643,9 +644,9 @@ class API:
         url: str,
         data: Union[CreateAccountRequest, FaucetRequest, QueryRequest, PrepareTransactionRequest, SubmitTransactionRequest],
         sequence_retry_count: int = 20
-    ) -> Union[dict[str, Any], None]:
+    ) -> Union[Dict[str, Any], None]:
         max_sleep_time_seconds = 1
-        result: Union[dict[str, Any], None] = None
+        result: Union[Dict[str, Any], None] = None
         while sequence_retry_count >= 0:
             response = requests.post(url, data=data.json())
             if response.status_code == 200:
