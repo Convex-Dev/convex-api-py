@@ -3,6 +3,7 @@
     Test Convex multi thread
 
 """
+from multiprocessing.sharedctypes import SynchronizedBase
 from typing import Any, Dict
 import pytest  # type: ignore # noqa: F401
 import secrets
@@ -18,7 +19,7 @@ from convex_api.key_pair import KeyPair
 
 TEST_FUNDING_AMOUNT = 8000000
 
-def process_on_convex(convex: API, test_account: Account, result_value):
+def process_on_convex(convex: API, test_account: Account, result_value: SynchronizedBase[Any]):
     values: list[str] = []
     inc_values: list[int] = []
     for _ in range(0, 4):
@@ -27,10 +28,10 @@ def process_on_convex(convex: API, test_account: Account, result_value):
             values.append(str(value))
             inc_values.append(value + 1)
             value_text = " ".join(values)
-        result = convex.send(f'(map inc [{value_text}])', test_account, sequence_retry_count=100)
+        result = convex.send(f'(map inc [{value_text}])', test_account, sequence_retry_count=100) # type: ignore
         assert(result is not None)
         assert(result.value == inc_values)
-    result_value.value = 1
+    result_value.value = 1 # type: ignore
 
 
 def test_convex_api_multi_thread_send(convex_url: str, test_account: Account):
@@ -53,12 +54,12 @@ def test_convex_api_multi_thread_send(convex_url: str, test_account: Account):
         assert(process_item['result_value'].value == 1)
 
 
-def process_convex_account_creation(convex: API, result_value):
+def process_convex_account_creation(convex: API, result_value: SynchronizedBase[Any]):
     key_pair = KeyPair()
     account = convex.create_account(key_pair)
     assert(account)
     assert(account.address)
-    result_value.value = 1
+    result_value.value = 1 # type: ignore
 
 
 def test_convex_api_multi_thread_account_creation(convex_url: str):
@@ -79,7 +80,7 @@ def test_convex_api_multi_thread_account_creation(convex_url: str):
         assert(process_item['result_value'].value == 1)
 
 
-def process_convex_depoly(convex: API, result_value):
+def process_convex_depoly(convex: API, result_value: SynchronizedBase[Any]):
     deploy_storage = """
 (def storage-example
     (deploy
@@ -113,13 +114,13 @@ def process_convex_depoly(convex: API, result_value):
             print('*' * 132)
             print('failed send', e, balance)
             print('*' * 132)
-            result_value.value = balance
+            result_value.value = balance # type: ignore
             return
         assert(result is not None)
         assert(result.value)
         contract_address = Account.to_address(result.value)
         assert(contract_address)
-    result_value.value = 1
+    result_value.value = 1 # type: ignore
 
 
 def test_convex_api_multi_thread_deploy(convex_url: str):
