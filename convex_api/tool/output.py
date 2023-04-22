@@ -5,7 +5,10 @@
 
 """
 import json
-from typing import Dict, Union
+from typing import (
+    Dict,
+    Union
+)
 
 
 class Output:
