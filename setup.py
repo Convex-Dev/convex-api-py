@@ -79,7 +79,7 @@ setup(
     setup_requires=setup_requirements,
     test_suite='tests',
     tests_require=test_requirements,
-    python_requires='>=3.6',
+    python_requires='>=3.8',
     url='https://github.com/DEX-Company/convex-api-py',
     version='0.2.6',
     zip_safe=False,
