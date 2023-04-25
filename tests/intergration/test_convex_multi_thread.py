@@ -3,7 +3,6 @@
     Test Convex multi thread
 
 """
-from multiprocessing.sharedctypes import SynchronizedBase
 from typing import Any, Dict
 import pytest  # type: ignore # noqa: F401
 import secrets
@@ -19,7 +18,7 @@ from convex_api.key_pair import KeyPair
 
 TEST_FUNDING_AMOUNT = 8000000
 
-def process_on_convex(convex: API, test_account: Account, result_value: SynchronizedBase[Any]):
+def process_on_convex(convex: API, test_account: Account, result_value: Any):
     values: list[str] = []
     inc_values: list[int] = []
     for _ in range(0, 4):
@@ -54,7 +53,7 @@ def test_convex_api_multi_thread_send(convex_url: str, test_account: Account):
         assert(process_item['result_value'].value == 1)
 
 
-def process_convex_account_creation(convex: API, result_value: SynchronizedBase[Any]):
+def process_convex_account_creation(convex: API, result_value: Any):
     key_pair = KeyPair()
     account = convex.create_account(key_pair)
     assert(account)
@@ -80,7 +79,7 @@ def test_convex_api_multi_thread_account_creation(convex_url: str):
         assert(process_item['result_value'].value == 1)
 
 
-def process_convex_depoly(convex: API, result_value: SynchronizedBase[Any]):
+def process_convex_depoly(convex: API, result_value: Any):
     deploy_storage = """
 (def storage-example
     (deploy
