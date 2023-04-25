@@ -5,6 +5,8 @@
 """
 import secrets
 
+import pytest
+
 
 from convex_api.account import Account
 from convex_api.key_pair import KeyPair
@@ -27,7 +29,12 @@ def test_account_is_address():
     address = Account.to_address(f'#{address_str}')
     assert(address == address_int)
 
-    assert(not Account.is_address('test'))
-    assert(not Account.is_address(' #'))
+    with pytest.raises(ValueError):
+        Account.is_address('test')
+
+    with pytest.raises(ValueError):
+        Account.is_address(' #')
+
     assert(Account.is_address('#0'))
+
     assert(not Account.is_address('#-1'))

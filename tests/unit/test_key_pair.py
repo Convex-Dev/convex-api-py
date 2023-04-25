@@ -60,8 +60,7 @@ def test_key_pair_import_export_to_file(test_key_pair: KeyPair):
     if os.path.exists(filename):
         os.remove(filename)
 
-    text = test_key_pair.export_to_file(filename, password)
-    assert(text)
+    test_key_pair.export_to_file(filename, password)
     assert(os.path.exists(filename))
     import_key_pair = KeyPair.import_from_file(filename, password)
     assert(import_key_pair)
