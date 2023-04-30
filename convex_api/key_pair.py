@@ -176,7 +176,6 @@ class KeyPair:
             else:
                 checksum += value
 
-
         return KeyPair.add_0x_prefix(checksum)
 
     @staticmethod
