@@ -132,6 +132,8 @@ def test_account_fund_command(convex_url: str, test_account: Account):
 def test_account_register_command(convex_url: str, test_account: Account):
     args = Mock()
 
+    args.command = 'account'
+    args.account_command = 'register'
     args.url = convex_url
     args.keywords = test_account.key_pair.export_to_mnemonic
     args.keyfile = None

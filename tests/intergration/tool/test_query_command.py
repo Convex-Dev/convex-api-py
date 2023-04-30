@@ -13,6 +13,7 @@ from convex_api.tool.output import Output
 def test_query_command(convex_url: str):
     args = Mock()
 
+    args.command = 'query'
     args.url = convex_url
     args.query = '(address *registry*)'
     args.name_address = None

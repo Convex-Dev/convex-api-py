@@ -14,6 +14,7 @@ from convex_api.tool.output import Output
 def test_submit_command(convex_url: str, test_account: Account):
     args = Mock()
 
+    args.command = 'submit'
     args.url = convex_url
     args.keywords = test_account.key_pair.export_to_mnemonic
     args.keyfile = None
