@@ -162,22 +162,21 @@ class KeyPair:
         :returns: The checksum key of the public key
 
         """
-        digest = hashes.Hash(hashes.SHA256(), backend=openssl_backend)
+        digest = hashes.Hash(hashes.SHA3_256(), backend=openssl_backend)
         public_key_bytes = KeyPair.hex_to_bytes(public_key)
         digest.update(public_key_bytes)
         public_key_hash = KeyPair.remove_0x_prefix(KeyPair.to_hex(digest.finalize()))
-        public_key_clean = KeyPair.remove_0x_prefix(public_key.lower())
+        public_key_clean = KeyPair.remove_0x_prefix(public_key).lower()
 
         checksum = ''
-        hash_index = 0
-        for value in public_key_clean:
+        for i, value in enumerate(public_key_clean):
+            hash_index = i % len(public_key_hash)
             if int(public_key_hash[hash_index], 16) >= 8:
                 checksum += value.upper()
             else:
                 checksum += value
-            hash_index += 1
-            if hash_index >= len(public_key_hash):
-                hash_index = 0
+
+
         return KeyPair.add_0x_prefix(checksum)
 
     @staticmethod
