@@ -24,7 +24,7 @@ DEFAULT_AMOUNT = 10
 class AccountBalanceArgs(BaseArgs):
     command: Literal['account']
     account_command: Literal['balance']
-    name_address: str
+    name_address: Union[str, int]
 
 
 class AccountBalanceCommand(CommandBase):

@@ -21,6 +21,8 @@ from convex_api.tool.output import Output
 def test_account_create_command(convex_url: str):
     args = Mock()
 
+    args.command = 'account'
+    args.account_command = 'create'
     args.url = convex_url
     args.password = 'test_password'
     args.keyfile = None
@@ -41,6 +43,8 @@ def test_account_create_command(convex_url: str):
 def test_account_balance_command(convex_url: str, test_account: Account):
     args = Mock()
 
+    args.command = 'account'
+    args.account_command = 'balance'
     args.url = convex_url
     args.name_address = test_account.address
 
@@ -49,7 +53,8 @@ def test_account_balance_command(convex_url: str, test_account: Account):
     command.execute(args, output)
     assert(output.values['balance'])
 
-
+    args.command = 'account'
+    args.account_command = 'balance'
     args.url = convex_url
     args.name_address = test_account.name
 
@@ -62,6 +67,8 @@ def test_account_balance_command(convex_url: str, test_account: Account):
 def test_account_info_command(convex_url: str, test_account: Account):
     args = Mock()
 
+    args.command = 'account'
+    args.account_command = 'info'
     args.url = convex_url
     args.name_address = test_account.address
 
@@ -77,6 +84,8 @@ def test_account_info_command(convex_url: str, test_account: Account):
     args.url = convex_url
     args.name_address = test_account.name
 
+    args.command = 'account'
+    args.account_command = 'info'
     command = AccountInfoCommand()
     output = Output()
     command.execute(args, output)
@@ -89,6 +98,8 @@ def test_account_info_command(convex_url: str, test_account: Account):
 def test_account_name_resolve_command(convex_url: str, test_account: Account):
     args = Mock()
 
+    args.command = 'account'
+    args.account_command = 'resolve'
     args.url = convex_url
     args.name = test_account.name
 
@@ -100,6 +111,8 @@ def test_account_name_resolve_command(convex_url: str, test_account: Account):
 def test_account_topup_command(convex_url: str, test_account: Account):
     args = Mock()
 
+    args.command = 'account'
+    args.account_command = 'topup'
     args.url = convex_url
     args.keywords = test_account.key_pair.export_to_mnemonic
     args.keyfile = None
@@ -115,6 +128,8 @@ def test_account_topup_command(convex_url: str, test_account: Account):
 def test_account_fund_command(convex_url: str, test_account: Account):
     args = Mock()
 
+    args.command = 'account'
+    args.account_command = 'fund'
     args.url = convex_url
     args.keywords = test_account.key_pair.export_to_mnemonic
     args.keyfile = None

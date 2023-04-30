@@ -23,7 +23,7 @@ class AccountFundArgs(BaseArgs):
     command: Literal['account']
     account_command: Literal['fund']
     amount: int
-    name_address: str
+    name_address: Union[str, int]
 
 
 class AccountFundCommand(CommandBase):

@@ -22,7 +22,7 @@ from .command_base import CommandBase
 class AccountInfoArgs(BaseArgs):
     command: Literal['account']
     account_command: Literal['info']
-    name_address: str
+    name_address: Union[str, int]
 
 
 class AccountInfoCommand(CommandBase):

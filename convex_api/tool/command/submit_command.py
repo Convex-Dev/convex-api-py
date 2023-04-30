@@ -22,7 +22,7 @@ from .command_base import CommandBase
 class SubmitArgs(BaseArgs):
     command: Literal['submit']
     submit: str
-    name_address: str
+    name_address: Union[str, int]
 
 
 class SubmitCommand(CommandBase):
