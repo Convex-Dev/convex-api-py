@@ -76,11 +76,11 @@ class CommandBase(ABC):
         if self._sub_parser is not None:
             self._sub_parser.choices[self._name].print_help()
 
-    def resolve_to_name_address(self, name_address: str, output: Output) -> Union[NameAddress, None]:
+    def resolve_to_name_address(self, name_address: Union[str, int], output: Output) -> Union[NameAddress, None]:
         name = None
         address = None
 
-        if name_address:
+        if isinstance(name_address, str):
             address = self._convex.resolve_account_name(name_address)
             name = name_address
 
@@ -110,7 +110,7 @@ class CommandBase(ABC):
 
         return key_pair
 
-    def load_account(self, args: BaseArgs, name_address: str, output: Output):
+    def load_account(self, args: BaseArgs, name_address: Union[str, int], output: Output):
 
         info = self.resolve_to_name_address(name_address, output)
         if not info:

@@ -728,9 +728,8 @@ class API:
         logger.debug(f'_transaction_submit {submit_url} {data}')
         result = parse_obj_as(SubmitTransactionResponse, self._post(submit_url, data))
         logger.debug(f'_transaction_submit response {result}')
-        # TODO: Fix this
-        # if 'errorCode' in result:
-        #     raise ConvexAPIError('_transaction_submit', result['errorCode'], result['value'])
+        if result.errorCode is not None:
+            raise ConvexAPIError('_transaction_submit', result.errorCode, result.value)
         return result
 
     def _transaction_query(
@@ -749,9 +748,8 @@ class API:
         logger.debug(f'_transaction_query {query_url} {query_data}')
         result = parse_obj_as(QueryResponse, self._post(query_url, query_data))
         logger.debug(f'_transaction_query repsonse {result}')
-        # TODO: Fix this
-        # if 'errorCode' in result:
-        #     raise ConvexAPIError('_transaction_query', result['errorCode'], result['value'])
+        if result.errorCode is not None:
+            raise ConvexAPIError('_transaction_query', result.errorCode, result.value)
         return result
 
     @property

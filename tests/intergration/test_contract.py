@@ -32,6 +32,8 @@ def test_convex_api_deploy_contract(convex_url: str, test_account: Account):
     if owner_address:
         # if so then rebuild the owner account using the same key_pair
         owner_account = Account(test_account.key_pair, owner_address)
+        # and topup the account to avoid out of juice errors
+        convex.topup_account(owner_account, TEST_FUNDING_AMOUNT)
     else:
         owner_address = test_account.address
 

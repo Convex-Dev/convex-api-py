@@ -65,5 +65,5 @@ class SubmitCommand(CommandBase):
         if not result:
             return
 
-        output.add_line(json.dumps(result))
+        output.add_line(result.json())
         output.set_values(result.dict())

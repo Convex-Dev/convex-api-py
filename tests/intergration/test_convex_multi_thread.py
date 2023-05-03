@@ -125,9 +125,9 @@ def process_convex_depoly(convex: API, result_value: Any):
 def test_convex_api_multi_thread_deploy(convex_url: str):
     process_count = 10
     convex = API(convex_url)
-    # key_pair = KeyPair()
-    # account = convex.create_account(key_pair)
-    # request_amount = convex.request_funds(TEST_FUNDING_AMOUNT, account)
+    key_pair = KeyPair()
+    account = convex.create_account(key_pair)
+    convex.request_funds(TEST_FUNDING_AMOUNT, account)
     process_items: Dict[int, Dict[str, Any]] = {}
     for index in range(process_count):
         result_value = Value('i', 0)
