@@ -2,9 +2,19 @@
 
 ### Unreleased
 
-+   Rename Address method is_address to has_address
-+   Move convex_api.utils.is_address to Address static method is_address
-+   Move...
++   Add type hints for all the things
++   Rename `Address` method `is_address` to `has_address`
++   Move `convex_api.utils.is_address` to `Address` static method `is_address`
++   Move `convex_api.utils.to_address` to `Address` static method `to_address`
++   Move `convex_api.utils.is_public_key_hex` to `KeyPair` static method `is_public_key_hex`
++   Move `convex_api.utils.is_public_key` to `KeyPair` static method `is_public_key`
++   Move `convex_api.utils.to_public_key_checksum` to `KeyPair` static method `to_public_key_checksum`
++   Move `convex_api.utils.is_hexstr` to `KeyPair` static method `is_hexstr`
++   Move `convex_api.utils.add_0x_prefix` to `KeyPair` static method `add_0x_prefix`
++   Move `convex_api.utils.remove_0x_prefix` to `KeyPair` static method `remove_0x_prefix`
++   Move `convex_api.utils.to_bytes` to `KeyPair` static methods `to_bytes` for `data: bytes` argument use case and `to_` for `hexstr: string` argument use case
++   Move `convex_api.utils.to_hex` to `KeyPair` static method `to_hex`
++   Add pydantic dependency
 
 ### 0.2.6
 +   Add cr, tab to contract text encoding
