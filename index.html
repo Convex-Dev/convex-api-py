@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>convex-api-py API Documentation &mdash; convex-api-py 0.2.5 documentation</title>
+  <title>convex-api-py API Documentation &mdash; convex-api-py 0.3.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -12,10 +12,11 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -27,14 +28,18 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="#" class="icon icon-home"> convex-api-py
+
+          
+          
+          <a href="#" class="icon icon-home">
+            convex-api-py
           </a>
               <div class="version">
-                0.2.5
+                0.3.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -60,8 +65,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
-      <li>convex-api-py API Documentation</li>
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">convex-api-py API Documentation</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -73,16 +78,81 @@
              
   <a class="reference external image-reference" href="https://convex.world"><img alt="Convex Developers" class="align-right" src="_images/convex_world_logo.png" /></a>
 <section id="convex-api-py-api-documentation">
-<h1>convex-api-py API Documentation<a class="headerlink" href="#convex-api-py-api-documentation" title="Permalink to this headline"></a></h1>
+<h1>convex-api-py API Documentation<a class="headerlink" href="#convex-api-py-api-documentation" title="Permalink to this heading"></a></h1>
 <p>These docs are API Reference docs.</p>
 <section id="contents">
-<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline"></a></h2>
+<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="classes/account.html">Account class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="classes/api.html">API class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="classes/key_pair.html">KeyPair class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modules/exceptions.html">Exceptions Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes/account.html">Account class</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classes/account.html#convex_api.Account"><code class="docutils literal notranslate"><span class="pre">Account</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classes/account.html#convex_api.Account.address"><code class="docutils literal notranslate"><span class="pre">Account.address</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/account.html#convex_api.Account.is_address"><code class="docutils literal notranslate"><span class="pre">Account.is_address()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/account.html#convex_api.Account.key_pair"><code class="docutils literal notranslate"><span class="pre">Account.key_pair</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/account.html#convex_api.Account.name"><code class="docutils literal notranslate"><span class="pre">Account.name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/account.html#convex_api.Account.public_key"><code class="docutils literal notranslate"><span class="pre">Account.public_key</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/account.html#convex_api.Account.sign"><code class="docutils literal notranslate"><span class="pre">Account.sign()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/account.html#convex_api.Account.to_address"><code class="docutils literal notranslate"><span class="pre">Account.to_address()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="classes/api.html">API class</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classes/api.html#convex_api.API"><code class="docutils literal notranslate"><span class="pre">API</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classes/api.html#convex_api.API.create_account"><code class="docutils literal notranslate"><span class="pre">API.create_account()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/api.html#convex_api.API.get_account_info"><code class="docutils literal notranslate"><span class="pre">API.get_account_info()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/api.html#convex_api.API.get_address"><code class="docutils literal notranslate"><span class="pre">API.get_address()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/api.html#convex_api.API.get_balance"><code class="docutils literal notranslate"><span class="pre">API.get_balance()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/api.html#convex_api.API.load_account"><code class="docutils literal notranslate"><span class="pre">API.load_account()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/api.html#convex_api.API.load_contract"><code class="docutils literal notranslate"><span class="pre">API.load_contract()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/api.html#convex_api.API.query"><code class="docutils literal notranslate"><span class="pre">API.query()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/api.html#convex_api.API.register_account_name"><code class="docutils literal notranslate"><span class="pre">API.register_account_name()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/api.html#convex_api.API.registry"><code class="docutils literal notranslate"><span class="pre">API.registry</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/api.html#convex_api.API.request_funds"><code class="docutils literal notranslate"><span class="pre">API.request_funds()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/api.html#convex_api.API.resolve_account_name"><code class="docutils literal notranslate"><span class="pre">API.resolve_account_name()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/api.html#convex_api.API.resolve_name"><code class="docutils literal notranslate"><span class="pre">API.resolve_name()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/api.html#convex_api.API.send"><code class="docutils literal notranslate"><span class="pre">API.send()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/api.html#convex_api.API.setup_account"><code class="docutils literal notranslate"><span class="pre">API.setup_account()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/api.html#convex_api.API.topup_account"><code class="docutils literal notranslate"><span class="pre">API.topup_account()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/api.html#convex_api.API.transfer"><code class="docutils literal notranslate"><span class="pre">API.transfer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/api.html#convex_api.API.transfer_account"><code class="docutils literal notranslate"><span class="pre">API.transfer_account()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="classes/key_pair.html">KeyPair class</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classes/key_pair.html#convex_api.KeyPair"><code class="docutils literal notranslate"><span class="pre">KeyPair</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classes/key_pair.html#convex_api.KeyPair.add_0x_prefix"><code class="docutils literal notranslate"><span class="pre">KeyPair.add_0x_prefix()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/key_pair.html#convex_api.KeyPair.export_to_file"><code class="docutils literal notranslate"><span class="pre">KeyPair.export_to_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/key_pair.html#convex_api.KeyPair.export_to_mnemonic"><code class="docutils literal notranslate"><span class="pre">KeyPair.export_to_mnemonic</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/key_pair.html#convex_api.KeyPair.export_to_text"><code class="docutils literal notranslate"><span class="pre">KeyPair.export_to_text()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/key_pair.html#convex_api.KeyPair.hex_to_bytes"><code class="docutils literal notranslate"><span class="pre">KeyPair.hex_to_bytes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/key_pair.html#convex_api.KeyPair.import_from_bytes"><code class="docutils literal notranslate"><span class="pre">KeyPair.import_from_bytes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/key_pair.html#convex_api.KeyPair.import_from_file"><code class="docutils literal notranslate"><span class="pre">KeyPair.import_from_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/key_pair.html#convex_api.KeyPair.import_from_mnemonic"><code class="docutils literal notranslate"><span class="pre">KeyPair.import_from_mnemonic()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/key_pair.html#convex_api.KeyPair.import_from_text"><code class="docutils literal notranslate"><span class="pre">KeyPair.import_from_text()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/key_pair.html#convex_api.KeyPair.is_equal"><code class="docutils literal notranslate"><span class="pre">KeyPair.is_equal()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/key_pair.html#convex_api.KeyPair.is_hexstr"><code class="docutils literal notranslate"><span class="pre">KeyPair.is_hexstr()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/key_pair.html#convex_api.KeyPair.is_public_key"><code class="docutils literal notranslate"><span class="pre">KeyPair.is_public_key()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/key_pair.html#convex_api.KeyPair.is_public_key_checksum"><code class="docutils literal notranslate"><span class="pre">KeyPair.is_public_key_checksum()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/key_pair.html#convex_api.KeyPair.is_public_key_hex"><code class="docutils literal notranslate"><span class="pre">KeyPair.is_public_key_hex()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/key_pair.html#convex_api.KeyPair.public_key"><code class="docutils literal notranslate"><span class="pre">KeyPair.public_key</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/key_pair.html#convex_api.KeyPair.public_key_api"><code class="docutils literal notranslate"><span class="pre">KeyPair.public_key_api</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/key_pair.html#convex_api.KeyPair.public_key_bytes"><code class="docutils literal notranslate"><span class="pre">KeyPair.public_key_bytes</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/key_pair.html#convex_api.KeyPair.public_key_checksum"><code class="docutils literal notranslate"><span class="pre">KeyPair.public_key_checksum</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/key_pair.html#convex_api.KeyPair.remove_0x_prefix"><code class="docutils literal notranslate"><span class="pre">KeyPair.remove_0x_prefix()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/key_pair.html#convex_api.KeyPair.sign"><code class="docutils literal notranslate"><span class="pre">KeyPair.sign()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/key_pair.html#convex_api.KeyPair.to_bytes"><code class="docutils literal notranslate"><span class="pre">KeyPair.to_bytes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/key_pair.html#convex_api.KeyPair.to_hex"><code class="docutils literal notranslate"><span class="pre">KeyPair.to_hex()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="classes/key_pair.html#convex_api.KeyPair.to_public_key_checksum"><code class="docutils literal notranslate"><span class="pre">KeyPair.to_public_key_checksum()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules/exceptions.html">Exceptions Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules/exceptions.html#convex_api.exceptions"><code class="docutils literal notranslate"><span class="pre">exceptions</span></code></a></li>
+</ul>
+</li>
 </ul>
 </div>
 </section>
