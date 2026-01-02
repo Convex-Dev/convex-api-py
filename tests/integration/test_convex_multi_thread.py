@@ -13,6 +13,7 @@ from typing import Any
 import pytest  # type: ignore # noqa: F401
 
 from convex_api.account import Account
+from convex_api.convex import Convex
 from convex_api.exceptions import ConvexAPIError, ConvexRequestError
 from convex_api.key_pair import KeyPair
 from tests.common import get_convex, get_convex_account
@@ -22,7 +23,7 @@ import pytest
 TEST_FUNDING_AMOUNT = 8000000
 
 
-def process_on_convex(convex: API, test_account: Account, result_value: Any):
+def process_on_convex(convex: Convex, test_account: Account, result_value: Any):
     values: list[str] = []
     inc_values: list[int] = []
     for _ in range(0, 4):
@@ -57,7 +58,7 @@ def test_convex_api_multi_thread_send(convex_url: str, test_account: Account):
         assert process_item['result_value'].value == 1
 
 
-def process_convex_account_creation(convex: API, result_value: Any):
+def process_convex_account_creation(convex: Convex, result_value: Any):
     key_pair = KeyPair()
     account = convex.create_account(key_pair)
     assert account
@@ -93,7 +94,7 @@ def test_convex_api_multi_thread_account_creation(convex_url: str):
         assert process_item['result_value'].value == 1
 
 
-def process_convex_deploy(convex: API, result_value: Any):
+def process_convex_deploy(convex: Convex, result_value: Any):
     deploy_storage = """
 (def storage-example
     (deploy

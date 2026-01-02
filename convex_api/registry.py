@@ -11,7 +11,7 @@ from typing import (
 )
 
 if TYPE_CHECKING:
-    from convex_api.api import API
+    from convex_api.convex import Convex
 
 import logging
 
@@ -25,7 +25,7 @@ QUERY_ACCOUNT_ADDRESS = 9
 
 class Registry:
 
-    def __init__(self, convex: API):
+    def __init__(self, convex: Convex):
         self._convex = convex
         self._address = None
         self._items: dict[str, tuple[int, int] | None] = {}

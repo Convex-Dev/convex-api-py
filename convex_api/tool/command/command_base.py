@@ -16,7 +16,7 @@ from argparse import (
 from typing import TypedDict
 
 from convex_api import (
-    API,
+    Convex,
     Account,
     KeyPair
 )
@@ -50,12 +50,12 @@ class CommandBase(ABC):
     def is_command(self, name: str) -> bool:
         return self._name == name
 
-    def load_convex(self, url: str | None, default_url: str | None = None) -> API:
+    def load_convex(self, url: str | None, default_url: str | None = None) -> Convex:
         if url is None:
             url = default_url
         if url is None:
             url = DEFAULT_CONVEX_URL
-        self._convex = API(url)
+        self._convex = Convex(url)
         return self._convex
 
     def process_sub_command(self, args: Namespace, output: Output, command: str):

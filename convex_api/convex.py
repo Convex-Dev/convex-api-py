@@ -2,6 +2,10 @@
 
     Convex API
 
+    Convex is a decentralized platform based on lattice technology, not a blockchain.
+    The Convex lattice enables efficient data organization and rapid transaction processing
+    through the Convex Virtual Machine (CVM).
+
 """
 from __future__ import annotations
 
@@ -46,7 +50,18 @@ TOPUP_ACCOUNT_MIN_BALANCE = 10000000
 logger = logging.getLogger(__name__)
 
 
-class API:
+class Convex:
+    """
+    Convex API client for interacting with the Convex network.
+
+    Convex is a decentralized platform based on lattice technology, not a blockchain.
+    The Convex lattice enables efficient data organization and rapid transaction processing
+    through the Convex Virtual Machine (CVM). The network utilizes Convergent Proof of Stake (CPoS)
+    for secure consensus, allowing sub-second transaction confirmation times.
+
+    :param url: URL of the Convex peer endpoint (e.g., 'https://peer.convex.live')
+    :type url: str
+    """
 
     def __init__(self, url: str):
         self._url = str(url)
@@ -55,11 +70,11 @@ class API:
     def create_account(self, key_pair: KeyPair, sequence_retry_count: int = 20) -> Account:
         """
 
-        Create a new account address on the convex network.
+        Create a new account address on the Convex network.
 
         :param `KeyPair` key_pair: :class:`.KeyPair` object that you wish to use as the signing account.
             The :class:`.KeyPair` object contains the public/private keys to access and submit commands
-            on the convex network.
+            on the Convex network.
 
 
         :param sequence_retry_count: Number of retries to create the account. If too many clients are trying to
@@ -71,8 +86,8 @@ class API:
 
         .. code-block:: python
 
-            >>> from convex_api import API
-            >>> convex = API('https://convex.world')
+            >>> from convex_api import Convex
+            >>> convex = Convex('https://convex.world')
             >>> # Create a new account with new public/private keys and address
             >>> key_pair = KeyPair()
             >>> account = convex.create_account(key_pair)
@@ -107,7 +122,7 @@ class API:
 
         Load an account using the correct name. If successful return the :class:`.Account` object with the address set.
 
-        This is a Query operation, so no convex tokens are used in loading the account.
+        This is a Query operation, so no juice (Convex coins) are consumed when loading the account.
 
         :param str name: name of the account to load
         :param KeyPair key_pair: :class:`.KeyPair` object to import for the account
@@ -228,7 +243,7 @@ class API:
 
     def send(self, transaction: str, account: Account, sequence_retry_count: int = 20):
         """
-        Send transaction code to the block chain node.
+        Send a transaction to the Convex network.
 
         :param str transaction: The transaction as a string to send
 
@@ -244,8 +259,8 @@ class API:
 
         .. code-block:: python
 
-            >>> from convex_api import API, KeyPair
-            >>> convex = API('https://convex.world')
+            >>> from convex_api import Convex, KeyPair
+            >>> convex = Convex('https://convex.world')
 
             >>> # Create a new account with new public/private keys and address
             >>> key_pair = KeyPair()
@@ -292,11 +307,11 @@ class API:
     ):
         """
 
-        Run a query transaction on the block chain. Since this does not change the network state, and
-        the account does not need to sign the transaction. No funds will be used when executing
-        this query. For this reason you can just pass the account address, or if you want to the :class:`.Account` object.
+        Run a query on the Convex lattice. Since queries do not change the lattice state,
+        the account does not need to sign the transaction and no juice (Convex coins) are consumed.
+        For this reason you can just pass the account address, or if you want to the :class:`.Account` object.
 
-        :param str transaction: Transaction to execute. This can only be a read only transaction.
+        :param str transaction: Convex Lisp source code to execute as a read-only query.
 
         :param address_account: :class:`.Account` object or int address of an account to use for running this query.
         :type address_account: Account, int, str
@@ -307,17 +322,20 @@ class API:
         .. code-block:: python
 
             >>> # Create a new account with new public/private keys and address
-            >>> account = convex_api.create_account()
+            >>> from convex_api import Convex, KeyPair
+            >>> convex = Convex('https://peer.convex.live')
+            >>> key_pair = KeyPair()
+            >>> account = convex.create_account(key_pair)
 
-            >>> # submit a query transaction using the account address
+            >>> # submit a query using the account address
 
-            >>> print(convex_api.query(f'(balance {account.address})', account.address))
+            >>> print(convex.query(f'(balance {account.address})', account.address))
             {'value': 0}
 
             >>> # request some funds to do stuff
-            >>> print(convex_api.request_funds(100000, account))
+            >>> print(convex.request_funds(100000, account))
             100000
-            >>> print(convex_api.query(f'(balance {account.address})', account.address))
+            >>> print(convex.query(f'(balance {account.address})', account.address))
             {'value': 100000}
 
         """
@@ -327,7 +345,7 @@ class API:
     def request_funds(self, amount: int, account: Account) -> int:
         """
 
-        Request funds for an account from the block chain faucet.
+        Request funds for an account from the Convex faucet.
 
         :param number amount: The amount of funds to request
 
@@ -339,9 +357,12 @@ class API:
         .. code-block:: python
 
             >>> # Create a new account with new public/private keys and address
-            >>> account = convex_api.create_account()
+            >>> from convex_api import Convex, KeyPair
+            >>> convex = Convex('https://peer.convex.live')
+            >>> key_pair = KeyPair()
+            >>> account = convex.create_account(key_pair)
             >>> # request some funds to do stuff
-            >>> print(convex_api.request_funds(100000, account))
+            >>> print(convex.request_funds(100000, account))
             100000
 
         """
@@ -365,7 +386,7 @@ class API:
     ):
         """
 
-        Topup an account from the block chain faucet, so that the balance of the account is above or equal to
+        Topup an account from the Convex faucet, so that the balance of the account is above or equal to
         the `min_balance`.
 
         :param Account account: The :class:`.Account` object to receive funds for
@@ -381,12 +402,15 @@ class API:
         .. code-block:: python
 
             >>> # Create a new account with new public/private keys and address
-            >>> account = convex_api.create_account()
+            >>> from convex_api import Convex, KeyPair
+            >>> convex = Convex('https://peer.convex.live')
+            >>> key_pair = KeyPair()
+            >>> account = convex.create_account(key_pair)
             >>> # request some funds to do stuff
-            >>> print(convex_api.topup_account(account, 100000))
+            >>> print(convex.topup_account(account, 100000))
             100000
             >>> # try again, but only return 0 topup amount credited
-            >>> print(convex_api.topup_account(account, 100000))
+            >>> print(convex.topup_account(account, 100000))
             0
 
         """
@@ -446,13 +470,16 @@ class API:
         .. code-block:: python
 
             >>> # Create a new account with new public/private keys and address
-            >>> account = convex_api.create_account()
-            >>> # get the balance of the contract
-            >>> print(convex_api.get_balance(account))
+            >>> from convex_api import Convex, KeyPair
+            >>> convex = Convex('https://peer.convex.live')
+            >>> key_pair = KeyPair()
+            >>> account = convex.create_account(key_pair)
+            >>> # get the balance of the account
+            >>> print(convex.get_balance(account))
             0
-            >>> print(convex_api.request_funds(100000, account))
+            >>> print(convex.request_funds(100000, account))
             100000
-            >>> print(convex_api.get_balance(account))
+            >>> print(convex.get_balance(account))
             100000
 
         """
@@ -491,19 +518,23 @@ class API:
         .. code-block:: python
 
             >>> # Create a new account with new public/private keys and address
-            >>> account = convex_api.create_account()
-            >>> print(convex_api.request_funds(10000000, account))
+            >>> from convex_api import Convex, KeyPair
+            >>> convex = Convex('https://peer.convex.live')
+            >>> key_pair = KeyPair()
+            >>> account = convex.create_account(key_pair)
+            >>> print(convex.request_funds(10000000, account))
             10000000
-            >>> print(convex_api.get_balance(account))
+            >>> print(convex.get_balance(account))
             10000000
 
-            >>> my_account = convex_api.create_account()
+            >>> my_key_pair = KeyPair()
+            >>> my_account = convex.create_account(my_key_pair)
             >>> # transfer some funds to my_account
-            >>> print(convex_api.transfer(my_account, 100, account))
+            >>> print(convex.transfer(my_account, 100, account))
             100
-            >>> print(convex_api.get_balance(my_account))
+            >>> print(convex.get_balance(my_account))
             100
-            >>> print(convex_api.get_balance(account))
+            >>> print(convex.get_balance(account))
             9998520
 
         """
@@ -536,13 +567,16 @@ class API:
         .. code-block:: python
 
             # Create a new account with new public/private keys and address
-            >>> account = convex_api.create_account()
+            >>> from convex_api import Convex, KeyPair, Account
+            >>> convex = Convex('https://peer.convex.live')
+            >>> key_pair = KeyPair()
+            >>> account = convex.create_account(key_pair)
             >>> account.public_key
             '0xae4c019e68591e085d52cdb41924bde067d864cecb1780faa37142054b0fd8ef'
 
             # get a saved account keys
             >>> import_account = Account.import_from_file('my_account.pem', 'secret')
-            >> import_account.public_key
+            >>> import_account.public_key
             '5288fec4153b702430771dfac8aed0b21cafca4344dae0d47b97f0bf532b3306'
 
 
@@ -553,9 +587,9 @@ class API:
 
         """
         if not isinstance(to_account, Account):
-            raise TypeError('The to account must be a type Convex API Account Class')
+            raise TypeError('The to account must be a type Convex Account Class')
         if not isinstance(from_account, Account):
-            raise TypeError('The from account must be a type Convex API Account Class')
+            raise TypeError('The from account must be a type Convex Account Class')
 
         if not to_account.address:
             raise ValueError('You need to have the to account registered with an address')
@@ -569,7 +603,7 @@ class API:
         """
 
         Get account information. This will only work with an account that has a balance or has had some transactions
-        processed on the convex network. New accounts with no transfer or transactions will raise:
+        processed on the Convex network. New accounts with no transfers or transactions will raise:
 
             ConvexRequestError(404, 'The Account for this Address does not exist.') error
 
@@ -583,9 +617,12 @@ class API:
         .. code-block:: python
 
             >>> # Create a new account with new public/private keys and address
-            >>> account = convex_api.create_account()
-            >>> # get the balance of the contract
-            >>> print(convex_api.get_account_info(account))
+            >>> from convex_api import Convex, KeyPair
+            >>> convex = Convex('https://peer.convex.live')
+            >>> key_pair = KeyPair()
+            >>> account = convex.create_account(key_pair)
+            >>> # get the account information
+            >>> print(convex.get_account_info(account))
 
             {'environment': {}, 'address': 1178, 'memorySize': 0, 'balance': 0,
             'isLibrary': False, 'isActor': False, 'allowance': 0,
@@ -687,7 +724,7 @@ class API:
         A transaction requires its hash to be digitally signed by the executing account prior to submission.
 
         This method prepares a transaction for submission by returning the hash to be signed. Afterwards, the
-        transaction can be submitted using the :meth:`.ConvexAPI.transaction_submit` method.
+        transaction can be submitted using the :meth:`.Convex.transaction_submit` method.
 
         :param str transaction: Convex Lisp source representing the transaction.
         :param address: :class:`.Account` object or address of the executing account.
@@ -749,7 +786,13 @@ class API:
         transaction: str
     ):
         """
+        Execute a query on the Convex lattice.
 
+        :param address: :class:`.Account` object or address to use for the query.
+        :type address: Account, int, str
+        :param transaction: Convex Lisp source code to execute as a query.
+        :type transaction: str
+        :returns: QueryResponse containing the result of the query.
         """
         query_url = urljoin(self._url, '/api/v1/query')
         query_data = QueryRequest(

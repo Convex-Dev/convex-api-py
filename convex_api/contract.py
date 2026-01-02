@@ -9,7 +9,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from convex_api.api import API
+    from convex_api.convex import Convex
 
 import re
 
@@ -17,7 +17,7 @@ from convex_api.account import Account
 
 
 class Contract:
-    def __init__(self, convex: API):
+    def __init__(self, convex: Convex):
         """
 
         Contract class to provide access and name resolution to deployed convex contracts.
@@ -74,7 +74,7 @@ class Contract:
     ):
         """
 
-        Deploy a new/updated contract on the convex network.
+        Deploy a new/updated contract on the Convex network.
 
         :param Account account: Account to use to deploy the contract
 

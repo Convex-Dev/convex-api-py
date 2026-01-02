@@ -80,8 +80,8 @@ First you need to download the Convex-API-py package from the python package ind
 
 You can now access the convex network, and get a balance from an existing account on the network by doing the following:
 
-    >>> from convex_api import API
-    >>> convex = API('https://peer.convex.live')
+    >>> from convex_api import Convex
+    >>> convex = Convex('https://peer.convex.live')
     >>> convex.get_balance(9)
     99396961137042
 

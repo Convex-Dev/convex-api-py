@@ -250,10 +250,10 @@ class KeyPair:
         .. code-block:: python
 
             >>> # import convex-api
-            >>> from convex_api import ConvexAPI
+            >>> from convex_api import Convex
 
             >>> # setup the network connection
-            >>> convex_api = ConvexAPI('https://convex.world')
+            >>> convex = Convex('https://convex.world')
 
         """
         if private_key is None:

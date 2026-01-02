@@ -61,10 +61,10 @@ class Account:
         .. code-block:: python
 
             >>> # import convex-api
-            >>> from convex_api import API, KeyPair, Account
+            >>> from convex_api import Convex, KeyPair, Account
 
             >>> # setup the network connection
-            >>> convex = API('https://convex.world')
+            >>> convex = Convex('https://convex.world')
 
             >>> # create a random keypair
             >>> key_pair = KeyPair()

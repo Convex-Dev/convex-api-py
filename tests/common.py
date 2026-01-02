@@ -10,7 +10,7 @@ import secrets
 import pytest
 
 from convex_api.account import Account
-from convex_api.api import API
+from convex_api.convex import Convex
 from convex_api.key_pair import KeyPair
 from tests.types import KeyPairInfo
 
@@ -36,19 +36,19 @@ CONVEX_URL = 'https://peer.convex.live'
 TEST_ACCOUNT_NAME = 'test.convex-api'
 
 
-def get_convex(url: str | None = None) -> API:
+def get_convex(url: str | None = None) -> Convex:
     """
     Get a Convex API instance.
     
     :param url: Optional URL for the Convex network. If not provided, uses CONVEX_URL.
-    :return: API instance
+    :return: Convex instance
     """
     if url is None:
         url = CONVEX_URL
-    return API(url)
+    return Convex(url)
 
 
-def get_convex_account(convex: API | None = None, key_pair: KeyPair | None = None, url: str | None = None) -> Account:
+def get_convex_account(convex: Convex | None = None, key_pair: KeyPair | None = None, url: str | None = None) -> Account:
     """
     Create a new Convex account.
     
@@ -98,7 +98,7 @@ def test_key_pair(test_key_pair_info: KeyPairInfo):
 
 
 @pytest.fixture(scope='module')
-def test_account(convex: API, test_key_pair: KeyPair):
+def test_account(convex: Convex, test_key_pair: KeyPair):
     from convex_api.exceptions import ConvexAPIError, ConvexRequestError
     import requests
     
@@ -125,7 +125,7 @@ def convex(convex_url: str):
 
 
 @pytest.fixture(scope='module')
-def other_account(convex: API):
+def other_account(convex: Convex):
     account = get_convex_account(convex)
     convex.topup_account(account)
     return account

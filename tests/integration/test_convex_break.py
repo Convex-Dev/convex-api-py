@@ -10,11 +10,11 @@ import secrets
 import pytest
 
 from convex_api.account import Account
-from convex_api.api import API
+from convex_api.convex import Convex
 from convex_api.exceptions import ConvexAPIError
 
 
-def test_convex_recursion(convex: API, test_account: Account):
+def test_convex_recursion(convex: Convex, test_account: Account):
     chain_length = 4
     address_list: list[int] = []
     for index in range(0, chain_length):
@@ -71,7 +71,7 @@ def test_convex_recursion(convex: API, test_account: Account):
         convex.query('(call chain-0 (get))', test_account)
 
 
-def test_schedule_transfer(convex: API, test_account: Account, other_account: Account):
+def test_schedule_transfer(convex: Convex, test_account: Account, other_account: Account):
     # you can send coins to an actor , if it exports the receive-coin function
 
     contract = """
