@@ -622,15 +622,26 @@ class API:
     def resolve_name(self, name: str) -> int | None:
         """
         Resolves any Convex Name Services to an address.
-        :param string name Name of the the CNS Service.
+        :param string name Name of the the CNS Service. Optional @ prefix will be stripped.
 
         .. code-block:: python
 
             >>> convex.resolve_name('convex.nft-tokens')
             25
+            >>> convex.resolve_name('@convex.trust')
+            123
 
         """
-        return self._registry.resolve_address(name)
+        # Strip optional @ prefix
+        if name.startswith('@'):
+            name = name[1:]
+        
+        # Use direct resolve query instead of registry
+        # resolve takes a bare symbol (no quotes needed)
+        result = self.query(f'(resolve {name})', 1)
+        if result and result.value is not None:
+            return Account.to_address(result.value)
+        return None
 
     def load_contract(self, name: str):
         from convex_api.contract import Contract

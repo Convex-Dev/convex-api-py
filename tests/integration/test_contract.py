@@ -6,10 +6,10 @@
 import pytest  # type: ignore # noqa: F401
 
 from convex_api import (
-    API,
     Account,
     Contract
 )
+from tests.common import get_convex
 
 TEST_FUNDING_AMOUNT = 8888888
 
@@ -18,7 +18,7 @@ TEST_CONTRACT_NAME = 'test_contract_starfish'
 
 
 def test_convex_api_deploy_contract(convex_url: str, test_account: Account):
-    convex = API(convex_url)
+    convex = get_convex(convex_url)
 
     # create a contract object
     contract = Contract(convex)
