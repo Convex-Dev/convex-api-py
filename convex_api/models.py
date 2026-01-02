@@ -14,7 +14,7 @@ class ErrorResponse(BaseModel):
 
 class CreateAccountRequest(BaseModel):
     """REST API request for a create account request."""
-    accountKey: str = Field(None, min_length=64, max_length=64)
+    accountKey: str | None = Field(None, min_length=64, max_length=64)
 
 
 class CreateAccountResponse(BaseModel):
@@ -61,12 +61,13 @@ class PrepareTransactionRequest(BaseModel):
     """REST API request for a prepare transaction request."""
     address: int
     source: str
+    sequence: int | None = None
 
 
 class PrepareTransactionResponse(BaseModel):
     """REST API response from a prepare transaction request."""
     address: int
-    hash: str = Field(None, min_length=64, max_length=64)
+    hash: str | None = Field(None, min_length=64, max_length=64)
     sequence: int
     source: str
 
@@ -74,9 +75,9 @@ class PrepareTransactionResponse(BaseModel):
 class SubmitTransactionRequest(BaseModel):
     """REST API request for a submit transaction request."""
     address: int
-    accountKey: str = Field(None, min_length=64, max_length=64)
-    hash: str = Field(None, min_length=64, max_length=64)
-    sig: str = Field(None, min_length=128, max_length=128)
+    accountKey: str | None = Field(None, min_length=64, max_length=64)
+    hash: str | None = Field(None, min_length=64, max_length=64)
+    sig: str | None = Field(None, min_length=128, max_length=128)
 
 
 class SubmitTransactionResponse(BaseModel):

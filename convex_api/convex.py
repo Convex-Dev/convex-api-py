@@ -284,6 +284,8 @@ class Convex:
         while sequence_retry_count >= 0:
             try:
                 hash_data = self._transaction_prepare(transaction, account.address)
+                if hash_data.hash is None:
+                    raise ValueError('Transaction preparation failed: hash is None')
                 signed_data = account.sign(hash_data.hash)
                 result = self._transaction_submit(account.address, account.key_pair.public_key_api, hash_data.hash, signed_data)
             except ConvexAPIError as error:

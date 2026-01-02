@@ -546,7 +546,7 @@ class KeyPair:
 
         mnemonic = Mnemonic('english')
         value = mnemonic.to_entropy(words)
-        return KeyPair(Ed25519PrivateKey.from_private_bytes(value))
+        return KeyPair(Ed25519PrivateKey.from_private_bytes(bytes(value)))
 
     @staticmethod
     def import_from_file(filename: str, password: str | bytes) -> KeyPair:
