@@ -88,7 +88,7 @@ class PeerCreateCommand(CommandBase):
         stake_amount = math.floor(balance * 0.98)
 
         create_peer_command = f'(create-peer {account.key_pair.public_key} {stake_amount} )'
-        convex.send(create_peer_command, account)
+        convex.transact(create_peer_command, account)
 
         values = {
             'password': password,

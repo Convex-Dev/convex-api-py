@@ -32,7 +32,7 @@ def process_on_convex(convex: Convex, test_account: Account, result_value: Any):
             values.append(str(value))
             inc_values.append(value + 1)
             value_text = " ".join(values)
-        result = convex.send(f'(map inc [{value_text}])', test_account, sequence_retry_count=100)  # type: ignore
+        result = convex.transact(f'(map inc [{value_text}])', test_account, sequence_retry_count=100)  # type: ignore
         assert result is not None
         assert result.value == inc_values
     result_value.value = 1  # type: ignore
@@ -122,7 +122,7 @@ def process_convex_deploy(convex: Convex, result_value: Any):
     for _ in range(0, 10):
         convex.topup_account(account)
         try:
-            result = convex.send(deploy_storage, account)
+            result = convex.transact(deploy_storage, account)
         except ConvexAPIError as e:
             balance = convex.get_balance(account)
             print('*' * 132)

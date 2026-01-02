@@ -136,11 +136,11 @@ an account based on it's name by doing the following:
     >>> same_account.address
     934
 
-To submit a transaction, use ConvexAPI.send(). This will cost a small about of juice, and reduce your balance
+To submit a transaction, use Convex.transact(). This will cost a small amount of juice, and reduce your balance
 
     >>> convex.request_funds(1000000, account)
     1000000
-    >>> convex.send('(map inc [1 2 3 4])', account)
+    >>> convex.transact('(map inc [1 2 3 4])', account)
     {'value': [2, 3, 4, 5]}
     >>> convex.get_balance(account)
     996360

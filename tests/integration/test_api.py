@@ -96,7 +96,7 @@ def test_convex_transfer_account(convex_url: str, test_account: Account):
     # create a new account with a random keys
     account_1 = get_convex_account(convex)
     convex.topup_account(account_1)
-    result = convex.send('(map inc [1 2 3 4 5])', account_1)
+    result = convex.transact('(map inc [1 2 3 4 5])', account_1)
     assert result is not None
     assert 'value' in result.model_dump()
     assert result.value == [2, 3, 4, 5, 6]
@@ -110,7 +110,7 @@ def test_convex_transfer_account(convex_url: str, test_account: Account):
     assert account_1_change.address == account_1.address
 
     # test out new key
-    result = convex.send('(map inc [1 2 3 4 5])', account_1_change)
+    result = convex.transact('(map inc [1 2 3 4 5])', account_1_change)
     assert result is not None
     assert 'value' in result.model_dump()
     assert result.value == [2, 3, 4, 5, 6]
@@ -120,7 +120,7 @@ def test_convex_api_send_basic_lisp(convex_url: str, test_account: Account):
     convex = get_convex(convex_url)
     request_amount = convex.request_funds(TEST_FUNDING_AMOUNT, test_account)
     assert request_amount == TEST_FUNDING_AMOUNT
-    result = convex.send('(map inc [1 2 3 4 5])', test_account)
+    result = convex.transact('(map inc [1 2 3 4 5])', test_account)
     assert result is not None
     assert 'value' in result.model_dump()
     assert result.value == [2, 3, 4, 5, 6]
@@ -182,12 +182,12 @@ def test_convex_api_call(convex_url: str):
     amount = TEST_FUNDING_AMOUNT
     request_amount = convex.request_funds(amount, account)
     assert request_amount == amount
-    result = convex.send(deploy_storage, account)
+    result = convex.transact(deploy_storage, account)
     assert result is not None
     contract_address = Account.to_address(result.value)
     assert contract_address
     test_number = secrets.randbelow(1000)
-    call_set_result = convex.send(f'(call storage-example(set {test_number}))', account)
+    call_set_result = convex.transact(f'(call storage-example(set {test_number}))', account)
     assert call_set_result is not None
     assert call_set_result.value == test_number
     call_get_result = convex.query('(call storage-example(get))', account)
@@ -199,7 +199,7 @@ def test_convex_api_call(convex_url: str):
     convex = get_convex(convex_url)
     # Note: LANGUAGE_SCRYPT support may need to be added to get_convex if needed
     test_number = secrets.randbelow(1000)
-    call_set_result = convex.send(f'call storage_example set({test_number})', account)
+    call_set_result = convex.transact(f'call storage_example set({test_number})', account)
     assert call_set_result['value'] == test_number
 
     call_get_result = convex.query('call storage_example get()', account)
@@ -209,7 +209,7 @@ def test_convex_api_call(convex_url: str):
     assert call_get_result['value'] == test_number
 
     with pytest.raises(ConvexRequestError, match='400'):
-        call_set_result = convex.send(f'call {contract_address}.set({test_number})', account)
+        call_set_result = convex.transact(f'call {contract_address}.set({test_number})', account)
 
     address = convex.get_address('storage_example', account)
     assert address == contract_address

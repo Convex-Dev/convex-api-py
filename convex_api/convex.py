@@ -241,20 +241,20 @@ class Convex:
         self._registry.register(f'account.{name}', address, account)
         return Account(account.key_pair, address=address, name=name)
 
-    def send(self, transaction: str, account: Account, sequence_retry_count: int = 20):
+    def transact(self, transaction: str, account: Account, sequence_retry_count: int = 20):
         """
-        Send a transaction to the Convex network.
+        Submit a transaction to the Convex network.
 
-        :param str transaction: The transaction as a string to send
+        :param str transaction: The transaction as a string to submit
 
-        :param Account account: The account that needs to sign the message to send
+        :param Account account: The account that needs to sign the transaction
 
         :param sequence_retry_count: Number of retries to do if a SEQUENCE error occurs.
-            When sending multiple send requests on the same account, you can get SEQUENCE errors,
-            This send method will automatically retry again
+            When submitting multiple transactions on the same account, you can get SEQUENCE errors,
+            This transact method will automatically retry again
         :type sequence_retry_count: int, optional
 
-        :returns: The dict returned from the result of the sent transaction.
+        :returns: The dict returned from the result of the submitted transaction.
 
 
         .. code-block:: python
@@ -271,7 +271,7 @@ class Convex:
             100000
 
             >>> # submit a transaction using the new account
-            >>> print(convex.send('(map inc [ 1 2 3 4])', account))
+            >>> print(convex.transact('(map inc [ 1 2 3 4])', account))
             {'value': [2, 3, 4, 5]}
 
 
@@ -540,7 +540,7 @@ class Convex:
         """
         transfer_to_address = Account.to_address(to_address_account)
         transaction = f'(transfer #{transfer_to_address} {amount})'
-        result = self.send(transaction, account)
+        result = self.transact(transaction, account)
         if result is not None:
             return result.value
         return 0
@@ -595,7 +595,7 @@ class Convex:
             raise ValueError('You need to have the to account registered with an address')
 
         line = f'(set-key {from_account.key_pair.public_key_checksum})'
-        result = self.send(line, to_account)
+        result = self.transact(line, to_account)
         if result is not None and from_account.key_pair.is_equal(result.value):
             return Account(from_account.key_pair, to_account.address, to_account.name)
 

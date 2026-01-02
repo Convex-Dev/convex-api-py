@@ -57,7 +57,7 @@ class SubmitCommand(CommandBase):
         if not account:
             return
 
-        result = convex.send(submit_args.submit, account)
+        result = convex.transact(submit_args.submit, account)
         if not result:
             return
 

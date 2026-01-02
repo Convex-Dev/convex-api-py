@@ -104,7 +104,7 @@ class Contract:
     )
 )
     """
-        result = self._convex.send(deploy_line, account)
+        result = self._convex.transact(deploy_line, account)
         if result is not None and result.value:
             address = Account.to_address(result.value)
             if name:
@@ -130,12 +130,12 @@ class Contract:
         """
         return self._convex.registry.register(name, address, account)
 
-    def send(self, transaction: str, account: Account):
+    def transact(self, transaction: str, account: Account):
         """
 
-        Sends a contract transaction to the contract. You need to run `load` before calling this method.
+        Submit a transaction to the contract. You need to run `load` before calling this method.
 
-        :param str transaction: Transaction to send to the contract.
+        :param str transaction: Transaction to submit to the contract.
 
         :param Account account: Account to pay for the transaction.
 
@@ -144,7 +144,7 @@ class Contract:
         """
         if not self._address:
             raise ValueError(f'No contract address found for {self._name}')
-        return self._convex.send(f'(call #{self._address} {transaction})', account)
+        return self._convex.transact(f'(call #{self._address} {transaction})', account)
 
     def query(self, transaction: str, account_address: Account | int | str | None = None):
         """
