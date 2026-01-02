@@ -1,0 +1,22 @@
+# Include core dependencies
+-r requirements.txt
+
+# Development dependencies
+bumpversion
+isort
+mypy
+
+# Test dependencies
+flake8
+pytest
+pytest-runner
+
+# Documentation dependencies
+Sphinx
+sphinx-rtd-theme
+sphinxcontrib-apidoc
+sphinxcontrib-plantuml
+sphinx-automodapi
+pygments
+devtools[pygments]
+

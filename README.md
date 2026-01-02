@@ -5,6 +5,73 @@
 
 [Documentation](https://convex-dev.github.io/convex-api-py)
 
+### Development Setup
+
+To set up the project for development, follow these steps:
+
+**Prerequisites:**
+- Python 3.10 or higher
+- pip (Python package installer)
+
+**Setup Steps:**
+
+1. **Create a virtual environment:**
+   ```bash
+   python -m venv .venv
+   ```
+   
+   This creates a virtual environment in a `.venv` directory. 
+
+2. **Activate the virtual environment:**
+   
+   - **On Windows (PowerShell or Command Prompt):**
+     ```bash
+     .venv\Scripts\activate
+     ```
+   
+   - **On Windows (Git Bash):**
+     ```bash
+     source .venv/Scripts/activate
+     ```
+   
+   - **On Linux/Mac:**
+     ```bash
+     source .venv/bin/activate
+     ```
+   
+   When activated, you should see `(venv)` at the beginning of your command prompt.
+
+3. **Upgrade pip (recommended):**
+   ```bash
+   python -m pip install --upgrade pip
+   ```
+
+4. **Install the package in development mode with all dependencies:**
+   
+   Option 1 - Using setup.py extras (recommended):
+   ```bash
+   pip install -e ".[dev,test,docs]"
+   ```
+   
+   Option 2 - Using requirements files:
+   ```bash
+   pip install -r requirements-dev.txt
+   pip install -e .
+   ```
+
+5. **Verify the installation:**
+   ```bash
+   pytest tests
+   ```
+
+**Deactivating the virtual environment:**
+When you're done working, you can deactivate the virtual environment by running:
+```bash
+deactivate
+```
+
+**Note:** Always activate your virtual environment before working on the project. The virtual environment ensures that dependencies are isolated from your system Python installation.
+
 ### Quick Start
 
 First you need to download the Convex-API-py package from the python package index PyPi.
@@ -14,7 +81,7 @@ First you need to download the Convex-API-py package from the python package ind
 You can now access the convex network, and get a balance from an existing account on the network by doing the following:
 
     >>> from convex_api import API
-    >>> convex = API('https://convex.world')
+    >>> convex = API('https://peer.convex.live')
     >>> convex.get_balance(9)
     99396961137042
 
