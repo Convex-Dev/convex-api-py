@@ -51,7 +51,10 @@ class Registry:
         logger.debug(f'register result: {result}')
         if result and hasattr(result, 'value'):
             try:
-                result = self._convex.transact(f'(call #{self.address} (cns-update (symbol "{name}") #{contract_address}))', account)
+                result = self._convex.transact(
+                    f'(call #{self.address} (cns-update (symbol "{name}") #{contract_address}))',
+                    account
+                )
                 logger.debug(f'cns-update result: {result}')
                 if result and hasattr(result, 'value'):
                     items = result.value

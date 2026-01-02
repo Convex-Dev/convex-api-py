@@ -18,7 +18,6 @@ from convex_api.exceptions import ConvexAPIError, ConvexRequestError
 from convex_api.key_pair import KeyPair
 from tests.common import get_convex, get_convex_account
 import requests
-import pytest
 
 TEST_FUNDING_AMOUNT = 8000000
 
@@ -76,7 +75,7 @@ def test_convex_api_multi_thread_account_creation(convex_url: str):
         assert test_account is not None
     except (ConvexAPIError, ConvexRequestError, requests.RequestException) as e:
         pytest.skip(f"Account creation not available (external service may be unavailable): {e}")
-    
+
     # If we get here, account creation works, so proceed with multiprocessing test
     process_count = 20
     process_items: dict[int, dict[str, Any]] = {}

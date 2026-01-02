@@ -10,7 +10,7 @@ import pytest
 from convex_api.account import Account
 from convex_api.exceptions import ConvexRequestError
 from convex_api.key_pair import KeyPair
-from tests.common import get_convex, get_convex_account, get_convex_account
+from tests.common import get_convex, get_convex_account
 
 TEST_FUNDING_AMOUNT = 8888888
 

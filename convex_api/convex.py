@@ -672,7 +672,7 @@ class Convex:
         # Strip optional @ prefix
         if name.startswith('@'):
             name = name[1:]
-        
+
         # Use direct resolve query instead of registry
         # resolve takes a bare symbol (no quotes needed)
         result = self.query(f'(resolve {name})', 1)

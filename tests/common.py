@@ -39,7 +39,7 @@ TEST_ACCOUNT_NAME = 'test.convex-api'
 def get_convex(url: str | None = None) -> Convex:
     """
     Get a Convex API instance.
-    
+
     :param url: Optional URL for the Convex network. If not provided, uses CONVEX_URL.
     :return: Convex instance
     """
@@ -51,11 +51,11 @@ def get_convex(url: str | None = None) -> Convex:
 def get_convex_account(convex: Convex | None = None, key_pair: KeyPair | None = None, url: str | None = None) -> Account:
     """
     Create a new Convex account.
-    
+
     This function creates a new account and skips the test if account creation fails
     (e.g., due to external service unavailability). This ensures that external service
     issues don't break tests that aren't directly testing account creation.
-    
+
     :param convex: Optional API instance. If not provided, creates one using the url.
     :param key_pair: Optional KeyPair to use. If not provided, creates a random one.
     :param url: Optional URL for the Convex network. Only used if convex is not provided.
@@ -64,13 +64,13 @@ def get_convex_account(convex: Convex | None = None, key_pair: KeyPair | None = 
     """
     from convex_api.exceptions import ConvexAPIError, ConvexRequestError
     import requests
-    
+
     if convex is None:
         convex = get_convex(url)
-    
+
     if key_pair is None:
         key_pair = KeyPair()
-    
+
     try:
         account = convex.create_account(key_pair)
         return account
@@ -101,7 +101,7 @@ def test_key_pair(test_key_pair_info: KeyPairInfo):
 def test_account(convex: Convex, test_key_pair: KeyPair):
     from convex_api.exceptions import ConvexAPIError, ConvexRequestError
     import requests
-    
+
     test_account_name = f'{TEST_ACCOUNT_NAME}.{secrets.token_hex(8)}'
     try:
         account = convex.setup_account(test_account_name, test_key_pair)
@@ -109,7 +109,7 @@ def test_account(convex: Convex, test_key_pair: KeyPair):
             convex.topup_account(account)
             return account
         else:
-            pytest.skip(f"Failed to setup account (account name may already exist or service unavailable)")
+            pytest.skip("Failed to setup account (account name may already exist or service unavailable)")
     except (ConvexAPIError, ConvexRequestError, requests.RequestException) as e:
         pytest.skip(f"Failed to setup account (external service may be unavailable): {e}")
 
@@ -129,4 +129,3 @@ def other_account(convex: Convex):
     account = get_convex_account(convex)
     convex.topup_account(account)
     return account
-
