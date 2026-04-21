@@ -1,9 +1,54 @@
-# Convex API
+# Convex Python SDK
 
 ![](https://github.com/Convex-Dev/convex-api-py/workflows/testing/badge.svg)
 [![Checked with pyright](https://microsoft.github.io/pyright/img/pyright_badge.svg)](https://microsoft.github.io/pyright/)
+[![PyPI version](https://badge.fury.io/py/convex-api.svg)](https://badge.fury.io/py/convex-api)
 
-[Documentation](https://convex-dev.github.io/convex-api-py)
+The official Python client library for interacting with the [Convex](https://convex.world) decentralised lattice network.
+
+## 📚 Documentation
+
+**Official documentation is available at [docs.convex.world/docs/tutorial/client-sdks/python](https://docs.convex.world/docs/tutorial/client-sdks/python)**
+
+- [Quickstart Guide](https://docs.convex.world/docs/tutorial/client-sdks/python/quickstart) - Build your first Python app
+- [Query Guide](https://docs.convex.world/docs/tutorial/client-sdks/python/queries) - Read network state
+- [Transaction Guide](https://docs.convex.world/docs/tutorial/client-sdks/python/transactions) - Submit transactions
+- [Account Management](https://docs.convex.world/docs/tutorial/client-sdks/python/accounts) - Manage keys and accounts
+
+## Installation
+
+```bash
+pip install convex-api
+```
+
+## Quick Example
+
+```python
+from convex_api import Convex, KeyPair
+
+# Connect to the network
+convex = Convex('https://peer.convex.live')
+
+# Create a new account
+key_pair = KeyPair()
+account = convex.create_account(key_pair)
+
+# Request test funds
+convex.request_funds(100_000_000, account)
+
+# Query balance
+balance = convex.get_balance(account)
+print(f'Balance: {balance / 1_000_000_000} Convex Coins')
+```
+
+## Resources
+
+- **[Official Documentation](https://docs.convex.world/docs/tutorial/client-sdks/python)** - Complete SDK guide
+- **[PyPI Package](https://pypi.org/project/convex-api/)** - Python Package Index
+- **[Convex Network](https://convex.world)** - Main website
+- **[Discord Community](https://discord.com/invite/xfYGq4CT7v)** - Get help and share ideas
+
+---
 
 ### Development Setup
 
