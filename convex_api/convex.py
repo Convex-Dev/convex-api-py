@@ -743,13 +743,13 @@ class Convex:
             data.sequence = sequence_number
         logger.debug(f'_transaction_prepare {prepare_url} {data}')
 
-        result = PrepareTransactionResponse.model_validate(self._post(prepare_url, data))
+        result_data = self._post(prepare_url, data)
+        if result_data is not None and result_data.get('errorCode') is not None:
+            raise ConvexAPIError('_transaction_prepare', result_data['errorCode'], result_data.get('value'))
+
+        result = PrepareTransactionResponse.model_validate(result_data)
 
         logger.debug(f'_transaction_prepare response {result}')
-        # TODO: Fix this
-        # if 'errorCode' in result:
-        #     raise ConvexAPIError('_transaction_prepare', result['errorCode'], result['value'])
-
         return result
 
     def _transaction_submit(

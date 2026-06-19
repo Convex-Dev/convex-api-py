@@ -3,8 +3,6 @@ on:
   push:
     branches:
     - master
-#    tags:
-#      - v*
 
 jobs:
   deploy:
@@ -28,11 +26,3 @@ jobs:
         PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         PUBLISH_BRANCH: gh-pages
         PUBLISH_DIR: docs/build/html
-    #- name: Build Package
-      #run: |
-        #python3 setup.py sdist
-    #- name: Deploy Package
-      #uses: pypa/gh-action-pypi-publish@master
-      #with:
-        #user: __token__
-        #password: ${{ secrets.PYPI_TOKEN }}

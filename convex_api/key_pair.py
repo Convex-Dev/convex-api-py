@@ -59,7 +59,7 @@ class KeyPair:
 
         """
         if hexstr:
-            return re.sub(r'^0x', '', hexstr, re.IGNORECASE)
+            return re.sub(r'^0x', '', hexstr, flags=re.IGNORECASE)
         else:
             return ''
 
@@ -278,8 +278,6 @@ class KeyPair:
 
         """
         hash_data = KeyPair.hex_to_bytes(hash_text)
-        # if not hash_data: TODO empty string?
-        #     return None
         signed_hash_bytes = self._private_key.sign(hash_data)
         return KeyPair.to_hex(signed_hash_bytes)
 

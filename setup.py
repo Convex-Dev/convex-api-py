@@ -54,11 +54,14 @@ setup(
     author="dex-company",
     author_email='devops@dex.sg',
     classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
+        'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: Apache Software License',
         'Natural Language :: English',
         'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
+        'Programming Language :: Python :: 3.12',
+        'Programming Language :: Python :: 3.13',
     ],
     description="Convex api",
     extras_require={
@@ -82,6 +85,6 @@ setup(
     tests_require=test_requirements,
     python_requires='>=3.10',
     url='https://github.com/Convex-Dev/convex-api-py',
-    version='0.3.1',
+    version='0.3.2',
     zip_safe=False,
 )

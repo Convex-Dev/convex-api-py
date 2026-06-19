@@ -1,5 +1,13 @@
 ## Change log
 
+### 0.3.2
++   Fix malformed `__version__` string in `convex_api/__init__.py` (also restores `bumpversion` matching)
++   Fix `KeyPair.remove_0x_prefix` to pass `re.IGNORECASE` as `flags` (it was silently passed as `count`, so `0X` prefixes were not stripped)
++   Surface CVM errors returned from `transaction/prepare` as `ConvexAPIError`, consistent with submit and query
++   Correct README examples (`KeyPair()` not `KeyPair.create()`, `convex` variable name, `convex_api` import path, `Account(...)` constructor, real account-info fields) and the `pip install convex-api-py` package name
++   Add PyPI trusted-publishing release workflow (`.github/workflows/publish.yml`, fires on `v*` tags) and remove the stale commented-out publish block from the docs deploy workflow; see `.github/PUBLISHING.md`
++   Bump development status classifier from Pre-Alpha to Beta and declare Python 3.11–3.13 support
+
 ### 0.3.1
 +   Minor fixes and sync from 0.3.0
 
