@@ -17,6 +17,6 @@ Contents
     :glob:
 
     classes/account
-    classes/api
+    classes/convex
     classes/key_pair
     modules/exceptions
