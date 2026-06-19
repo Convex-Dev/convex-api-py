@@ -10,13 +10,13 @@ import argparse
 import logging
 from typing import cast
 
-from convex_api.tool.command.account_command import AccountCommand
-from convex_api.tool.command.argparse_typing import SubParsersAction
-from convex_api.tool.command.command_base import DEFAULT_CONVEX_URL
-from convex_api.tool.command.peer_command import PeerCommand
-from convex_api.tool.command.query_command import QueryCommand
-from convex_api.tool.command.submit_command import SubmitCommand
-from convex_api.tool.output import Output
+from convex_sdk.tool.command.account_command import AccountCommand
+from convex_sdk.tool.command.argparse_typing import SubParsersAction
+from convex_sdk.tool.command.command_base import DEFAULT_CONVEX_URL
+from convex_sdk.tool.command.peer_command import PeerCommand
+from convex_sdk.tool.command.query_command import QueryCommand
+from convex_sdk.tool.command.submit_command import SubmitCommand
+from convex_sdk.tool.output import Output
 
 
 logger = logging.getLogger('convex_tools')

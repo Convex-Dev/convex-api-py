@@ -22,9 +22,9 @@ sys.path.insert(0, os.path.abspath('../../'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'convex-api-py'
-copyright = 'convex-api-py contributors'
-author = 'convex-api-py contributors'
+project = 'convex-sdk'
+copyright = 'convex-sdk contributors'
+author = 'convex-sdk contributors'
 
 # The full version, including alpha/beta/rc tags
 release = '0.3.2'
@@ -49,7 +49,7 @@ extensions = [
 
 # apidoc settings
 # See https://github.com/sphinx-contrib/apidoc
-apidoc_module_dir = '../../convex_api'
+apidoc_module_dir = '../../convex_sdk'
 # apidoc_output_dir = 'api' by default, and leave it that way!
 apidoc_separate_modules = True
 

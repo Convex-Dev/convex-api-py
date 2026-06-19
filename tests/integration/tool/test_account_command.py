@@ -7,17 +7,17 @@ from unittest.mock import Mock
 
 import pytest
 
-from convex_api.account import Account
-from convex_api.exceptions import ConvexAPIError, ConvexRequestError
+from convex_sdk.account import Account
+from convex_sdk.exceptions import ConvexAPIError, ConvexRequestError
 import requests
-from convex_api.tool.command.account_balance_command import AccountBalanceCommand
-from convex_api.tool.command.account_create_command import AccountCreateCommand
-from convex_api.tool.command.account_fund_command import AccountFundCommand
-from convex_api.tool.command.account_info_command import AccountInfoCommand
-from convex_api.tool.command.account_name_register_command import AccountNameRegisterCommand
-from convex_api.tool.command.account_name_resolve_command import AccountNameResolveCommand
-from convex_api.tool.command.account_topup_command import AccountTopupCommand
-from convex_api.tool.output import Output
+from convex_sdk.tool.command.account_balance_command import AccountBalanceCommand
+from convex_sdk.tool.command.account_create_command import AccountCreateCommand
+from convex_sdk.tool.command.account_fund_command import AccountFundCommand
+from convex_sdk.tool.command.account_info_command import AccountInfoCommand
+from convex_sdk.tool.command.account_name_register_command import AccountNameRegisterCommand
+from convex_sdk.tool.command.account_name_resolve_command import AccountNameResolveCommand
+from convex_sdk.tool.command.account_topup_command import AccountTopupCommand
+from convex_sdk.tool.output import Output
 
 
 def test_account_create_command(convex_url: str):

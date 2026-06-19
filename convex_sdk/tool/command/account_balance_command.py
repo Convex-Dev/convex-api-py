@@ -7,11 +7,11 @@
 from argparse import Namespace
 from typing import Literal
 
-from convex_api.tool.command.argparse_typing import (
+from convex_sdk.tool.command.argparse_typing import (
     BaseArgs,
     SubParsersAction
 )
-from convex_api.tool.output import Output
+from convex_sdk.tool.output import Output
 
 from .command_base import CommandBase
 

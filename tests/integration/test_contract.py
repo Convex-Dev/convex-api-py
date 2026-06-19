@@ -5,7 +5,7 @@
 """
 import pytest  # type: ignore # noqa: F401
 
-from convex_api import (
+from convex_sdk import (
     Account,
     Contract
 )
@@ -17,7 +17,7 @@ TEST_CONTRACT_FILENAME = './tests/resources/test_contract.cvx'
 TEST_CONTRACT_NAME = 'test_contract_starfish'
 
 
-def test_convex_api_deploy_contract(convex_url: str, test_account: Account):
+def test_convex_sdk_deploy_contract(convex_url: str, test_account: Account):
     convex = get_convex(convex_url)
 
     # create a contract object
@@ -50,6 +50,6 @@ def test_convex_api_deploy_contract(convex_url: str, test_account: Account):
     assert contract_address == contract.address
 
 
-def test_convex_api_contract_escape_string():
+def test_convex_sdk_contract_escape_string():
     test_text = 'this is a test "string" '
     assert 'this is a test \\"string\\" ' == Contract.escape_string(test_text)

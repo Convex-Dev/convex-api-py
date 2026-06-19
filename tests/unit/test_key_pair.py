@@ -8,7 +8,7 @@ import secrets
 
 import pytest
 
-from convex_api.key_pair import KeyPair
+from convex_sdk.key_pair import KeyPair
 from tests.types import KeyPairInfo
 
 SIGN_HASH_TEXT = '5bb1ce718241bfec110552b86bb7cccf0d95b8a5f462fbf6dff7c48543622ba5'

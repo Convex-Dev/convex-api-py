@@ -1,4 +1,4 @@
-# Publishing `convex-api-py` to PyPI
+# Publishing `convex-sdk` to PyPI
 
 Releases publish via **PyPI Trusted Publishing** (OIDC) — no API token or secret is
 stored in GitHub. The workflow (`.github/workflows/publish.yml`) is ready but **inert**
@@ -6,9 +6,9 @@ until a trusted publisher is configured on PyPI (one-time setup below).
 
 ## One-time setup on PyPI
 
-1. Sign in at <https://pypi.org> as a maintainer of the `convex-api-py` project.
+1. Sign in at <https://pypi.org> as a maintainer of the `convex-sdk` project.
 2. Go to the project → **Settings → Publishing** (or
-   <https://pypi.org/manage/project/convex-api-py/settings/publishing/>).
+   <https://pypi.org/manage/project/convex-sdk/settings/publishing/>).
 3. Under **Add a new trusted publisher → GitHub**, fill in:
    - **Owner:** `Convex-Dev`
    - **Repository:** `convex-api-py`
@@ -16,8 +16,9 @@ until a trusted publisher is configured on PyPI (one-time setup below).
    - **Environment:** `pypi`
 4. Save.
 
-> The package already exists on PyPI (`convex-api-py` 0.3.1), so no manual bootstrap
-> publish is needed — just configure the publisher above.
+> `convex-sdk` is a fresh PyPI project; the trusted publisher above authorises the first
+> tagged release to create and populate it — no manual bootstrap publish is needed. (The
+> predecessor package `convex-api-py` remains frozen at 0.3.1.)
 
 Optionally protect the `pypi` GitHub environment
 (repo **Settings → Environments → pypi**) with required reviewers so a human approves
@@ -30,7 +31,7 @@ each release.
    ```bash
    bumpversion patch   # or: minor / major
    ```
-   `bumpversion` updates `setup.py` + `convex_api/__init__.py`, commits, and creates a
+   `bumpversion` updates `setup.py` + `convex_sdk/__init__.py`, commits, and creates a
    `v{version}` tag (see `.bumpversion.cfg`).
 3. Push the tag:
    ```bash

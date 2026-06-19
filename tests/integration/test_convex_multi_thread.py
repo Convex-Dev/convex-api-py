@@ -12,10 +12,10 @@ from typing import Any
 
 import pytest  # type: ignore # noqa: F401
 
-from convex_api.account import Account
-from convex_api.convex import Convex
-from convex_api.exceptions import ConvexAPIError, ConvexRequestError
-from convex_api.key_pair import KeyPair
+from convex_sdk.account import Account
+from convex_sdk.convex import Convex
+from convex_sdk.exceptions import ConvexAPIError, ConvexRequestError
+from convex_sdk.key_pair import KeyPair
 from tests.common import get_convex, get_convex_account
 import requests
 
@@ -37,7 +37,7 @@ def process_on_convex(convex: Convex, test_account: Account, result_value: Any):
     result_value.value = 1  # type: ignore
 
 
-def test_convex_api_multi_thread_send(convex_url: str, test_account: Account):
+def test_convex_sdk_multi_thread_send(convex_url: str, test_account: Account):
 
     process_count = 4
     convex = get_convex(convex_url)
@@ -65,7 +65,7 @@ def process_convex_account_creation(convex: Convex, result_value: Any):
     result_value.value = 1  # type: ignore
 
 
-def test_convex_api_multi_thread_account_creation(convex_url: str):
+def test_convex_sdk_multi_thread_account_creation(convex_url: str):
     # First check if account creation is available by trying to create one account
     # If it fails, skip the entire test since multiprocessing can't use pytest.skip()
     convex = get_convex(convex_url)
@@ -136,7 +136,7 @@ def process_convex_deploy(convex: Convex, result_value: Any):
     result_value.value = 1  # type: ignore
 
 
-def test_convex_api_multi_thread_deploy(convex_url: str):
+def test_convex_sdk_multi_thread_deploy(convex_url: str):
     process_count = 10
     convex = get_convex(convex_url)
     account = get_convex_account(convex)

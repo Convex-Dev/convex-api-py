@@ -1,36 +1,39 @@
 """
 
-    Tool command Account Create
+    Tool command Peer Create
 
 
 """
 import logging
+import math
 import secrets
 from argparse import Namespace
 from typing import Literal
 
-from convex_api import KeyPair
-from convex_api.tool.command.argparse_typing import (
+from convex_sdk import KeyPair
+from convex_sdk.tool.command.argparse_typing import (
     BaseArgs,
     SubParsersAction
 )
-from convex_api.tool.output import Output
+from convex_sdk.tool.output import Output
 
 from .command_base import CommandBase
 
 logger = logging.getLogger(__name__)
 
+DEFAULT_FUND_AMOUNT = 100000000
 
-class AccountCreateArgs(BaseArgs):
-    command: Literal['account']
-    account_command: Literal['create']
-    topup: bool = False
+
+class PeerCreateArgs(BaseArgs):
+    command: Literal['peer']
+    peer_command: Literal['create']
+    topup: bool = True
     name: str | None = None
 
 
-class AccountCreateCommand(CommandBase):
+class PeerCreateCommand(CommandBase):
 
-    def __init__(self, sub_parser: SubParsersAction | None = None):
+    def __init__(self, sub_parser: SubParsersAction):
         super().__init__('create', sub_parser)
 
     def create_parser(self, sub_parser: SubParsersAction):
@@ -43,7 +46,8 @@ class AccountCreateCommand(CommandBase):
         parser.add_argument(
             '--topup',
             action='store_true',
-            help='Topup account with sufficient funds. This only works for development networks. Default: False',
+            default=True,
+            help='Topup account with sufficient funds for a peer. This only works for development networks. Default: True',
         )
 
         parser.add_argument(
@@ -56,7 +60,7 @@ class AccountCreateCommand(CommandBase):
         return parser
 
     def execute(self, args: Namespace, output: Output):
-        typed_args = AccountCreateArgs.model_validate(vars(args))
+        typed_args = PeerCreateArgs.model_validate(vars(args))
         convex = self.load_convex(typed_args.url)
 
         key_pair = self.import_key_pair(typed_args)
@@ -68,7 +72,8 @@ class AccountCreateCommand(CommandBase):
 
         if typed_args.topup:
             logger.debug('auto topup of account balance')
-            convex.topup_account(account)
+            for _ in range(4):
+                convex.request_funds(DEFAULT_FUND_AMOUNT, account)
 
         if typed_args.name:
             logger.debug(f'registering account name {typed_args.name}')
@@ -78,13 +83,21 @@ class AccountCreateCommand(CommandBase):
             password = typed_args.password
         else:
             password = secrets.token_hex(32)
+
+        balance = convex.get_balance(account)
+        stake_amount = math.floor(balance * 0.98)
+
+        create_peer_command = f'(create-peer {account.key_pair.public_key} {stake_amount} )'
+        convex.transact(create_peer_command, account)
+
         values = {
             'password': password,
             'address': account.address,
             'public_key': key_pair.public_key,
             'keyfile': key_pair.export_to_text(password),
             'keywords': key_pair.export_to_mnemonic,
-            'balance': convex.get_balance(account)
+            'balance': convex.get_balance(account),
+            'stake': stake_amount,
         }
         if account.name:
             values['name'] = account.name

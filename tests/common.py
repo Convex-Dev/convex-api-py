@@ -9,9 +9,9 @@ import secrets
 
 import pytest
 
-from convex_api.account import Account
-from convex_api.convex import Convex
-from convex_api.key_pair import KeyPair
+from convex_sdk.account import Account
+from convex_sdk.convex import Convex
+from convex_sdk.key_pair import KeyPair
 from tests.types import KeyPairInfo
 
 logging.basicConfig(level=logging.DEBUG)
@@ -62,7 +62,7 @@ def get_convex_account(convex: Convex | None = None, key_pair: KeyPair | None = 
     :return: Account instance
     :raises: pytest.skip() if account creation fails
     """
-    from convex_api.exceptions import ConvexAPIError, ConvexRequestError
+    from convex_sdk.exceptions import ConvexAPIError, ConvexRequestError
     import requests
 
     if convex is None:
@@ -99,7 +99,7 @@ def test_key_pair(test_key_pair_info: KeyPairInfo):
 
 @pytest.fixture(scope='module')
 def test_account(convex: Convex, test_key_pair: KeyPair):
-    from convex_api.exceptions import ConvexAPIError, ConvexRequestError
+    from convex_sdk.exceptions import ConvexAPIError, ConvexRequestError
     import requests
 
     test_account_name = f'{TEST_ACCOUNT_NAME}.{secrets.token_hex(8)}'

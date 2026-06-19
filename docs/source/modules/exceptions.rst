@@ -1,7 +1,7 @@
 Exceptions Module
 =================
 
-.. autoclass:: convex_api.exceptions
+.. autoclass:: convex_sdk.exceptions
     :members:
     :undoc-members:
     :show-inheritance:

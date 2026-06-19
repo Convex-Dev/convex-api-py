@@ -23,13 +23,13 @@ from urllib.parse import urljoin
 
 import requests
 
-from convex_api.account import Account
-from convex_api.exceptions import (
+from convex_sdk.account import Account
+from convex_sdk.exceptions import (
     ConvexAPIError,
     ConvexRequestError
 )
-from convex_api.key_pair import KeyPair
-from convex_api.models import (
+from convex_sdk.key_pair import KeyPair
+from convex_sdk.models import (
     AccountDetailsResponse,
     CreateAccountRequest,
     CreateAccountResponse,
@@ -42,7 +42,7 @@ from convex_api.models import (
     SubmitTransactionRequest,
     SubmitTransactionResponse
 )
-from convex_api.registry import Registry
+from convex_sdk.registry import Registry
 
 # min amount to do a topup account
 TOPUP_ACCOUNT_MIN_BALANCE = 10000000
@@ -86,7 +86,7 @@ class Convex:
 
         .. code-block:: python
 
-            >>> from convex_api import Convex
+            >>> from convex_sdk import Convex
             >>> convex = Convex('https://convex.world')
             >>> # Create a new account with new public/private keys and address
             >>> key_pair = KeyPair()
@@ -259,7 +259,7 @@ class Convex:
 
         .. code-block:: python
 
-            >>> from convex_api import Convex, KeyPair
+            >>> from convex_sdk import Convex, KeyPair
             >>> convex = Convex('https://convex.world')
 
             >>> # Create a new account with new public/private keys and address
@@ -324,7 +324,7 @@ class Convex:
         .. code-block:: python
 
             >>> # Create a new account with new public/private keys and address
-            >>> from convex_api import Convex, KeyPair
+            >>> from convex_sdk import Convex, KeyPair
             >>> convex = Convex('https://peer.convex.live')
             >>> key_pair = KeyPair()
             >>> account = convex.create_account(key_pair)
@@ -359,7 +359,7 @@ class Convex:
         .. code-block:: python
 
             >>> # Create a new account with new public/private keys and address
-            >>> from convex_api import Convex, KeyPair
+            >>> from convex_sdk import Convex, KeyPair
             >>> convex = Convex('https://peer.convex.live')
             >>> key_pair = KeyPair()
             >>> account = convex.create_account(key_pair)
@@ -404,7 +404,7 @@ class Convex:
         .. code-block:: python
 
             >>> # Create a new account with new public/private keys and address
-            >>> from convex_api import Convex, KeyPair
+            >>> from convex_sdk import Convex, KeyPair
             >>> convex = Convex('https://peer.convex.live')
             >>> key_pair = KeyPair()
             >>> account = convex.create_account(key_pair)
@@ -442,9 +442,9 @@ class Convex:
         .. code-block:: python
 
             >>> # Create a new account with new public/private keys and address
-            >>> account = convex_api.create_account()
+            >>> account = convex_sdk.create_account()
             >>> # find the address of a contract
-            >>> print(convex_api.get_address('my_contract', account))
+            >>> print(convex_sdk.get_address('my_contract', account))
 
         """
 
@@ -472,7 +472,7 @@ class Convex:
         .. code-block:: python
 
             >>> # Create a new account with new public/private keys and address
-            >>> from convex_api import Convex, KeyPair
+            >>> from convex_sdk import Convex, KeyPair
             >>> convex = Convex('https://peer.convex.live')
             >>> key_pair = KeyPair()
             >>> account = convex.create_account(key_pair)
@@ -520,7 +520,7 @@ class Convex:
         .. code-block:: python
 
             >>> # Create a new account with new public/private keys and address
-            >>> from convex_api import Convex, KeyPair
+            >>> from convex_sdk import Convex, KeyPair
             >>> convex = Convex('https://peer.convex.live')
             >>> key_pair = KeyPair()
             >>> account = convex.create_account(key_pair)
@@ -569,7 +569,7 @@ class Convex:
         .. code-block:: python
 
             # Create a new account with new public/private keys and address
-            >>> from convex_api import Convex, KeyPair, Account
+            >>> from convex_sdk import Convex, KeyPair, Account
             >>> convex = Convex('https://peer.convex.live')
             >>> key_pair = KeyPair()
             >>> account = convex.create_account(key_pair)
@@ -619,7 +619,7 @@ class Convex:
         .. code-block:: python
 
             >>> # Create a new account with new public/private keys and address
-            >>> from convex_api import Convex, KeyPair
+            >>> from convex_sdk import Convex, KeyPair
             >>> convex = Convex('https://peer.convex.live')
             >>> key_pair = KeyPair()
             >>> account = convex.create_account(key_pair)
@@ -683,7 +683,7 @@ class Convex:
         return None
 
     def load_contract(self, name: str):
-        from convex_api.contract import Contract
+        from convex_sdk.contract import Contract
 
         contract = Contract(self)
         if contract.load(name=name):

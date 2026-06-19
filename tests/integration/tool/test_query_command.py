@@ -5,8 +5,8 @@
 """
 from unittest.mock import Mock
 
-from convex_api.tool.command.query_command import QueryCommand
-from convex_api.tool.output import Output
+from convex_sdk.tool.command.query_command import QueryCommand
+from convex_sdk.tool.output import Output
 
 
 def test_query_command(convex_url: str):

@@ -7,7 +7,7 @@
 from __future__ import annotations
 
 import re
-from convex_api.key_pair import KeyPair
+from convex_sdk.key_pair import KeyPair
 
 
 class Account:
@@ -61,7 +61,7 @@ class Account:
         .. code-block:: python
 
             >>> # import convex-api
-            >>> from convex_api import Convex, KeyPair, Account
+            >>> from convex_sdk import Convex, KeyPair, Account
 
             >>> # setup the network connection
             >>> convex = Convex('https://convex.world')

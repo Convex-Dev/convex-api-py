@@ -1,7 +1,7 @@
 KeyPair class
 =============
 
-.. autoclass:: convex_api.KeyPair
+.. autoclass:: convex_sdk.KeyPair
     :members:
     :undoc-members:
     :show-inheritance:

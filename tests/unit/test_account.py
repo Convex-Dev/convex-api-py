@@ -8,8 +8,8 @@ import secrets
 import pytest
 
 
-from convex_api.account import Account
-from convex_api.key_pair import KeyPair
+from convex_sdk.account import Account
+from convex_sdk.key_pair import KeyPair
 
 
 def test_account_create_new():

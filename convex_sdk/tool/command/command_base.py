@@ -15,16 +15,16 @@ from argparse import (
 )
 from typing import TypedDict
 
-from convex_api import (
+from convex_sdk import (
     Convex,
     Account,
     KeyPair
 )
-from convex_api.tool.command.argparse_typing import (
+from convex_sdk.tool.command.argparse_typing import (
     BaseArgs,
     SubParsersAction
 )
-from convex_api.tool.output import Output
+from convex_sdk.tool.output import Output
 
 logger = logging.getLogger('convex_tools')
 

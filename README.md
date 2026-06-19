@@ -2,7 +2,7 @@
 
 ![](https://github.com/Convex-Dev/convex-api-py/workflows/testing/badge.svg)
 [![Checked with pyright](https://microsoft.github.io/pyright/img/pyright_badge.svg)](https://microsoft.github.io/pyright/)
-[![PyPI version](https://badge.fury.io/py/convex-api-py.svg)](https://badge.fury.io/py/convex-api-py)
+[![PyPI version](https://badge.fury.io/py/convex-sdk.svg)](https://badge.fury.io/py/convex-sdk)
 
 The official Python client library for interacting with the [Convex](https://convex.world) decentralised lattice network.
 
@@ -18,13 +18,13 @@ The official Python client library for interacting with the [Convex](https://con
 ## Installation
 
 ```bash
-pip install convex-api-py
+pip install convex-sdk
 ```
 
 ## Quick Example
 
 ```python
-from convex_api import Convex, KeyPair
+from convex_sdk import Convex, KeyPair
 
 # Connect to the network
 convex = Convex('https://peer.convex.live')
@@ -44,7 +44,7 @@ print(f'Balance: {balance / 1_000_000_000} Convex Coins')
 ## Resources
 
 - **[Official Documentation](https://docs.convex.world/docs/tutorial/client-sdks/python)** - Complete SDK guide
-- **[PyPI Package](https://pypi.org/project/convex-api-py/)** - Python Package Index
+- **[PyPI Package](https://pypi.org/project/convex-sdk/)** - Python Package Index
 - **[Convex Network](https://convex.world)** - Main website
 - **[Discord Community](https://discord.com/invite/xfYGq4CT7v)** - Get help and share ideas
 
@@ -119,13 +119,13 @@ deactivate
 
 ### Quick Start
 
-First you need to download the Convex-API-py package from the python package index PyPi.
+First you need to download the convex-sdk package from the python package index PyPi.
 
-    pip install convex-api-py
+    pip install convex-sdk
 
 You can now access the convex network, and get a balance from an existing account on the network by doing the following:
 
-    >>> from convex_api import Convex, KeyPair
+    >>> from convex_sdk import Convex, KeyPair
     >>> convex = Convex('https://peer.convex.live')
     >>> convex.get_balance(9)
     99396961137042
@@ -155,7 +155,7 @@ You can export the accounts private key encoded as PKCS8 encrypt the key with a 
 
 To re-use your account again you need to import the encrypted private key and set the correct account address
 
-    >>> from convex_api import Account, KeyPair
+    >>> from convex_sdk import Account, KeyPair
     >>> key_pair = KeyPair.import_from_file('my_key.dat', 'secret')
     >>> account = Account(key_pair, 809)
 

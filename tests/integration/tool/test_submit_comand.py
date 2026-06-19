@@ -4,10 +4,10 @@
 
 """
 from unittest.mock import Mock
-from convex_api.account import Account
+from convex_sdk.account import Account
 
-from convex_api.tool.command.submit_command import SubmitCommand
-from convex_api.tool.output import Output
+from convex_sdk.tool.command.submit_command import SubmitCommand
+from convex_sdk.tool.output import Output
 
 
 def test_submit_command(convex_url: str, test_account: Account):

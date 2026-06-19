@@ -11,12 +11,12 @@ from typing import (
 )
 
 if TYPE_CHECKING:
-    from convex_api.convex import Convex
+    from convex_sdk.convex import Convex
 
 import logging
 
-from convex_api.account import Account
-from convex_api.exceptions import ConvexAPIError
+from convex_sdk.account import Account
+from convex_sdk.exceptions import ConvexAPIError
 
 logger = logging.getLogger(__name__)
 

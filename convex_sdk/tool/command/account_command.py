@@ -10,11 +10,11 @@ from typing import (
     cast
 )
 
-from convex_api.tool.command.argparse_typing import (
+from convex_sdk.tool.command.argparse_typing import (
     BaseArgs,
     SubParsersAction
 )
-from convex_api.tool.output import Output
+from convex_sdk.tool.output import Output
 
 from .account_balance_command import AccountBalanceCommand
 from .account_create_command import AccountCreateCommand

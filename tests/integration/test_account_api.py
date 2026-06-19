@@ -7,8 +7,8 @@ import secrets
 
 import pytest
 
-from convex_api import KeyPair
-from convex_api.exceptions import ConvexAPIError, ConvexRequestError
+from convex_sdk import KeyPair
+from convex_sdk.exceptions import ConvexAPIError, ConvexRequestError
 from tests.common import get_convex
 from tests.types import KeyPairInfo
 import requests

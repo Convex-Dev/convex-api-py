@@ -5,7 +5,7 @@ These tests connect to a remote Convex instance and run queries.
 Queries are read-only operations that do not require key pairs or authentication.
 """
 
-from convex_api.account import Account
+from convex_sdk.account import Account
 from tests.common import get_convex
 
 

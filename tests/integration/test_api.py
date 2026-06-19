@@ -7,22 +7,22 @@ import secrets
 
 import pytest
 
-from convex_api.account import Account
-from convex_api.exceptions import ConvexRequestError
-from convex_api.key_pair import KeyPair
+from convex_sdk.account import Account
+from convex_sdk.exceptions import ConvexRequestError
+from convex_sdk.key_pair import KeyPair
 from tests.common import get_convex, get_convex_account
 
 TEST_FUNDING_AMOUNT = 8888888
 
 
-def test_convex_api_request_funds(convex_url: str, test_account: Account):
+def test_convex_sdk_request_funds(convex_url: str, test_account: Account):
     convex = get_convex(convex_url)
     amount = secrets.randbelow(100) + 1
     request_amount = convex.request_funds(amount, test_account)
     assert request_amount == amount
 
 
-def test_convex_api_topup_account(convex_url: str):
+def test_convex_sdk_topup_account(convex_url: str):
     convex = get_convex(convex_url)
     account = get_convex_account(convex)
     topup_amount = TEST_FUNDING_AMOUNT
@@ -116,7 +116,7 @@ def test_convex_transfer_account(convex_url: str, test_account: Account):
     assert result.value == [2, 3, 4, 5, 6]
 
 
-def test_convex_api_send_basic_lisp(convex_url: str, test_account: Account):
+def test_convex_sdk_send_basic_lisp(convex_url: str, test_account: Account):
     convex = get_convex(convex_url)
     request_amount = convex.request_funds(TEST_FUNDING_AMOUNT, test_account)
     assert request_amount == TEST_FUNDING_AMOUNT
@@ -126,14 +126,14 @@ def test_convex_api_send_basic_lisp(convex_url: str, test_account: Account):
     assert result.value == [2, 3, 4, 5, 6]
 
 
-def test_convex_api_get_balance_no_funds(convex_url: str):
+def test_convex_sdk_get_balance_no_funds(convex_url: str):
     convex = get_convex(convex_url)
     account = get_convex_account(convex)
     new_balance = convex.get_balance(account)
     assert new_balance == 0
 
 
-def test_convex_api_get_balance_small_funds(convex_url: str, test_account: Account):
+def test_convex_sdk_get_balance_small_funds(convex_url: str, test_account: Account):
     convex = get_convex(convex_url)
     account = get_convex_account(convex)
     amount = 100
@@ -143,7 +143,7 @@ def test_convex_api_get_balance_small_funds(convex_url: str, test_account: Accou
     assert new_balance == amount
 
 
-def test_convex_api_get_balance_new_account(convex_url: str):
+def test_convex_sdk_get_balance_new_account(convex_url: str):
     convex = get_convex(convex_url)
     account = get_convex_account(convex)
     amount = TEST_FUNDING_AMOUNT
@@ -153,7 +153,7 @@ def test_convex_api_get_balance_new_account(convex_url: str):
     assert new_balance == TEST_FUNDING_AMOUNT
 
 
-def test_convex_api_call(convex_url: str):
+def test_convex_sdk_call(convex_url: str):
 
     deploy_storage = """
 (def storage-example
@@ -216,7 +216,7 @@ def test_convex_api_call(convex_url: str):
     """
 
 
-def test_convex_api_transfer(convex_url: str):
+def test_convex_sdk_transfer(convex_url: str):
     convex = get_convex(convex_url)
     account_from = get_convex_account(convex)
     account_to = get_convex_account(convex)
@@ -233,7 +233,7 @@ def test_convex_api_transfer(convex_url: str):
     assert balance_to == transfer_amount
 
 
-def test_convex_api_query_lisp(convex_url: str, test_account: Account):
+def test_convex_sdk_query_lisp(convex_url: str, test_account: Account):
     convex = get_convex(convex_url)
     result = convex.query(f'(address {test_account.address})', test_account)
     assert result is not None

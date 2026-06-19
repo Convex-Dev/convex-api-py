@@ -250,7 +250,7 @@ class KeyPair:
         .. code-block:: python
 
             >>> # import convex-api
-            >>> from convex_api import Convex
+            >>> from convex_sdk import Convex
 
             >>> # setup the network connection
             >>> convex = Convex('https://convex.world')

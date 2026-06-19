@@ -9,9 +9,9 @@ import secrets
 
 import pytest
 
-from convex_api.account import Account
-from convex_api.convex import Convex
-from convex_api.exceptions import ConvexAPIError
+from convex_sdk.account import Account
+from convex_sdk.convex import Convex
+from convex_sdk.exceptions import ConvexAPIError
 
 
 def test_convex_recursion(convex: Convex, test_account: Account):
