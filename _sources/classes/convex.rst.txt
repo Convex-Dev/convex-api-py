@@ -1,7 +1,7 @@
 Convex class
 ============
 
-.. autoclass:: convex_api.Convex
+.. autoclass:: convex_sdk.Convex
     :members:
     :undoc-members:
     :show-inheritance:

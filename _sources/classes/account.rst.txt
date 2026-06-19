@@ -1,7 +1,7 @@
 Account class
 =============
 
-.. autoclass:: convex_api.Account
+.. autoclass:: convex_sdk.Account
     :members:
     :undoc-members:
     :show-inheritance:

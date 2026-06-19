@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KeyPair class &mdash; convex-api-py 0.3.2 documentation</title>
+  <title>KeyPair class &mdash; convex-sdk 0.3.2 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
@@ -33,7 +33,7 @@
           
           
           <a href="../index.html" class="icon icon-home">
-            convex-api-py
+            convex-sdk
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -47,30 +47,30 @@
 <li class="toctree-l1"><a class="reference internal" href="account.html">Account class</a></li>
 <li class="toctree-l1"><a class="reference internal" href="convex.html">Convex class</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">KeyPair class</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#convex_api.KeyPair"><code class="docutils literal notranslate"><span class="pre">KeyPair</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#convex_api.KeyPair.add_0x_prefix"><code class="docutils literal notranslate"><span class="pre">KeyPair.add_0x_prefix()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#convex_api.KeyPair.export_to_file"><code class="docutils literal notranslate"><span class="pre">KeyPair.export_to_file()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#convex_api.KeyPair.export_to_mnemonic"><code class="docutils literal notranslate"><span class="pre">KeyPair.export_to_mnemonic</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#convex_api.KeyPair.export_to_text"><code class="docutils literal notranslate"><span class="pre">KeyPair.export_to_text()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#convex_api.KeyPair.hex_to_bytes"><code class="docutils literal notranslate"><span class="pre">KeyPair.hex_to_bytes()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#convex_api.KeyPair.import_from_bytes"><code class="docutils literal notranslate"><span class="pre">KeyPair.import_from_bytes()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#convex_api.KeyPair.import_from_file"><code class="docutils literal notranslate"><span class="pre">KeyPair.import_from_file()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#convex_api.KeyPair.import_from_mnemonic"><code class="docutils literal notranslate"><span class="pre">KeyPair.import_from_mnemonic()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#convex_api.KeyPair.import_from_text"><code class="docutils literal notranslate"><span class="pre">KeyPair.import_from_text()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#convex_api.KeyPair.is_equal"><code class="docutils literal notranslate"><span class="pre">KeyPair.is_equal()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#convex_api.KeyPair.is_hexstr"><code class="docutils literal notranslate"><span class="pre">KeyPair.is_hexstr()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#convex_api.KeyPair.is_public_key"><code class="docutils literal notranslate"><span class="pre">KeyPair.is_public_key()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#convex_api.KeyPair.is_public_key_checksum"><code class="docutils literal notranslate"><span class="pre">KeyPair.is_public_key_checksum()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#convex_api.KeyPair.is_public_key_hex"><code class="docutils literal notranslate"><span class="pre">KeyPair.is_public_key_hex()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#convex_api.KeyPair.public_key"><code class="docutils literal notranslate"><span class="pre">KeyPair.public_key</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#convex_api.KeyPair.public_key_api"><code class="docutils literal notranslate"><span class="pre">KeyPair.public_key_api</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#convex_api.KeyPair.public_key_bytes"><code class="docutils literal notranslate"><span class="pre">KeyPair.public_key_bytes</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#convex_api.KeyPair.public_key_checksum"><code class="docutils literal notranslate"><span class="pre">KeyPair.public_key_checksum</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#convex_api.KeyPair.remove_0x_prefix"><code class="docutils literal notranslate"><span class="pre">KeyPair.remove_0x_prefix()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#convex_api.KeyPair.sign"><code class="docutils literal notranslate"><span class="pre">KeyPair.sign()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#convex_api.KeyPair.to_bytes"><code class="docutils literal notranslate"><span class="pre">KeyPair.to_bytes()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#convex_api.KeyPair.to_hex"><code class="docutils literal notranslate"><span class="pre">KeyPair.to_hex()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#convex_api.KeyPair.to_public_key_checksum"><code class="docutils literal notranslate"><span class="pre">KeyPair.to_public_key_checksum()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#convex_sdk.KeyPair"><code class="docutils literal notranslate"><span class="pre">KeyPair</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#convex_sdk.KeyPair.add_0x_prefix"><code class="docutils literal notranslate"><span class="pre">KeyPair.add_0x_prefix()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#convex_sdk.KeyPair.export_to_file"><code class="docutils literal notranslate"><span class="pre">KeyPair.export_to_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#convex_sdk.KeyPair.export_to_mnemonic"><code class="docutils literal notranslate"><span class="pre">KeyPair.export_to_mnemonic</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#convex_sdk.KeyPair.export_to_text"><code class="docutils literal notranslate"><span class="pre">KeyPair.export_to_text()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#convex_sdk.KeyPair.hex_to_bytes"><code class="docutils literal notranslate"><span class="pre">KeyPair.hex_to_bytes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#convex_sdk.KeyPair.import_from_bytes"><code class="docutils literal notranslate"><span class="pre">KeyPair.import_from_bytes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#convex_sdk.KeyPair.import_from_file"><code class="docutils literal notranslate"><span class="pre">KeyPair.import_from_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#convex_sdk.KeyPair.import_from_mnemonic"><code class="docutils literal notranslate"><span class="pre">KeyPair.import_from_mnemonic()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#convex_sdk.KeyPair.import_from_text"><code class="docutils literal notranslate"><span class="pre">KeyPair.import_from_text()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#convex_sdk.KeyPair.is_equal"><code class="docutils literal notranslate"><span class="pre">KeyPair.is_equal()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#convex_sdk.KeyPair.is_hexstr"><code class="docutils literal notranslate"><span class="pre">KeyPair.is_hexstr()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#convex_sdk.KeyPair.is_public_key"><code class="docutils literal notranslate"><span class="pre">KeyPair.is_public_key()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#convex_sdk.KeyPair.is_public_key_checksum"><code class="docutils literal notranslate"><span class="pre">KeyPair.is_public_key_checksum()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#convex_sdk.KeyPair.is_public_key_hex"><code class="docutils literal notranslate"><span class="pre">KeyPair.is_public_key_hex()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#convex_sdk.KeyPair.public_key"><code class="docutils literal notranslate"><span class="pre">KeyPair.public_key</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#convex_sdk.KeyPair.public_key_api"><code class="docutils literal notranslate"><span class="pre">KeyPair.public_key_api</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#convex_sdk.KeyPair.public_key_bytes"><code class="docutils literal notranslate"><span class="pre">KeyPair.public_key_bytes</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#convex_sdk.KeyPair.public_key_checksum"><code class="docutils literal notranslate"><span class="pre">KeyPair.public_key_checksum</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#convex_sdk.KeyPair.remove_0x_prefix"><code class="docutils literal notranslate"><span class="pre">KeyPair.remove_0x_prefix()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#convex_sdk.KeyPair.sign"><code class="docutils literal notranslate"><span class="pre">KeyPair.sign()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#convex_sdk.KeyPair.to_bytes"><code class="docutils literal notranslate"><span class="pre">KeyPair.to_bytes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#convex_sdk.KeyPair.to_hex"><code class="docutils literal notranslate"><span class="pre">KeyPair.to_hex()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#convex_sdk.KeyPair.to_public_key_checksum"><code class="docutils literal notranslate"><span class="pre">KeyPair.to_public_key_checksum()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -84,7 +84,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">convex-api-py</a>
+          <a href="../index.html">convex-sdk</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -105,17 +105,17 @@
   <section id="keypair-class">
 <h1>KeyPair class<a class="headerlink" href="#keypair-class" title="Link to this heading"></a></h1>
 <dl class="py class">
-<dt class="sig sig-object py" id="convex_api.KeyPair">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">convex_api.</span></span><span class="sig-name descname"><span class="pre">KeyPair</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">private_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Ed25519PrivateKey</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.KeyPair" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="convex_sdk.KeyPair">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">convex_sdk.</span></span><span class="sig-name descname"><span class="pre">KeyPair</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">private_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Ed25519PrivateKey</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_sdk.KeyPair" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Create a new keypair object with a public and private key as a Ed25519PrivateKey. It is better to use
 one of the following static methods to create an KeyPair object:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><a class="reference internal" href="#convex_api.KeyPair.import_from_bytes" title="convex_api.KeyPair.import_from_bytes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">import_from_bytes()</span></code></a></p></li>
-<li><p><a class="reference internal" href="#convex_api.KeyPair.import_from_file" title="convex_api.KeyPair.import_from_file"><code class="xref py py-meth docutils literal notranslate"><span class="pre">import_from_file()</span></code></a></p></li>
-<li><p><a class="reference internal" href="#convex_api.KeyPair.import_from_mnemonic" title="convex_api.KeyPair.import_from_mnemonic"><code class="xref py py-meth docutils literal notranslate"><span class="pre">import_from_mnemonic()</span></code></a></p></li>
-<li><p><a class="reference internal" href="#convex_api.KeyPair.import_from_text" title="convex_api.KeyPair.import_from_text"><code class="xref py py-meth docutils literal notranslate"><span class="pre">import_from_text()</span></code></a></p></li>
+<li><p><a class="reference internal" href="#convex_sdk.KeyPair.import_from_bytes" title="convex_sdk.KeyPair.import_from_bytes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">import_from_bytes()</span></code></a></p></li>
+<li><p><a class="reference internal" href="#convex_sdk.KeyPair.import_from_file" title="convex_sdk.KeyPair.import_from_file"><code class="xref py py-meth docutils literal notranslate"><span class="pre">import_from_file()</span></code></a></p></li>
+<li><p><a class="reference internal" href="#convex_sdk.KeyPair.import_from_mnemonic" title="convex_sdk.KeyPair.import_from_mnemonic"><code class="xref py py-meth docutils literal notranslate"><span class="pre">import_from_mnemonic()</span></code></a></p></li>
+<li><p><a class="reference internal" href="#convex_sdk.KeyPair.import_from_text" title="convex_sdk.KeyPair.import_from_text"><code class="xref py py-meth docutils literal notranslate"><span class="pre">import_from_text()</span></code></a></p></li>
 </ul>
 </div></blockquote>
 <dl class="field-list simple">
@@ -129,15 +129,15 @@ one of the following static methods to create an KeyPair object:</p>
 For security reasons all of the keys and password text displayed below in the documentation
 are only truncated ending with a <strong>`…`</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># import convex-api</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">convex_api</span><span class="w"> </span><span class="kn">import</span> <span class="n">Convex</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">convex_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Convex</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># setup the network connection</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">convex</span> <span class="o">=</span> <span class="n">Convex</span><span class="p">(</span><span class="s1">&#39;https://convex.world&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <dl class="py method">
-<dt class="sig sig-object py" id="convex_api.KeyPair.add_0x_prefix">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">add_0x_prefix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hexstr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></span><a class="headerlink" href="#convex_api.KeyPair.add_0x_prefix" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="convex_sdk.KeyPair.add_0x_prefix">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">add_0x_prefix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hexstr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></span><a class="headerlink" href="#convex_sdk.KeyPair.add_0x_prefix" title="Link to this definition"></a></dt>
 <dd><p>Add a 0x prefix to a string.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -154,8 +154,8 @@ are only truncated ending with a <strong>`…`</strong></p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="convex_api.KeyPair.export_to_file">
-<span class="sig-name descname"><span class="pre">export_to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.14)"><span class="pre">bytes</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#convex_api.KeyPair.export_to_file" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="convex_sdk.KeyPair.export_to_file">
+<span class="sig-name descname"><span class="pre">export_to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.14)"><span class="pre">bytes</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#convex_sdk.KeyPair.export_to_file" title="Link to this definition"></a></dt>
 <dd><p>Export the private key to a file. This uses <cite>export_to_text</cite> to export as a string.
 Then saves this in a file.</p>
 <dl class="field-list simple">
@@ -176,8 +176,8 @@ Then saves this in a file.</p>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="convex_api.KeyPair.export_to_mnemonic">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">export_to_mnemonic</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#convex_api.KeyPair.export_to_mnemonic" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="convex_sdk.KeyPair.export_to_mnemonic">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">export_to_mnemonic</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#convex_sdk.KeyPair.export_to_mnemonic" title="Link to this definition"></a></dt>
 <dd><p>Export the private key as a mnemonic words. You must keep this secret since the private key can be
 recreated using the words.</p>
 <dl class="field-list simple">
@@ -196,8 +196,8 @@ recreated using the words.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="convex_api.KeyPair.export_to_text">
-<span class="sig-name descname"><span class="pre">export_to_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.14)"><span class="pre">bytes</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_api.KeyPair.export_to_text" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="convex_sdk.KeyPair.export_to_text">
+<span class="sig-name descname"><span class="pre">export_to_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.14)"><span class="pre">bytes</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#convex_sdk.KeyPair.export_to_text" title="Link to this definition"></a></dt>
 <dd><p>Export the private key to an encrypted PEM string.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -220,8 +220,8 @@ recreated using the words.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="convex_api.KeyPair.hex_to_bytes">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">hex_to_bytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hexstr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.14)"><span class="pre">bytes</span></a></span></span><a class="headerlink" href="#convex_api.KeyPair.hex_to_bytes" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="convex_sdk.KeyPair.hex_to_bytes">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">hex_to_bytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hexstr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.14)"><span class="pre">bytes</span></a></span></span><a class="headerlink" href="#convex_sdk.KeyPair.hex_to_bytes" title="Link to this definition"></a></dt>
 <dd><p>Convert a hex string to bytes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -238,15 +238,15 @@ recreated using the words.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="convex_api.KeyPair.import_from_bytes">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">import_from_bytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.14)"><span class="pre">bytes</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#convex_api.KeyPair" title="convex_api.key_pair.KeyPair"><span class="pre">KeyPair</span></a></span></span><a class="headerlink" href="#convex_api.KeyPair.import_from_bytes" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="convex_sdk.KeyPair.import_from_bytes">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">import_from_bytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.14)"><span class="pre">bytes</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#convex_sdk.KeyPair" title="convex_sdk.key_pair.KeyPair"><span class="pre">KeyPair</span></a></span></span><a class="headerlink" href="#convex_sdk.KeyPair.import_from_bytes" title="Link to this definition"></a></dt>
 <dd><p>Import an keypair from a private key in bytes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>KeyPair object with the private/public key</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="#convex_api.KeyPair" title="convex_api.KeyPair">KeyPair</a></p>
+<dd class="field-even"><p><a class="reference internal" href="#convex_sdk.KeyPair" title="convex_sdk.KeyPair">KeyPair</a></p>
 </dd>
 </dl>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># create an KeyPair object from a raw private key</span>
@@ -256,8 +256,8 @@ recreated using the words.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="convex_api.KeyPair.import_from_file">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">import_from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.14)"><span class="pre">bytes</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#convex_api.KeyPair" title="convex_api.key_pair.KeyPair"><span class="pre">KeyPair</span></a></span></span><a class="headerlink" href="#convex_api.KeyPair.import_from_file" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="convex_sdk.KeyPair.import_from_file">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">import_from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.14)"><span class="pre">bytes</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#convex_sdk.KeyPair" title="convex_sdk.key_pair.KeyPair"><span class="pre">KeyPair</span></a></span></span><a class="headerlink" href="#convex_sdk.KeyPair.import_from_file" title="Link to this definition"></a></dt>
 <dd><p>Load the encrypted private key from file. The file is saved in PEM format encrypted with a password</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -270,7 +270,7 @@ recreated using the words.</p>
 <dd class="field-even"><p>KeyPair with the private/public key</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="#convex_api.KeyPair" title="convex_api.KeyPair">KeyPair</a></p>
+<dd class="field-odd"><p><a class="reference internal" href="#convex_sdk.KeyPair" title="convex_sdk.KeyPair">KeyPair</a></p>
 </dd>
 </dl>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># create an KeyPair object from a encrypted pem saved in a file</span>
@@ -280,8 +280,8 @@ recreated using the words.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="convex_api.KeyPair.import_from_mnemonic">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">import_from_mnemonic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">words</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#convex_api.KeyPair" title="convex_api.key_pair.KeyPair"><span class="pre">KeyPair</span></a></span></span><a class="headerlink" href="#convex_api.KeyPair.import_from_mnemonic" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="convex_sdk.KeyPair.import_from_mnemonic">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">import_from_mnemonic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">words</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#convex_sdk.KeyPair" title="convex_sdk.key_pair.KeyPair"><span class="pre">KeyPair</span></a></span></span><a class="headerlink" href="#convex_sdk.KeyPair.import_from_mnemonic" title="Link to this definition"></a></dt>
 <dd><p>Creates a new KeyPair object using a list of words. These words contain the private key and must be kept secret.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -291,7 +291,7 @@ recreated using the words.</p>
 <dd class="field-even"><p>KeyPair object with the public/private key</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="#convex_api.KeyPair" title="convex_api.KeyPair">KeyPair</a></p>
+<dd class="field-odd"><p><a class="reference internal" href="#convex_sdk.KeyPair" title="convex_sdk.KeyPair">KeyPair</a></p>
 </dd>
 </dl>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># create an KeyPair object from a mnemonic word list</span>
@@ -302,8 +302,8 @@ recreated using the words.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="convex_api.KeyPair.import_from_text">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">import_from_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.14)"><span class="pre">bytes</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.14)"><span class="pre">bytes</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#convex_api.KeyPair" title="convex_api.key_pair.KeyPair"><span class="pre">KeyPair</span></a></span></span><a class="headerlink" href="#convex_api.KeyPair.import_from_text" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="convex_sdk.KeyPair.import_from_text">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">import_from_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.14)"><span class="pre">bytes</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.14)"><span class="pre">bytes</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#convex_sdk.KeyPair" title="convex_sdk.key_pair.KeyPair"><span class="pre">KeyPair</span></a></span></span><a class="headerlink" href="#convex_sdk.KeyPair.import_from_text" title="Link to this definition"></a></dt>
 <dd><p>Import a KeyPair from an encrypted PEM string.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -316,7 +316,7 @@ recreated using the words.</p>
 <dd class="field-even"><p>KeyPair object with the public/private key</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="#convex_api.KeyPair" title="convex_api.KeyPair">KeyPair</a></p>
+<dd class="field-odd"><p><a class="reference internal" href="#convex_sdk.KeyPair" title="convex_sdk.KeyPair">KeyPair</a></p>
 </dd>
 </dl>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># create an KeyPair object from a encrypted pem text</span>
@@ -330,8 +330,8 @@ recreated using the words.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="convex_api.KeyPair.is_equal">
-<span class="sig-name descname"><span class="pre">is_equal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">public_key_pair</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#convex_api.KeyPair" title="convex_api.key_pair.KeyPair"><span class="pre">KeyPair</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#convex_api.KeyPair.is_equal" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="convex_sdk.KeyPair.is_equal">
+<span class="sig-name descname"><span class="pre">is_equal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">public_key_pair</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#convex_sdk.KeyPair" title="convex_sdk.key_pair.KeyPair"><span class="pre">KeyPair</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#convex_sdk.KeyPair.is_equal" title="Link to this definition"></a></dt>
 <dd><p>Compare the value to see if it is the same as this key_pair</p>
 <dl class="field-list simple">
 <dt class="field-odd">Param<span class="colon">:</span></dt>
@@ -344,8 +344,8 @@ recreated using the words.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="convex_api.KeyPair.is_hexstr">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_hexstr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hexstr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#convex_api.KeyPair.is_hexstr" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="convex_sdk.KeyPair.is_hexstr">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_hexstr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hexstr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#convex_sdk.KeyPair.is_hexstr" title="Link to this definition"></a></dt>
 <dd><p>Check if a string is a valid hex string.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -365,8 +365,8 @@ recreated using the words.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="convex_api.KeyPair.is_public_key">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_public_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">public_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#convex_api.KeyPair.is_public_key" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="convex_sdk.KeyPair.is_public_key">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_public_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">public_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#convex_sdk.KeyPair.is_public_key" title="Link to this definition"></a></dt>
 <dd><p>Check if a public key is a valid public key.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -379,8 +379,8 @@ recreated using the words.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="convex_api.KeyPair.is_public_key_checksum">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_public_key_checksum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">public_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#convex_api.KeyPair.is_public_key_checksum" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="convex_sdk.KeyPair.is_public_key_checksum">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_public_key_checksum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">public_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#convex_sdk.KeyPair.is_public_key_checksum" title="Link to this definition"></a></dt>
 <dd><p>Check if a public key is a checksum key.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -393,8 +393,8 @@ recreated using the words.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="convex_api.KeyPair.is_public_key_hex">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_public_key_hex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">public_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#convex_api.KeyPair.is_public_key_hex" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="convex_sdk.KeyPair.is_public_key_hex">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_public_key_hex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">public_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#convex_sdk.KeyPair.is_public_key_hex" title="Link to this definition"></a></dt>
 <dd><p>Check if a public key is a valid hex public key.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -407,8 +407,8 @@ recreated using the words.</p>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="convex_api.KeyPair.public_key">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">public_key</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#convex_api.KeyPair.public_key" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="convex_sdk.KeyPair.public_key">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">public_key</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#convex_sdk.KeyPair.public_key" title="Link to this definition"></a></dt>
 <dd><p>Return the public key of the KeyPair in the format ‘0x….’</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -429,8 +429,8 @@ recreated using the words.</p>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="convex_api.KeyPair.public_key_api">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">public_key_api</span></span><a class="headerlink" href="#convex_api.KeyPair.public_key_api" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="convex_sdk.KeyPair.public_key_api">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">public_key_api</span></span><a class="headerlink" href="#convex_sdk.KeyPair.public_key_api" title="Link to this definition"></a></dt>
 <dd><p>Return the public key of the KeyPair without the leading ‘0x’</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -451,8 +451,8 @@ recreated using the words.</p>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="convex_api.KeyPair.public_key_bytes">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">public_key_bytes</span></span><a class="headerlink" href="#convex_api.KeyPair.public_key_bytes" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="convex_sdk.KeyPair.public_key_bytes">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">public_key_bytes</span></span><a class="headerlink" href="#convex_sdk.KeyPair.public_key_bytes" title="Link to this definition"></a></dt>
 <dd><p>Return the public key of the key pair in the byte format</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -473,8 +473,8 @@ recreated using the words.</p>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="convex_api.KeyPair.public_key_checksum">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">public_key_checksum</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#convex_api.KeyPair.public_key_checksum" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="convex_sdk.KeyPair.public_key_checksum">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">public_key_checksum</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#convex_sdk.KeyPair.public_key_checksum" title="Link to this definition"></a></dt>
 <dd><p>Return the public key of the KeyPair with checksum upper/lower case characters</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -492,8 +492,8 @@ recreated using the words.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="convex_api.KeyPair.remove_0x_prefix">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">remove_0x_prefix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hexstr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></span><a class="headerlink" href="#convex_api.KeyPair.remove_0x_prefix" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="convex_sdk.KeyPair.remove_0x_prefix">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">remove_0x_prefix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hexstr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></span><a class="headerlink" href="#convex_sdk.KeyPair.remove_0x_prefix" title="Link to this definition"></a></dt>
 <dd><p>Remove a 0x prefix from a string.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -510,8 +510,8 @@ recreated using the words.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="convex_api.KeyPair.sign">
-<span class="sig-name descname"><span class="pre">sign</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hash_text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></span><a class="headerlink" href="#convex_api.KeyPair.sign" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="convex_sdk.KeyPair.sign">
+<span class="sig-name descname"><span class="pre">sign</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hash_text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></span><a class="headerlink" href="#convex_sdk.KeyPair.sign" title="Link to this definition"></a></dt>
 <dd><p>Sign a hash text using the private key.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -529,8 +529,8 @@ recreated using the words.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="convex_api.KeyPair.to_bytes">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">to_bytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.14)"><span class="pre">bytes</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.14)"><span class="pre">bytes</span></a></span></span><a class="headerlink" href="#convex_api.KeyPair.to_bytes" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="convex_sdk.KeyPair.to_bytes">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">to_bytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.14)"><span class="pre">bytes</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.14)"><span class="pre">bytes</span></a></span></span><a class="headerlink" href="#convex_sdk.KeyPair.to_bytes" title="Link to this definition"></a></dt>
 <dd><p>Convert data to bytes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -550,8 +550,8 @@ recreated using the words.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="convex_api.KeyPair.to_hex">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">to_hex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.14)"><span class="pre">bytes</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></span><a class="headerlink" href="#convex_api.KeyPair.to_hex" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="convex_sdk.KeyPair.to_hex">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">to_hex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.14)"><span class="pre">bytes</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></span><a class="headerlink" href="#convex_sdk.KeyPair.to_hex" title="Link to this definition"></a></dt>
 <dd><p>Convert bytes to a hex string.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -568,8 +568,8 @@ recreated using the words.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="convex_api.KeyPair.to_public_key_checksum">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">to_public_key_checksum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">public_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></span><a class="headerlink" href="#convex_api.KeyPair.to_public_key_checksum" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="convex_sdk.KeyPair.to_public_key_checksum">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">to_public_key_checksum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">public_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></span><a class="headerlink" href="#convex_sdk.KeyPair.to_public_key_checksum" title="Link to this definition"></a></dt>
 <dd><p>Convert a public key to a checksum key. This will first make all a-f characters lowercase
 then convert a-f characters to uppercase depending on the hash of the public key.</p>
 <dl class="field-list simple">
@@ -597,7 +597,7 @@ then convert a-f characters to uppercase depending on the hash of the public key
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright convex-api-py contributors.</p>
+    <p>&#169; Copyright convex-sdk contributors.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
