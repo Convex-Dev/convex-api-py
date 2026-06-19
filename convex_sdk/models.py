@@ -42,7 +42,7 @@ class FaucetResponse(BaseModel):
     """REST API response from a faucet request."""
     address: int
     amount: int
-    value: int
+    value: int | None = None
 
 
 class QueryRequest(BaseModel):
@@ -67,7 +67,7 @@ class PrepareTransactionRequest(BaseModel):
 class PrepareTransactionResponse(BaseModel):
     """REST API response from a prepare transaction request."""
     address: int
-    hash: str | None = Field(None, min_length=64, max_length=64)
+    hash: str | None = None
     sequence: int
     source: str
 
@@ -76,7 +76,7 @@ class SubmitTransactionRequest(BaseModel):
     """REST API request for a submit transaction request."""
     address: int
     accountKey: str | None = Field(None, min_length=64, max_length=64)
-    hash: str | None = Field(None, min_length=64, max_length=64)
+    hash: str | None = None
     sig: str | None = Field(None, min_length=128, max_length=128)
 
 

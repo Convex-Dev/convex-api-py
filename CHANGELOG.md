@@ -1,5 +1,9 @@
 ## Change log
 
+### 0.3.3
++   Fix `request_funds` against peers whose faucet response omits a `value` field (`FaucetResponse.value` is now optional)
++   Relax the prepare/submit `hash` length constraint so transactions work against peers that return a longer transaction hash (e.g. the public testnet); the client already signs the hash bytes regardless of length
+
 ### 0.3.2
 +   **Renamed package to `convex-sdk`** — PyPI distribution `convex-api-py` → `convex-sdk` and import package `convex_api` → `convex_sdk` (`pip install convex-sdk`; `import convex_sdk`). The GitHub repository stays `convex-api-py`; the predecessor `convex-api-py` PyPI package remains frozen at 0.3.1.
 +   Fix malformed `__version__` string in `convex_sdk/__init__.py` (also restores `bumpversion` matching)

@@ -85,6 +85,6 @@ setup(
     tests_require=test_requirements,
     python_requires='>=3.10',
     url='https://github.com/Convex-Dev/convex-api-py',
-    version='0.3.2',
+    version='0.3.3',
     zip_safe=False,
 )
