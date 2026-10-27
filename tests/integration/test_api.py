@@ -42,10 +42,10 @@ def test_convex_get_account_info(convex_url: str, test_account: Account):
     assert info.balance > 0
     assert info.sequence >= 0
 
-    with pytest.raises(ConvexRequestError, match='INCORRECT'):
+    with pytest.raises(ConvexRequestError, match='INCORRECT|Invalid address'):
         info = convex.get_account_info(pow(2, 100))
 
-    with pytest.raises(ConvexRequestError, match='INCORRECT'):
+    with pytest.raises(ConvexRequestError, match='INCORRECT|Invalid address'):
         info = convex.get_account_info(pow(2, 1024))
 
     account = get_convex_account(convex)
@@ -165,12 +165,12 @@ def test_convex_sdk_call(convex_url: str):
                 nil
             )
             (defn get
-                ^{:callable? true}
+                ^{:callable true}
                 []
                 stored-data
             )
             (defn set
-                ^{:callable? true}
+                ^{:callable true}
                 [x]
                 ( def stored-data x)
             )
