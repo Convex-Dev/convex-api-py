@@ -6,6 +6,7 @@ This module provides shared constants and helper functions for tests.
 
 import logging
 import secrets
+from contextlib import contextmanager
 
 import pytest
 
@@ -78,6 +79,24 @@ def get_convex_account(convex: Convex | None = None, key_pair: KeyPair | None = 
         pytest.skip(f"Failed to create account (external service may be unavailable): {e}")
 
 
+@contextmanager
+def requires_writable_namespace():
+    """
+    Skip the test if the network has no CNS node that the test account may write to.
+
+    CNS entries can only be created by the owner of the parent node, and the public networks do not give
+    ordinary accounts one, so registering a name is refused with a TRUST error.
+    """
+    from convex_sdk.exceptions import ConvexAPIError
+
+    try:
+        yield
+    except ConvexAPIError as e:
+        if e.code == 'TRUST':
+            pytest.skip(f'Network has no CNS node this account can write to: {e}')
+        raise
+
+
 # Pytest fixtures (kept here for backward compatibility, but conftest.py will import them)
 @pytest.fixture(scope='module')
 def test_key_pair_info() -> KeyPairInfo:
@@ -104,14 +123,26 @@ def test_account(convex: Convex, test_key_pair: KeyPair):
 
     test_account_name = f'{TEST_ACCOUNT_NAME}.{secrets.token_hex(8)}'
     try:
-        account = convex.setup_account(test_account_name, test_key_pair)
-        if account is not None:
-            convex.topup_account(account)
-            return account
-        else:
+        try:
+            account = convex.setup_account(test_account_name, test_key_pair)
+        except ConvexAPIError as e:
+            if e.code != 'TRUST':
+                raise
+            # No CNS node to register the name in, so use an unnamed account
+            account = convex.create_account(test_key_pair)
+        if account is None:
             pytest.skip("Failed to setup account (account name may already exist or service unavailable)")
+        convex.topup_account(account)
+        return account
     except (ConvexAPIError, ConvexRequestError, requests.RequestException) as e:
         pytest.skip(f"Failed to setup account (external service may be unavailable): {e}")
+
+
+@pytest.fixture(scope='module')
+def named_test_account(test_account: Account):
+    if test_account.name is None:
+        pytest.skip('Network has no CNS node the test account can register a name in')
+    return test_account
 
 
 @pytest.fixture(scope='module')

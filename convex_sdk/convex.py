@@ -162,6 +162,9 @@ class Convex:
         **Note** If you do not provide a register_account, then this method calls the
         :meth:`.topup_account` method to get enough funds to register an account name.
 
+        Registering a new name is refused with a ``TRUST`` :class:`.ConvexAPIError` unless the registering
+        account owns the ``account`` CNS node, see :meth:`.register_account_name`.
+
 
         .. code-block:: python
 
@@ -201,9 +204,14 @@ class Convex:
         "`account.<your_name>`". You need to have some convex balance in your account, and
         a valid account address.
 
+        CNS is hierarchical, and only the owner of the ``account`` node can create entries in it. If the
+        registration account does not own it, the peer refuses the transaction and this method raises
+        :class:`.ConvexAPIError` with the code ``TRUST``.
+
         :param str name: name of the account to register.
         :param number|Account account_address: Account or address to register.
         :param Account account: :class:`.Account` object to register the account name.
+        :raises ConvexAPIError: with code ``TRUST`` if the account may not create the name
 
         .. code-block:: python
 
@@ -254,7 +262,8 @@ class Convex:
             This transact method will automatically retry again
         :type sequence_retry_count: int, optional
 
-        :returns: The dict returned from the result of the submitted transaction.
+        :returns: A :class:`.SubmitTransactionResponse`; the result of the transaction is its ``value``.
+        :raises ConvexAPIError: if the transaction fails, with the CVM error code in ``code``
 
 
         .. code-block:: python
@@ -271,8 +280,8 @@ class Convex:
             100000
 
             >>> # submit a transaction using the new account
-            >>> print(convex.transact('(map inc [ 1 2 3 4])', account))
-            {'value': [2, 3, 4, 5]}
+            >>> print(convex.transact('(map inc [ 1 2 3 4])', account).value)
+            [2, 3, 4, 5]
 
 
         """
@@ -287,7 +296,13 @@ class Convex:
                 if hash_data.hash is None:
                     raise ValueError('Transaction preparation failed: hash is None')
                 signed_data = account.sign(hash_data.hash)
-                result = self._transaction_submit(account.address, account.key_pair.public_key_api, hash_data.hash, signed_data)
+                result = self._transaction_submit(
+                    account.address,
+                    account.key_pair.public_key_api,
+                    hash_data.hash,
+                    signed_data,
+                    hash_data.data
+                )
             except ConvexAPIError as error:
                 if error.code == 'SEQUENCE':
                     if sequence_retry_count == 0:
@@ -331,14 +346,14 @@ class Convex:
 
             >>> # submit a query using the account address
 
-            >>> print(convex.query(f'(balance {account.address})', account.address))
-            {'value': 0}
+            >>> print(convex.query(f'(balance {account.address})', account.address).value)
+            0
 
             >>> # request some funds to do stuff
             >>> print(convex.request_funds(100000, account))
             100000
-            >>> print(convex.query(f'(balance {account.address})', account.address))
-            {'value': 100000}
+            >>> print(convex.query(f'(balance {account.address})', account.address).value)
+            100000
 
         """
         address = Account.to_address(address_account)
@@ -698,7 +713,7 @@ class Convex:
         max_sleep_time_seconds = 1
         result: dict[str, Any] | None = None
         while sequence_retry_count >= 0:
-            response = requests.post(url, data=data.model_dump_json())
+            response = requests.post(url, data=data.model_dump_json(exclude_none=True))
             if response.status_code == 200:
                 result = response.json()
                 break
@@ -757,7 +772,8 @@ class Convex:
         address: Account | int | str,
         public_key: str,
         hash_data: str,
-        signed_data: str
+        signed_data: str,
+        transaction_data: str | None = None
     ) -> SubmitTransactionResponse:
         """
         Submit a transaction to the Convex network.
@@ -766,12 +782,16 @@ class Convex:
         :param str public_key: Public key of the executing account.
         :param str hash_data: Hash of the transaction to be submitted.
         :param str signed_data: Ed25519 signature of the transaction hash.
+        :param str transaction_data: The ``data`` returned by :meth:`._transaction_prepare`. Peers from
+            Convex 0.8.17 keep no prepared transactions and reject a submit without it. Peers that do not
+            return ``data`` from prepare do not need it.
         """
         submit_url = urljoin(self._url, '/api/v1/transaction/submit')
         data = SubmitTransactionRequest(
             address=Account.to_address(address),
             accountKey=public_key,
             hash=hash_data,
+            data=transaction_data,
             sig=KeyPair.remove_0x_prefix(signed_data)
         )
 

@@ -45,7 +45,8 @@ def test_account_create_command(convex_url: str):
         pytest.skip(f"Failed to create account via command (external service may be unavailable): {e}")
 
 
-def test_account_balance_command(convex_url: str, test_account: Account):
+def test_account_balance_command(convex_url: str, named_test_account: Account):
+    test_account = named_test_account
     args = Mock()
 
     args.command = 'account'
@@ -73,7 +74,8 @@ def test_account_balance_command(convex_url: str, test_account: Account):
     assert output.values['balance']
 
 
-def test_account_info_command(convex_url: str, test_account: Account):
+def test_account_info_command(convex_url: str, named_test_account: Account):
+    test_account = named_test_account
     args = Mock()
 
     args.command = 'account'
@@ -107,7 +109,8 @@ def test_account_info_command(convex_url: str, test_account: Account):
     assert output.values['type']
 
 
-def test_account_name_resolve_command(convex_url: str, test_account: Account):
+def test_account_name_resolve_command(convex_url: str, named_test_account: Account):
+    test_account = named_test_account
     args = Mock()
 
     args.command = 'account'
@@ -163,7 +166,8 @@ def test_account_fund_command(convex_url: str, test_account: Account):
     assert output.values['amount'] == args.amount  # type: ignore
 
 
-def test_account_register_command(convex_url: str, test_account: Account):
+def test_account_register_command(convex_url: str, named_test_account: Account):
+    test_account = named_test_account
     args = Mock()
 
     args.command = 'account'

@@ -99,6 +99,9 @@ def test_submit_transaction(convex_url: str):
         'hash': result['hash'],
         'sig': KeyPair.remove_0x_prefix(signed_hash)
     }
+    # peers from Convex 0.8.17 return `data` from prepare and require it back on submit
+    if 'data' in result:
+        submit_data['data'] = result['data']
 
     url = f'{convex_url}/api/v1/transaction/submit'
     print('submit send', submit_data)

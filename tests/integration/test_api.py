@@ -10,7 +10,7 @@ import pytest
 from convex_sdk.account import Account
 from convex_sdk.exceptions import ConvexRequestError
 from convex_sdk.key_pair import KeyPair
-from tests.common import get_convex, get_convex_account
+from tests.common import get_convex, get_convex_account, requires_writable_namespace
 
 TEST_FUNDING_AMOUNT = 8888888
 
@@ -66,7 +66,8 @@ def test_convex_account_name_registry(convex_url: str, test_account: Account, te
     account = convex.load_account(account_name, test_key_pair)
     assert not account
 
-    register_account = convex.register_account_name(account_name, test_account)
+    with requires_writable_namespace():
+        register_account = convex.register_account_name(account_name, test_account)
     assert register_account.address == test_account.address
 
     assert convex.resolve_account_name(account_name) == test_account.address

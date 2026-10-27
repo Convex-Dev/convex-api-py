@@ -9,7 +9,7 @@ from convex_sdk import (
     Account,
     Contract
 )
-from tests.common import get_convex
+from tests.common import get_convex, requires_writable_namespace
 
 TEST_FUNDING_AMOUNT = 8888888
 
@@ -37,7 +37,8 @@ def test_convex_sdk_deploy_contract(convex_url: str, test_account: Account):
         owner_address = test_account.address
 
     # deploy the contract
-    contract_address = contract.deploy(owner_account, filename=TEST_CONTRACT_FILENAME, name=TEST_CONTRACT_NAME)
+    with requires_writable_namespace():
+        contract_address = contract.deploy(owner_account, filename=TEST_CONTRACT_FILENAME, name=TEST_CONTRACT_NAME)
     assert contract_address
     # load the contract - should be the same address
     new_address = contract.load(TEST_CONTRACT_NAME)

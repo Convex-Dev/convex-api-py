@@ -9,7 +9,7 @@ import pytest
 
 from convex_sdk import KeyPair
 from convex_sdk.exceptions import ConvexAPIError, ConvexRequestError
-from tests.common import get_convex
+from tests.common import get_convex, requires_writable_namespace
 from tests.types import KeyPairInfo
 import requests
 
@@ -58,7 +58,8 @@ def test_account_name(convex_url: str, test_key_pair_info: KeyPairInfo, account_
         try:
             account = convex.create_account(import_key_pair)
             convex.topup_account(account)
-            account = convex.register_account_name(account_name, account)
+            with requires_writable_namespace():
+                account = convex.register_account_name(account_name, account)
         except (ConvexAPIError, ConvexRequestError, requests.RequestException) as e:
             # Skip if account creation fails due to external service issues (e.g., 403)
             pytest.skip(f"Failed to create account (external service may be unavailable): {e}")
@@ -73,7 +74,8 @@ def test_account_setup_account(convex_url: str, test_key_pair_info: KeyPairInfo,
     convex = get_convex(convex_url)
     import_key_pair = KeyPair.import_from_bytes(test_key_pair_info['private_bytes'])
     try:
-        account = convex.setup_account(account_name, import_key_pair)
+        with requires_writable_namespace():
+            account = convex.setup_account(account_name, import_key_pair)
         assert account is not None
         assert account.address
         assert account.name

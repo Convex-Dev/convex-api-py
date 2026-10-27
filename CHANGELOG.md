@@ -1,5 +1,11 @@
 ## Change log
 
+### Unreleased
++   Send the `data` returned by `transaction/prepare` back on `transaction/submit`. Peers from Convex 0.8.17 hold no prepared transactions and refused every `transact`, `transfer` and `transfer_account` with `Parameter 'data' is required`. Peers that do not return `data` are unaffected
++   Omit unset fields from REST requests instead of sending `null`
++   Read and write the hierarchical Convex Name System through `*registry*/read` and `*registry*/create`. The flat `cns-database` lookup never matched, so `resolve_account_name`, `load_account` and `setup_account` found nothing, and `register_account_name` called `cns-update`, which the registry no longer defines
++   `register_account_name` and `setup_account` now fail with a `TRUST` `ConvexAPIError` unless the registering account owns the `account` CNS node, which neither Protonet nor the public testnet has
+
 ### 0.3.3
 +   Fix `request_funds` against peers whose faucet response omits a `value` field (`FaucetResponse.value` is now optional)
 +   Relax the prepare/submit `hash` length constraint so transactions work against peers that return a longer transaction hash (e.g. the public testnet); the client already signs the hash bytes regardless of length

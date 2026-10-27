@@ -68,6 +68,9 @@ class PrepareTransactionResponse(BaseModel):
     """REST API response from a prepare transaction request."""
     address: int
     hash: str | None = None
+    # Complete encoded transaction. Peers from Convex 0.8.17 hold no prepared state, so submit must send
+    # this back; earlier peers do not return it.
+    data: str | None = None
     sequence: int
     source: str
 
@@ -77,6 +80,8 @@ class SubmitTransactionRequest(BaseModel):
     address: int
     accountKey: str | None = Field(None, min_length=64, max_length=64)
     hash: str | None = None
+    # The `data` returned by prepare, required by peers from Convex 0.8.17
+    data: str | None = None
     sig: str | None = Field(None, min_length=128, max_length=128)
 
 
