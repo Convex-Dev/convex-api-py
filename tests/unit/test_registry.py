@@ -3,12 +3,18 @@
     Registry reads and writes entries of the hierarchical Convex Name System
 
 """
-from typing import Any, cast
+from typing import (
+    Any,
+    cast
+)
 
 from convex_sdk.account import Account
 from convex_sdk.convex import Convex
 from convex_sdk.key_pair import KeyPair
-from convex_sdk.registry import QUERY_ACCOUNT_ADDRESS, Registry
+from convex_sdk.registry import (
+    QUERY_ACCOUNT_ADDRESS,
+    Registry
+)
 
 
 class FakeResult:

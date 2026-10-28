@@ -9,7 +9,10 @@ from convex_sdk import (
     Account,
     Contract
 )
-from tests.common import get_convex, requires_writable_namespace
+from tests.common import (
+    get_convex,
+    requires_writable_namespace
+)
 
 TEST_FUNDING_AMOUNT = 8888888
 
