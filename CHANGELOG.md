@@ -1,6 +1,6 @@
 ## Change log
 
-### Unreleased
+### 0.3.4
 +   Send the `data` returned by `transaction/prepare` back on `transaction/submit`. Peers from Convex 0.8.17 hold no prepared transactions and refused every `transact`, `transfer` and `transfer_account` with `Parameter 'data' is required`. Peers that do not return `data` are unaffected
 +   Omit unset fields from REST requests instead of sending `null`
 +   Read and write the hierarchical Convex Name System through `*registry*/read` and `*registry*/create`. The flat `cns-database` lookup never matched, so `resolve_account_name`, `load_account` and `setup_account` found nothing, and `register_account_name` called `cns-update`, which the registry no longer defines. It no longer sets the account's registry metadata (`(register {:name ...})`), which CNS entries do not use
