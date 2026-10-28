@@ -4,9 +4,11 @@
 
 """
 
+from typing import Any
+
 
 class ConvexBaseError(Exception):
-    def __init__(self, source: str, code: int | str, text: str):
+    def __init__(self, source: str, code: int | str, text: Any):
         self.source = source
         self.code = code
         self.text = text

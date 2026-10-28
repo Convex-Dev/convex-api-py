@@ -39,6 +39,7 @@ def transact_with_prepare_response(prepare_body: dict[str, Any]) -> list[tuple[s
     account = Account(KeyPair(), ADDRESS)
     with patch('convex_sdk.convex.requests.post', side_effect=fake_post):
         result = Convex('http://localhost:8080').transact('(+ 1 2)', account)
+    assert result is not None
     assert result.value == 3
     return requests_made
 
