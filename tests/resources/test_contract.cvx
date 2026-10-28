@@ -1,14 +1,14 @@
 (def stored-data
-    ^{:private? true}
+    ^{:private true}
     nil
 )
 (defn get
-    ^{:callable? true}
+    ^{:callable true}
     []
     stored-data
 )
 (defn set
-    ^{:callable? true}
+    ^{:callable true}
     [x]
     ( def stored-data x)
 )

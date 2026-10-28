@@ -6,12 +6,18 @@
 import secrets
 
 import pytest
+import requests
 
 from convex_sdk import KeyPair
-from convex_sdk.exceptions import ConvexAPIError, ConvexRequestError
-from tests.common import get_convex, requires_writable_namespace
+from convex_sdk.exceptions import (
+    ConvexAPIError,
+    ConvexRequestError
+)
+from tests.common import (
+    get_convex,
+    requires_writable_namespace
+)
 from tests.types import KeyPairInfo
-import requests
 
 TEST_ACCOUNT_NAME = 'test.convex-api'
 

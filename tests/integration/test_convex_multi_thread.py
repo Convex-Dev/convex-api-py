@@ -11,18 +11,26 @@ from multiprocessing import (
 from typing import Any
 
 import pytest  # type: ignore # noqa: F401
+import requests
 
 from convex_sdk.account import Account
 from convex_sdk.convex import Convex
-from convex_sdk.exceptions import ConvexAPIError, ConvexRequestError
+from convex_sdk.exceptions import (
+    ConvexAPIError,
+    ConvexRequestError
+)
 from convex_sdk.key_pair import KeyPair
-from tests.common import get_convex, get_convex_account
-import requests
+from tests.common import (
+    get_convex,
+    get_convex_account
+)
 
 TEST_FUNDING_AMOUNT = 8000000
 
 
-def process_on_convex(convex: Convex, test_account: Account, result_value: Any):
+def process_on_convex(convex: Convex, mnemonic: str, address: int, result_value: Any):
+    # A KeyPair wraps a native key object that cannot be pickled, which processes started by 'spawn' need
+    test_account = Account(KeyPair.import_from_mnemonic(mnemonic), address)
     values: list[str] = []
     inc_values: list[int] = []
     for _ in range(0, 4):
@@ -42,10 +50,11 @@ def test_convex_sdk_multi_thread_send(convex_url: str, test_account: Account):
     process_count = 4
     convex = get_convex(convex_url)
     convex.topup_account(test_account)
+    mnemonic = test_account.key_pair.export_to_mnemonic
     process_items: dict[int, dict[str, Any]] = {}
     for index in range(process_count):
         result_value = Value('i', 0)
-        proc = Process(target=process_on_convex, args=(convex, test_account, result_value))
+        proc = Process(target=process_on_convex, args=(convex, mnemonic, test_account.address, result_value))
         process_items[index] = {
             'process': proc,
             'result_value': result_value
@@ -99,16 +108,16 @@ def process_convex_deploy(convex: Convex, result_value: Any):
     (deploy
         '(do
             (def stored-data
-                ^{:private? true}
+                ^{:private true}
                 nil
             )
             (defn get
-                ^{:callable? true}
+                ^{:callable true}
                 []
                 stored-data
             )
             (defn set
-                ^{:callable? true}
+                ^{:callable true}
                 [x]
                 (def stored-data x)
             )

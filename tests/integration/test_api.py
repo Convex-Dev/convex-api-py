@@ -10,7 +10,11 @@ import pytest
 from convex_sdk.account import Account
 from convex_sdk.exceptions import ConvexRequestError
 from convex_sdk.key_pair import KeyPair
-from tests.common import get_convex, get_convex_account, requires_writable_namespace
+from tests.common import (
+    get_convex,
+    get_convex_account,
+    requires_writable_namespace
+)
 
 TEST_FUNDING_AMOUNT = 8888888
 
@@ -161,7 +165,7 @@ def test_convex_sdk_call(convex_url: str):
     (deploy
         '(do
             (def stored-data
-                ^{:private? true}
+                ^{:private true}
                 nil
             )
             (defn get

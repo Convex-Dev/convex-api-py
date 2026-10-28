@@ -6,10 +6,13 @@
 from unittest.mock import Mock
 
 import pytest
+import requests
 
 from convex_sdk.account import Account
-from convex_sdk.exceptions import ConvexAPIError, ConvexRequestError
-import requests
+from convex_sdk.exceptions import (
+    ConvexAPIError,
+    ConvexRequestError
+)
 from convex_sdk.tool.command.account_balance_command import AccountBalanceCommand
 from convex_sdk.tool.command.account_create_command import AccountCreateCommand
 from convex_sdk.tool.command.account_fund_command import AccountFundCommand

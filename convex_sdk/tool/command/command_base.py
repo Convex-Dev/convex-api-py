@@ -16,8 +16,8 @@ from argparse import (
 from typing import TypedDict
 
 from convex_sdk import (
-    Convex,
     Account,
+    Convex,
     KeyPair
 )
 from convex_sdk.tool.command.argparse_typing import (
